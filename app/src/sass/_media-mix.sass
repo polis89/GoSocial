@@ -1,0 +1,21 @@
+//Media mixins
+$lg: 1690px
+$md: 1200px
+$sm: 991px
+$xs: 767px
+
+@mixin lg 
+  @media (max-width: #{$lg}) 
+    @content;
+
+@mixin md 
+  @media (max-width: #{$md}) 
+    @content;
+
+@mixin sm 
+  @media (max-width: #{$sm}) 
+    @content;
+
+@mixin xs 
+  @media (max-width: #{$xs}) 
+    @content;

@@ -1,60 +1,89 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <app-header v-bind:appStatus="appStatus" v-on:burger-click="burgerClick"></app-header>
+    <app-main-page></app-main-page>
+    <app-menu v-bind:appStatus="appStatus" v-on:show-page="showPageFromMenu"></app-menu>
+    <portfolio v-bind:is-open="showPortfolio"></portfolio>
   </div>
 </template>
 
 <script>
+import header from './vues/header.vue'
+import menu from './vues/menu.vue'
+import portfolio from './vues/portfolio.vue'
+import mainpage from './vues/main-page.vue'
+
 export default {
   name: 'app',
+  components:{
+    "app-header": header,
+    "app-menu": menu,
+    "portfolio": portfolio,
+    "app-main-page": mainpage,
+  },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      showPortfolio: false,
+      appStatus: 'start',  //Start - showMenu - showPage
     }
+  },
+  methods: {
+    burgerClick(event) {
+      switch(this.appStatus){
+        case 'start':
+          this.appStatus = 'showMenu';
+          break;
+        case 'showMenu':
+          this.appStatus = 'start';
+          break;
+        case 'showPage':
+          this.openPrevPage();
+          break;
+      }
+    },
+    showPageFromMenu(event){
+      this.showPortfolio = true;
+      this.appStatus = 'showPage';
+    },
+    openPrevPage(){
+      this.appStatus = 'showMenu';
+      this.showPortfolio = false;
+    },
   }
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
 
-h1, h2 {
-  font-weight: normal;
-}
+#app
+	font-family: 'Gilroy', Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #2c3e50;
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	z-index: 1000
+	min-height: 100%
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+h1, h2 
+	font-weight: normal;
 
-a {
-  color: #42b983;
-}
+
+ul 
+	list-style-type: none;
+	padding: 0;
+
+
+li 
+	display: inline-block;
+	margin: 0 10px;
+
+
+a 
+	color: #42b983;
+
 </style>

@@ -1,0 +1,206 @@
+@import "vars"
+@import "fonts"
+@import "media-mix"
+@import "burger"
+@import "slidefromleft"
+@import "main-page"
+
+
+html, body
+	height: 100%
+
+body
+	font-size: 14px
+	min-width: 320px
+	position: relative
+	line-height: 24px
+	font-family: "Gilroy"
+	overflow-x: hidden
+	opacity: 1
+	color: #fff
+
+textarea:focus, 
+input:focus
+	outline: none
+
+*
+	outline: none
+
+a
+	text-decoration: none
+	color: #000
+
+#primary
+	min-width: 100vw
+	min-height: 100vh
+	background-color: $c-a
+
+.wrapper
+	width: 90.36%
+	margin: 0 auto
+
+.header__line
+	position: fixed
+	width: 100%
+	top: 0
+	left: 0
+	.wrapper	
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		justify-content: space-between
+		height: 120px
+		align-items: center
+	.h1
+		flex-basis: 40%
+		font-size: 37px
+		line-height: 1
+		font-weight: 900
+		cursor: pointer
+		text-align: left
+	.burger-cont
+		cursor: pointer
+		flex-basis: 20%
+		position: relative
+	.langs
+		flex-basis: 40%
+		text-align: right
+		.lang
+			font-size: 14px
+			line-height: 1
+			font-weight: 500
+			color: #000
+			text-decoration: none
+			margin: 0 2px
+
+.app-menu
+	background-color: #fff
+	width: 54vw
+	position: absolute
+	height: 100%
+	top: 0
+	left: 0
+	z-index: 500
+	&:after
+		content: ''
+		display: block
+		position: absolute
+		top: 0
+		right: 100%
+		width: 30%
+		height: 100%
+		background-color: #fff
+	&__container
+		padding-top: 120px
+		color: #000
+		ul
+			font-size: 11.2vh
+			margin: 0
+			padding: 0
+			list-style-type: none
+			padding-left: 8.8%
+			padding-top: 0.8%
+			li
+				padding: 0
+				margin: 0
+				display: block
+				text-align: left
+				a
+					color: #000
+					line-height: 1.2
+					font-weight: 900
+					text-decoration: none
+					transition: color 0.1s
+					&:hover,
+					&:active
+						color: $c-a-b
+					&.punkt-inline
+						font-size: 0.4em
+						margin-left: 0.30%
+						margin-right: 2%
+						line-height: 1.9
+				.childs
+					display: inline-block
+					font-size: 0.1636em
+					a
+						&:hover,
+						&:active
+							color: $c-a
+	&__footer
+		position: absolute
+		width: 84.4%
+		bottom: 0
+		left: 8.8%
+		text-align: left
+		font-size: 20.47px
+		line-height: 1.5
+		padding-bottom: 24px
+		.bottom-line
+			position: relative
+			width: 100%
+		a
+			font-weight: 700
+			color: #000
+			margin-right: 26px
+		.right
+			float: right
+			position: relative
+			top: -4px
+			a
+				font-weight: 900
+				font-size: 25px
+				margin-right: 0
+
+.portfolio
+	background-color: #fff
+	width: 100vw
+	padding-top: 120px
+	.wrapper
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		flex-wrap: wrap
+		justify-content: center
+		width: 1540px
+		@include lg{width: 1100px}
+		.work
+			width: 33.33%
+			height: 490px
+			position: relative
+			cursor: pointer
+			display: block
+			overflow: hidden
+			&:hover,
+			&:active
+				.desc-cont	
+					transform: translateX(0%)
+			.desc-cont	
+				background-color: #fff
+				position: absolute
+				bottom: 0
+				left: 0
+				padding: 24px
+				text-align: left
+				width: 222px
+				color: #000
+				transform: translateX(-100%)
+				transition: transform 0.8s
+				.name
+					font-size: 20px
+					font-weight: bold
+					line-height: 22px
+					margin-bottom: 35px
+				.text
+					font-size: 14px
+					line-height: 20px
+
+
+
+footer
+	height: 200px
+	background-color: red
+
