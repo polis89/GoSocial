@@ -8,13 +8,13 @@
         <ul>
           <li><a href="#" class="link-page" >Агентство</a></li>
           <li @mouseleave="childsPunktsShowed = false">
-            <a href="#" class="link-page punkt-has-child" @mouseover="childsPunktsShowed = true" v-on:click="showPage">Работы</a>
+            <a href="#" class="link-page punkt-has-child" @mouseover="childsPunktsShowed = true" v-on:click="showPage(0)">Работы</a>
             <transition 
               name="menuPunktsTrans" >
               <div v-if="childsPunktsShowed" class="childs" >
-                <a href="#" class="link-page">Смм</a>
+                <a href="#" class="link-page" v-on:click="showPage(2)">Смм</a>
                 /
-                <a href="#" class="link-page">Дизайн</a>
+                <a href="#" class="link-page" v-on:click="showPage(3)">Дизайн</a>
               </div>
             </transition>
           </li>
@@ -70,8 +70,8 @@ export default {
     },
   },
   methods: {
-    showPage: function (event){
-      this.$emit('show-page');
+    showPage: function (cat){
+      this.$emit('show-page', cat);
     },
     enter: function (el, done) {
       // Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })

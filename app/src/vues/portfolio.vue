@@ -2,79 +2,30 @@
   <transition 
     name="inleft">
     <div class="portfolio" v-if="isOpen">
-      <div class="wrapper">
-        <a href="#"  class="work">
-          <img src="/img/work-1.jpg" alt="work">
-          <div class="desc-cont">
-            <div class="name">Корпоративный брендинг</div>
-            <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed doloremque illo minus debitis, libero fugiat commodi ut vitae</div>
-          </div>
-        </a>
-        <a href="#"  class="work">
-          <img src="/img/work-2.jpg" alt="work">
-          <div class="desc-cont">
-            <div class="name">Корпоративный брендинг</div>
-            <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed doloremque illo minus debitis, libero fugiat commodi ut vitae</div>
-          </div>
-        </a>
-        <a href="#"  class="work">
-          <img src="/img/work-1.jpg" alt="work">
-          <div class="desc-cont">
-            <div class="name">Корпоративный брендинг</div>
-            <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed doloremque illo minus debitis, libero fugiat commodi ut vitae</div>
-          </div>
-        </a>
-        <a href="#"  class="work">
-          <img src="/img/work-2.jpg" alt="work">
-          <div class="desc-cont">
-            <div class="name">Корпоративный брендинг</div>
-            <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed doloremque illo minus debitis, libero fugiat commodi ut vitae</div>
-          </div>
-        </a>
-        <a  href="#" class="work">
-          <img src="/img/work-1.jpg" alt="work">
-          <div class="desc-cont">
-            <div class="name">Корпоративный брендинг</div>
-            <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed doloremque illo minus debitis, libero fugiat commodi ut vitae</div>
-          </div>
-        </a>
-        <a  href="#" class="work">
-          <img src="/img/work-2.jpg" alt="work">
-          <div class="desc-cont">
-            <div class="name">Корпоративный брендинг</div>
-            <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed doloremque illo minus debitis, libero fugiat commodi ut vitae</div>
-          </div>
-        </a>
-        <a  href="#" class="work">
-          <img src="/img/work-1.jpg" alt="work">
-          <div class="desc-cont">
-            <div class="name">Корпоративный брендинг</div>
-            <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed doloremque illo minus debitis, libero fugiat commodi ut vitae</div>
-          </div>
-        </a>
-        <a  href="#" class="work">
-          <img src="/img/work-2.jpg" alt="work">
-          <div class="desc-cont">
-            <div class="name">Корпоративный брендинг</div>
-            <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed doloremque illo minus debitis, libero fugiat commodi ut vitae</div>
-          </div>
-        </a>
-        <a href="#" class="work">
-          <img src="/img/work-1.jpg" alt="work">
-          <div class="desc-cont">
-            <div class="name">Корпоративный брендинг</div>
-            <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed doloremque illo minus debitis, libero fugiat commodi ut vitae</div>
-          </div>
-        </a>
+      <div class="wrapper wrapper-port">
+        <template>
+          <a href="#"  class="work" v-for="workitem in works">
+            <img v-bind:src="workitem.thumbnail" alt="work">
+            <div class="desc-cont">
+              <div class="name"> {{ workitem.name }} </div>
+              <div class="text"> {{ workitem.desc }} </div>
+            </div>
+          </a>
+        </template>
       </div>
+      <app-footer v-on:show-page="$emit('show-page')"></app-footer>
     </div>
   </transition>
 </template>
 
 <script>
+import appfooter from './app-footer.vue'
 export default {
   // name: 'app',
-  props: ['isOpen'],
+  components:{  
+    "app-footer": appfooter,
+  },
+  props: ['isOpen', 'works'],
   data () {
     return {
       // pageShowed: false,

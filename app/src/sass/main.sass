@@ -17,6 +17,7 @@ body
 	font-family: "Gilroy"
 	overflow-x: hidden
 	opacity: 1
+	overflow-y: visible
 	color: #fff
 
 textarea:focus, 
@@ -25,6 +26,7 @@ input:focus
 
 *
 	outline: none
+
 
 a
 	text-decoration: none
@@ -38,6 +40,7 @@ a
 .wrapper
 	width: 90.36%
 	margin: 0 auto
+	position: relative
 
 .header__line
 	position: fixed
@@ -79,10 +82,11 @@ a
 	background-color: #fff
 	width: 54vw
 	position: absolute
-	height: 100%
+	height: 92.1vh
 	top: 0
 	left: 0
 	z-index: 500
+	padding-top: 7.9vh
 	&:after
 		content: ''
 		display: block
@@ -93,8 +97,9 @@ a
 		height: 100%
 		background-color: #fff
 	&__container
-		padding-top: 120px
+		padding-top: 135px
 		color: #000
+		@include lg{padding-top: 92px}
 		ul
 			font-size: 11.2vh
 			margin: 0
@@ -157,7 +162,11 @@ a
 	background-color: #fff
 	width: 100vw
 	padding-top: 120px
-	.wrapper
+	position: absolute
+	top: 0
+	padding-bottom: 180px
+	@include lg{padding-bottom: 150px}
+	.wrapper.wrapper-port
 		display: -webkit-flex
 		display: -moz-flex
 		display: -ms-flex
@@ -174,6 +183,7 @@ a
 			cursor: pointer
 			display: block
 			overflow: hidden
+			@include lg{ height: 350px}
 			&:hover,
 			&:active
 				.desc-cont	
@@ -189,18 +199,48 @@ a
 				color: #000
 				transform: translateX(-100%)
 				transition: transform 0.8s
+				@include lg{width: 150px;
+				padding: 16px}
 				.name
 					font-size: 20px
 					font-weight: bold
 					line-height: 22px
 					margin-bottom: 35px
+					@include lg{margin-bottom: 20px;font-size: 17px}
 				.text
 					font-size: 14px
 					line-height: 20px
+					@include lg{font-size: 12px;line-height: 17px}
 
 
 
 footer
-	height: 200px
-	background-color: red
+	height: 106px
+	// background-color: red
+	position: absolute
+	width: 100%
+	bottom: 0
+	.wrapper
+		height: 100%
+	.links
+		position: absolute
+		left: 0
+		bottom: 35px
+		font-size: 26px
+		line-height: 1
+		font-weight: 500
+		a
+			color: #000
+			&:nth-child(2)
+				padding-left: 12px
+				font-weight: 900
+	.socials
+		position: absolute
+		right: 0
+		bottom: 30px
+		a
+			margin-left: 25px
+			display: inline-block
+			&:nth-child(2)
+				margin-left: 20px
 

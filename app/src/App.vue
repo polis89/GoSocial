@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <app-header v-bind:appStatus="appStatus" v-on:burger-click="burgerClick"></app-header>
-    <app-main-page></app-main-page>
-    <app-menu v-bind:appStatus="appStatus" v-on:show-page="showPageFromMenu"></app-menu>
-    <portfolio v-bind:is-open="showPortfolio"></portfolio>
+    <app-main-page v-on:show-page="showCatalog"></app-main-page>
+    <app-menu v-bind:appStatus="appStatus" v-on:show-page="showCatalog"></app-menu>
+    <portfolio v-bind:is-open="showPortfolio" v-bind:works="portfolioWorks"></portfolio>
   </div>
 </template>
 
@@ -12,6 +12,8 @@ import header from './vues/header.vue'
 import menu from './vues/menu.vue'
 import portfolio from './vues/portfolio.vue'
 import mainpage from './vues/main-page.vue'
+var axios = require('axios');
+const AJAX_URL = 'http://polies.ru/GoSocial/wp-json';
 
 export default {
   name: 'app',
@@ -23,8 +25,10 @@ export default {
   },
   data () {
     return {
-      showPortfolio: false,
       appStatus: 'start',  //Start - showMenu - showPage
+      showPortfolio: false,
+      portfolioWorks: [],
+
     }
   },
   methods: {
@@ -41,9 +45,45 @@ export default {
           break;
       }
     },
-    showPageFromMenu(event){
-      this.showPortfolio = true;
-      this.appStatus = 'showPage';
+    showCatalog(cat){
+      var self = this;
+      console.log("Category = " + cat);
+      axios.get(AJAX_URL + '/wp/v2/works?_embed')
+        .then(function (response) {
+          self.portfolioWorks = [];
+          var responseData = response.data;
+          if(cat){
+            responseData = responseData.filter(function(item){
+              console.log('filter for: ');
+              console.log(item);
+              return item.work_category.indexOf(cat) != -1;
+            });
+          }
+          console.log(responseData);
+          axios.get(AJAX_URL + "/acf/v3/works")
+            .then(function(responseACF){
+              console.log('responseACF');
+              console.log(responseACF);
+
+              responseData.forEach(function(item){
+                var name = item.title.rendered;
+                var thumbnail = item._embedded['wp:featuredmedia'][0].source_url;
+                var desc = "";
+                for (var i = 0; i < responseACF.data.length; i++){
+                  if(responseACF.data[i].id == item.id){
+                    desc = responseACF.data[i].acf['краткое_описание'];
+                    break;
+                  }
+                }
+                self.portfolioWorks.push({name: name, thumbnail: thumbnail, desc: desc});
+              });
+              self.showPortfolio = true;
+              self.appStatus = 'showPage';
+            });
+        })
+        .catch(function (error) {
+          console.log(error.message);
+      });
     },
     openPrevPage(){
       this.appStatus = 'showMenu';
@@ -60,7 +100,7 @@ export default {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
-	color: #2c3e50;
+	color: #000;
 	position: absolute
 	top: 0
 	left: 0

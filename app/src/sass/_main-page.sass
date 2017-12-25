@@ -1,5 +1,54 @@
 #main-page
 	width: 100vw
 	height: 100vh
-	.VueCarousel
-		padding-top: 120px
+	.wrapper
+		position: relative
+		height: 100%
+	.VueCarousel,
+	.carousel
+		padding-top: 100px
+		.slide
+			position: absolute
+			width: 100%
+	.slide_img
+		float: left
+		text-align: right
+		width: 51.5%
+		height: 59vh
+		// margin-top: 10vh
+		img
+			height: 100%
+			width: auto
+			display: inline-block
+			max-height: 100%
+	.slide_text
+		margin-top: 12.4vh
+		font-weight: 900
+		text-align: left
+		font-size: 11vh
+		color: #000
+		line-height: 0.89
+		position: relative
+		left: 5vw
+		@include lg{margin-top: 9vh}
+.carousel-controls
+	position: absolute
+	z-index: 2
+	bottom: 34px
+	width: 100%
+	width: auto
+	left: 50%
+	transform: translateX(-50%)
+	text-align: center	
+	button
+		border: none
+		background-color: transparent
+		color: #000
+		cursor: pointer
+		font-size: 17px
+		font-weight: 600
+		margin: 0 75px
+		font-family: 'Gilroy', Helvetica, Arial, sans-serif;
+		@include lg{margin: 0 30px;font-size: 15px;line-height: 1}
+		&.active
+			color: $c-a-b

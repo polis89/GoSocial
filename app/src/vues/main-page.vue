@@ -1,41 +1,72 @@
 <template>
   <div id="main-page">
     <div class="wrapper">
-      <carousel :perPage="1">
-        <slide>
-          Slide 1 Content
-        </slide>
-        <slide>
-          Slide 2 Content
-        </slide>
-        <slide>
-          Slide 3 Content
-        </slide>
-        <slide>
-          Slide 4 Content
-        </slide>
-      </carousel>
+      <div class="carousel">
+          <div class="slide" v-for="slide in slides" >
+            <transition 
+              name="inleft2">
+              <div v-if="slide.id == currentSlide">
+                
+                <div class="slide_img">
+                  <img :src=slide.img alt="img">
+                </div>
+                <div class="slide_text" v-html="slide.text">
+                </div>
+              </div>
+           </transition>
+          </div>
+      </div>
+      <div class="carousel-controls">
+        <button v-on:click="showSlide(1)" v-bind:class="{active: 1 == currentSlide}">01</button>
+        <button v-on:click="showSlide(2)" v-bind:class="{active: 2 == currentSlide}">02</button>
+        <button v-on:click="showSlide(3)" v-bind:class="{active: 3 == currentSlide}">03</button>
+        <button v-on:click="showSlide(4)" v-bind:class="{active: 4 == currentSlide}">04</button>
+      </div>
     </div>
-    <app-footer></app-footer>
+    <app-footer v-on:show-page="$emit('show-page')"></app-footer>
   </div>
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue-carousel';
 import appfooter from './app-footer.vue'
 
 export default {
   // name: 'app',
   components:{  
-    Carousel,
-    Slide,
     "app-footer": appfooter,
   },
   data () {
     return {
+      slides: [
+        {
+          text: "Здравый<br> смысл - <br> худший враг<br> творчества.",
+          img: "img/bg-1.png",
+          id: 1,
+        },
+        {
+          text: "Второй<br> смысл - <br> худший враг<br> творчества.",
+          img: "img/bg-1.png",
+          id: 2,
+        },
+        {
+          text: "Третий<br> смысл - <br> худший враг<br> творчества.",
+          img: "img/bg-1.png",
+          id: 3,
+        },
+        {
+          text: "Четвертый<br> смысл - <br> худший враг<br> творчества.",
+          img: "img/bg-1.png",
+          id: 4,
+        },
+      ],
+      currentSlide: 1,
     }
   },
   methods: {
+    showSlide(slideIndex){
+      console.log(slideIndex);
+      this.currentSlide = slideIndex;
+    }
   }
 }
 </script>
