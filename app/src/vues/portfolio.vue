@@ -13,7 +13,7 @@
           </a>
         </template>
       </div>
-      <app-footer v-on:show-page="$emit('show-page')"></app-footer>
+      <app-footer v-on:show-catalog="$emit('show-catalog', $event)"></app-footer>
     </div>
   </transition>
 </template>
@@ -37,9 +37,6 @@ export default {
     btnClick: function (event) {
       this.$emit('menuClick');
     },
-    showPage: function (event){
-      this.$emit('showPage');
-    }
   }
 }
 </script>

@@ -3,11 +3,11 @@
     <div class="wrapper">
       <div class="links">
         <img src="img/icon-foot-1.png" alt="icon">
-        <a href="#" v-on:click="showPage(0)">Portfolio</a>
+        <a href="#" v-on:click="showCatalog(0)">Portfolio</a>
         /
-        <a href="#" v-on:click="showPage(3)">Design</a>
+        <a href="#" v-on:click="showCatalog(3)">Design</a>
         /
-        <a href="#" v-on:click="showPage(2)">Smm</a>
+        <a href="#" v-on:click="showCatalog(2)">Smm</a>
       </div>
       <div class="socials">
         <a href="#"><img src="img/icon-foot-2.png" alt="icon"></a>
@@ -29,8 +29,8 @@ export default {
     }
   },
   methods: {
-    showPage: function (cat){
-      this.$emit('show-page', cat);
+    showCatalog: function (cat){
+      this.$emit('show-catalog', cat);
     },
   }
 }

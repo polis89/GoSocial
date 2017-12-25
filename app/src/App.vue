@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <app-header v-bind:appStatus="appStatus" v-on:burger-click="burgerClick"></app-header>
-    <app-main-page v-on:show-page="showCatalog"></app-main-page>
-    <app-menu v-bind:appStatus="appStatus" v-on:show-page="showCatalog"></app-menu>
-    <portfolio v-bind:is-open="showPortfolio" v-bind:works="portfolioWorks"></portfolio>
+    <app-main-page v-on:show-catalog="showCatalog"></app-main-page>
+    <app-menu v-bind:appStatus="appStatus" v-on:show-catalog="showCatalog"></app-menu>
+    <portfolio v-bind:is-open="showPortfolio" v-bind:works="portfolioWorks" v-on:show-catalog="showCatalog"></portfolio>
   </div>
 </template>
 
@@ -47,23 +47,23 @@ export default {
     },
     showCatalog(cat){
       var self = this;
-      console.log("Category = " + cat);
+      console.log("showCatalog, Category = " + cat);
       axios.get(AJAX_URL + '/wp/v2/works?_embed')
         .then(function (response) {
           self.portfolioWorks = [];
           var responseData = response.data;
           if(cat){
             responseData = responseData.filter(function(item){
-              console.log('filter for: ');
-              console.log(item);
+              // console.log('filter for: ');
+              // console.log(item);
               return item.work_category.indexOf(cat) != -1;
             });
           }
-          console.log(responseData);
+          // console.log(responseData);
           axios.get(AJAX_URL + "/acf/v3/works")
             .then(function(responseACF){
-              console.log('responseACF');
-              console.log(responseACF);
+              // console.log('responseACF');
+              // console.log(responseACF);
 
               responseData.forEach(function(item){
                 var name = item.title.rendered;

@@ -8,13 +8,13 @@
         <ul>
           <li><a href="#" class="link-page" >Агентство</a></li>
           <li @mouseleave="childsPunktsShowed = false">
-            <a href="#" class="link-page punkt-has-child" @mouseover="childsPunktsShowed = true" v-on:click="showPage(0)">Работы</a>
+            <a href="#" class="link-page punkt-has-child" @mouseover="childsPunktsShowed = true" v-on:click="showCatalog(0)">Работы</a>
             <transition 
               name="menuPunktsTrans" >
               <div v-if="childsPunktsShowed" class="childs" >
-                <a href="#" class="link-page" v-on:click="showPage(2)">Смм</a>
+                <a href="#" class="link-page" v-on:click="showCatalog(2)">Смм</a>
                 /
-                <a href="#" class="link-page" v-on:click="showPage(3)">Дизайн</a>
+                <a href="#" class="link-page" v-on:click="showCatalog(3)">Дизайн</a>
               </div>
             </transition>
           </li>
@@ -52,7 +52,7 @@ export default {
   },
   watch:{
     appStatus: function(newStatus, oldStatus){
-      console.log("newStatus "+newStatus+" : " +"oldStatus "+oldStatus);
+      // console.log("newStatus "+newStatus+" : " +"oldStatus "+oldStatus);
       if(newStatus == 'showMenu' && oldStatus =="start"){
         this.menuShowed = true;
       }else if(newStatus == 'showPage'){
@@ -70,8 +70,8 @@ export default {
     },
   },
   methods: {
-    showPage: function (cat){
-      this.$emit('show-page', cat);
+    showCatalog: function (cat){
+      this.$emit('show-catalog', cat);
     },
     enter: function (el, done) {
       // Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })
