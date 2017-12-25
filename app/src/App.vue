@@ -94,36 +94,33 @@ export default {
 </script>
 
 <style lang="sass">
+  @font-face
+    font-family: "Gilroy"
+    font-weight: normal
+    font-style: normal
+    src: url('./fonts/Gilroy-Regular.otf') format('truetype')
 
-#app
-	font-family: 'Gilroy', Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
-	color: #000;
-	position: absolute
-	top: 0
-	left: 0
-	width: 100%
-	z-index: 1000
-	min-height: 100%
+  @font-face
+    font-family: "Gilroy"
+    font-weight: bold
+    font-style: normal
+    src: url('./fonts/Gilroy-Bold.otf') format('truetype')
 
+  @font-face
+    font-family: "Gilroy"
+    font-weight: 900
+    font-style: normal
+    src: url('./fonts/Gilroy-Black.otf') format('truetype')
 
-h1, h2 
-	font-weight: normal;
+  @font-face
+    font-family: "Gilroy"
+    font-weight: 600
+    font-style: normal
+    src: url('./fonts/Gilroy-Semibold.otf') format('truetype')
 
-
-ul 
-	list-style-type: none;
-	padding: 0;
-
-
-li 
-	display: inline-block;
-	margin: 0 10px;
-
-
-a 
-	color: #42b983;
-
+  @font-face
+    font-family: "Gilroy"
+    font-weight: 500
+    font-style: normal
+    src: url('./fonts/Gilroy-Medium.otf') format('truetype')
 </style>

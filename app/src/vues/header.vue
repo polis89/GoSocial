@@ -69,8 +69,4 @@ export default {
 
 <style lang="sass">
 
-.header__line
-  background-color: transparent
-  z-index: 1000
-
 </style>

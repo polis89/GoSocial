@@ -4,27 +4,27 @@ var webpack = require('webpack')
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: './dist',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: 'dist',
     filename: 'build.js'
   },
   module: {
     rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader'
-        ],
-      },
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     'vue-style-loader',
+      //     'css-loader'
+      //   ],
+      // },
+      // {
+      //   test: /\.scss$/,
+      //   use: [
+      //     'vue-style-loader',
+      //     'css-loader',
+      //     'sass-loader'
+      //   ],
+      // },
       {
         test: /\.sass$/,
         use: [
@@ -65,6 +65,13 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
+        }
+      },
+      {
+        test: /\.otf$/,
+        loader: 'file-loader',
+        options: {
+          name: '/fonts/[name].[ext]?[hash]'
         }
       }
     ]
