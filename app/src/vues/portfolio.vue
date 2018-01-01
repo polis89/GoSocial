@@ -3,8 +3,8 @@
     name="inleft">
     <div class="portfolio" v-if="isOpen">
       <div class="wrapper wrapper-port">
-        <template>
-          <a href="#"  class="work" v-for="workitem in works">
+        <template v-for="workitem in works">
+          <a href="#"  class="work" v-on:click.prevent="showJob(workitem.id)">
             <img v-bind:src="workitem.thumbnail" alt="work">
             <div class="desc-cont">
               <div class="name"> {{ workitem.name }} </div>
@@ -13,7 +13,7 @@
           </a>
         </template>
       </div>
-      <app-footer v-on:show-catalog="$emit('show-catalog', $event)"></app-footer>
+      <app-footer v-on:show-catalog.prevent="$emit('show-catalog', $event)"></app-footer>
     </div>
   </transition>
 </template>
@@ -36,6 +36,11 @@ export default {
   methods: {
     btnClick: function (event) {
       this.$emit('menuClick');
+    },
+    showJob: function (job){
+      // console.log('showJob in portfolio');
+      this.$emit('show-job', job);
+      // console.log('showJob 2 in portfolio');
     },
   }
 }

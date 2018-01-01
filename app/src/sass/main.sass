@@ -73,6 +73,11 @@ a
 	margin: 0 auto
 	position: relative
 
+.wrapper-job
+	width: 80.8%
+	margin: 0 auto
+	position: relative
+
 .header__line
 	position: fixed
 	width: 100%
@@ -145,12 +150,14 @@ a
 				margin: 0
 				display: block
 				text-align: left
+				backface-visibility: hidden
 				a
 					color: #000
 					line-height: 1.2
 					font-weight: 900
 					text-decoration: none
 					transition: color 0.1s
+					backface-visibility: hidden
 					&:hover,
 					&:active
 						color: $c-a-b
@@ -162,6 +169,9 @@ a
 				.childs
 					display: inline-block
 					font-size: 0.1636em
+					backface-visibility: hidden
+					vertical-align: top
+					padding-top: 7.3vh
 					a
 						&:hover,
 						&:active
@@ -245,6 +255,106 @@ a
 					font-size: 14px
 					line-height: 20px
 					@include lg{font-size: 12px;line-height: 17px}
+
+.job-page
+	background-color: #fff
+	width: 100vw
+	// padding-top: 120px
+	position: absolute
+	top: 0
+	padding-bottom: 180px
+	z-index: 500
+	@include lg{padding-bottom: 150px}
+	p
+		text-align: left
+		font-weight: 600
+		font-size: 1.03vw
+		line-height: 1.7
+		margin: 1vw 0 1.3vw
+	.top-img
+		width: 100%
+		height: auto
+	.h1
+		text-align: left
+		font-weight: 900
+		font-size: 6.3vw
+		line-height: 0.9
+		margin-top: 5.6vw
+		margin-left: -0.3vw
+	.top-block
+		position: relative
+		p
+			max-width: 40vw
+	.authors
+		position: absolute
+		right: 0
+		bottom: 0
+		text-align: left
+		.desc
+			font-weight: 900
+			color: #000
+			font-size: 1.25vw
+			margin-bottom: 1.5vw
+		.author
+			color: #131314
+			font-size: 1.04vw
+			line-height: 1.2
+			margin-bottom: 1vw
+			.pos
+				font-weight: 800
+				font-style: italic
+				margin-bottom: 0.3vw
+			.name
+				font-weight: 500
+	.icon-mouse
+		margin-top: 5vw
+		margin-bottom: -6vw
+	.content-line
+		margin-bottom: 0.55vw
+		height: 39vw
+		&:after
+			content: ''
+			display: block
+			clear: both
+		&:nth-child(2)
+			margin-top: 3.9vw
+		.block
+			height: 100%
+			width: 40.1vw
+			text-align: left
+			&:first-child
+				float: left
+				.text-cont
+					padding-left: 0.1vw
+					padding-right: 2vw
+			&:last-child
+				float: right
+				.text-cont
+					padding-left: 1.3vw
+			&.big-block
+				width: 100%
+				img
+					width: 100%
+					height: 100%
+			.h2
+				font-weight: 900
+				font-size: 4.2vw
+				line-height: 0.95
+				padding-top: 0.05vw
+				margin-bottom: 2vw
+				margin-top: 2vw
+			.h3
+				font-weight: 900
+				font-size: 2.7vw
+				line-height: 0.9
+				padding-top: 0.05vw
+				margin-bottom: 0
+			.img-cont
+				overflow: hidden
+				height: 100%
+				img
+					width: 100%
+					height: 100%
 
 
 

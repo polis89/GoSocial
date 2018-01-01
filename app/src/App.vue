@@ -3,7 +3,15 @@
     <app-header v-bind:appStatus="appStatus" v-on:burger-click="burgerClick"></app-header>
     <app-main-page v-on:show-catalog="showCatalog"></app-main-page>
     <app-menu v-bind:appStatus="appStatus" v-on:show-catalog="showCatalog"></app-menu>
-    <portfolio v-bind:is-open="showPortfolio" v-bind:works="portfolioWorks" v-on:show-catalog="showCatalog"></portfolio>
+    <portfolio 
+      v-bind:is-open="showPortfolio" 
+      v-bind:works="portfolioWorks" 
+      v-on:show-catalog="showCatalog"
+      v-on:show-job="showJob"></portfolio>
+    <job 
+      v-bind:is-open="isJobShowed"
+      v-bind:job="currentJob"
+      v-on:show-catalog="showCatalog"></job>
   </div>
 </template>
 
@@ -11,9 +19,17 @@
 import header from './vues/header.vue'
 import menu from './vues/menu.vue'
 import portfolio from './vues/portfolio.vue'
+import job from './vues/job.vue'
 import mainpage from './vues/main-page.vue'
 var axios = require('axios');
 const AJAX_URL = 'http://polies.ru/GoSocial/wp-json';
+
+function removeHTMLTags(str){
+  str = str.replace(/&(lt|gt);/g, function (strMatch, p1){
+    return (p1 == "lt")? "<" : ">";
+  });
+  return str.replace(/<\/?[^>]+(>|$)/g, "");
+}
 
 export default {
   name: 'app',
@@ -22,13 +38,15 @@ export default {
     "app-menu": menu,
     "portfolio": portfolio,
     "app-main-page": mainpage,
+    "job": job,
   },
   data () {
     return {
       appStatus: 'start',  //Start - showMenu - showPage
       showPortfolio: false,
+      isJobShowed: false,
       portfolioWorks: [],
-
+      currentJob: {},
     }
   },
   methods: {
@@ -59,7 +77,7 @@ export default {
               return item.work_category.indexOf(cat) != -1;
             });
           }
-          // console.log(responseData);
+          console.log(responseData);
           axios.get(AJAX_URL + "/acf/v3/works")
             .then(function(responseACF){
               // console.log('responseACF');
@@ -68,6 +86,7 @@ export default {
               responseData.forEach(function(item){
                 var name = item.title.rendered;
                 var thumbnail = item._embedded['wp:featuredmedia'][0].source_url;
+                var id = item.id;
                 var desc = "";
                 for (var i = 0; i < responseACF.data.length; i++){
                   if(responseACF.data[i].id == item.id){
@@ -75,7 +94,7 @@ export default {
                     break;
                   }
                 }
-                self.portfolioWorks.push({name: name, thumbnail: thumbnail, desc: desc});
+                self.portfolioWorks.push({name: removeHTMLTags(name), thumbnail: thumbnail, desc: desc, id: id});
               });
               self.showPortfolio = true;
               self.appStatus = 'showPage';
@@ -85,9 +104,39 @@ export default {
           console.log(error.message);
       });
     },
+    showJob(job){
+      var self = this;
+      console.log("showjob, job = " + job);
+      axios.get(AJAX_URL + '/wp/v2/works/' + job + '?_embed')
+        .then(function (response) {
+          var responseData = response.data;
+          console.log(responseData);
+          self.currentJob = {};
+          self.currentJob.title = responseData.title.rendered;
+          self.currentJob.mainImg = responseData.acf["главное_изображение"];
+          self.currentJob.mainDesc = responseData.acf["текст_под_описанием"];
+          self.currentJob.authors = [];
+          for (var i = 0; i < responseData.acf["авторы"].length; i++){
+            self.currentJob.authors.push({
+              position: responseData.acf["авторы"][i]["должность"], 
+              name: responseData.acf["авторы"][i]["имя"]});
+          }
+          // console.log(self.currentJob);
+          self.showPortfolio = false;
+          self.isJobShowed = true;
+        })
+        .catch(function (error) {
+          console.log(error.message);
+      });
+    },
     openPrevPage(){
-      this.appStatus = 'showMenu';
-      this.showPortfolio = false;
+      if(this.showPortfolio){
+        this.appStatus = 'showMenu';
+        this.showPortfolio = false;
+      }else if(this.isJobShowed){
+        this.isJobShowed = false;
+        this.showPortfolio = true;
+      }
     },
   }
 }
