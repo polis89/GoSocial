@@ -23,7 +23,7 @@
         <button v-on:click="showSlide(4)" v-bind:class="{active: 4 == currentSlide}">04</button>
       </div>
     </div>
-    <app-footer v-on:show-catalog="$emit('show-catalog', $event)"></app-footer>
+    <app-footer></app-footer>
   </div>
 </template>
 

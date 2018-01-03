@@ -8,13 +8,15 @@
         <ul>
           <li><a href="#" class="link-page" >Агентство</a></li>
           <li @mouseleave="childsPunktsShowed = false">
-            <a href="#" class="link-page punkt-has-child" @mouseover="childsPunktsShowed = true" v-on:click="showCatalog(0)">Работы</a>
+            <span @mouseover="childsPunktsShowed = true">
+              <router-link to="/portfolio" class="link-page punkt-has-child">Работы</router-link>
+            </span>
             <transition 
               name="menuPunktsTrans" >
               <div v-if="childsPunktsShowed" class="childs" >
-                <a href="#" class="link-page" v-on:click="showCatalog(2)">Смм</a>
+                <router-link to="/portfolio/2" class="link-page">Смм</router-link>
                 /
-                <a href="#" class="link-page" v-on:click="showCatalog(3)">Дизайн</a>
+                <router-link to="/portfolio/3" class="link-page">Дизайн</router-link>
               </div>
             </transition>
           </li>
@@ -70,9 +72,6 @@ export default {
     },
   },
   methods: {
-    showCatalog: function (cat){
-      this.$emit('show-catalog', cat);
-    },
     enter: function (el, done) {
       // Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })
       Velocity(el, { translateX: ['0%','-100%'] }, { duration:400, complete: done })

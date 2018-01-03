@@ -1,11 +1,15 @@
-import Velocity from './libs/velocity.js'
-import Vue from 'vue'
-import App from './App.vue'
-var axios = require('axios');
-import './sass/main.sass'
+import Vue from 'vue';
+import App from './App';
+import router from './router';
+import Velocity from './libs/velocity.js';
+import './sass/main.sass';
 
+// Vue.config.productionTip = false
+
+/* eslint-disable no-new */
 new Vue({
   el: '#app',
-  render: h => h(App)
+  router,
+  template: '<App/>',
+  components: { App },
 })
-

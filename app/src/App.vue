@@ -1,52 +1,51 @@
 <template>
   <div id="app">
     <app-header v-bind:appStatus="appStatus" v-on:burger-click="burgerClick"></app-header>
-    <app-main-page v-on:show-catalog="showCatalog"></app-main-page>
-    <app-menu v-bind:appStatus="appStatus" v-on:show-catalog="showCatalog"></app-menu>
-    <portfolio 
-      v-bind:is-open="showPortfolio" 
-      v-bind:works="portfolioWorks" 
-      v-on:show-catalog="showCatalog"
-      v-on:show-job="showJob"></portfolio>
-    <job 
-      v-bind:is-open="isJobShowed"
-      v-bind:job="currentJob"
-      v-on:show-catalog="showCatalog"></job>
+    <app-main-page></app-main-page>
+    <app-menu v-bind:appStatus="appStatus"></app-menu>
+    <router-view/>
   </div>
 </template>
 
 <script>
 import header from './vues/header.vue'
 import menu from './vues/menu.vue'
-import portfolio from './vues/portfolio.vue'
-import job from './vues/job.vue'
 import mainpage from './vues/main-page.vue'
-var axios = require('axios');
-const AJAX_URL = 'http://polies.ru/GoSocial/wp-json';
-
-function removeHTMLTags(str){
-  str = str.replace(/&(lt|gt);/g, function (strMatch, p1){
-    return (p1 == "lt")? "<" : ">";
-  });
-  return str.replace(/<\/?[^>]+(>|$)/g, "");
-}
 
 export default {
   name: 'app',
   components:{
     "app-header": header,
     "app-menu": menu,
-    "portfolio": portfolio,
     "app-main-page": mainpage,
-    "job": job,
   },
   data () {
     return {
       appStatus: 'start',  //Start - showMenu - showPage
-      showPortfolio: false,
-      isJobShowed: false,
-      portfolioWorks: [],
-      currentJob: {},
+    }
+  },
+  mounted () {
+    switch(this.$route.name){
+      case "portfolio":
+      case "job":
+        this.appStatus = "showPage";
+        return;
+      default:
+        this.appStatus = "start";
+    }
+    console.log(this.$route);
+  },
+  watch: {
+    '$route' (to, from) {
+      // При изменении страницы изменять состояние приложения
+      switch(to.name){
+        case "portfolio":
+        case "job":
+          this.appStatus = "showPage";
+          return;
+        default:
+          this.appStatus = "showMenu";
+      }
     }
   },
   methods: {
@@ -62,47 +61,6 @@ export default {
           this.openPrevPage();
           break;
       }
-    },
-    showCatalog(cat){
-      var self = this;
-      console.log("showCatalog, Category = " + cat);
-      axios.get(AJAX_URL + '/wp/v2/works?_embed')
-        .then(function (response) {
-          self.portfolioWorks = [];
-          var responseData = response.data;
-          if(cat){
-            responseData = responseData.filter(function(item){
-              // console.log('filter for: ');
-              // console.log(item);
-              return item.work_category.indexOf(cat) != -1;
-            });
-          }
-          console.log(responseData);
-          axios.get(AJAX_URL + "/acf/v3/works")
-            .then(function(responseACF){
-              // console.log('responseACF');
-              // console.log(responseACF);
-
-              responseData.forEach(function(item){
-                var name = item.title.rendered;
-                var thumbnail = item._embedded['wp:featuredmedia'][0].source_url;
-                var id = item.id;
-                var desc = "";
-                for (var i = 0; i < responseACF.data.length; i++){
-                  if(responseACF.data[i].id == item.id){
-                    desc = responseACF.data[i].acf['краткое_описание'];
-                    break;
-                  }
-                }
-                self.portfolioWorks.push({name: removeHTMLTags(name), thumbnail: thumbnail, desc: desc, id: id});
-              });
-              self.showPortfolio = true;
-              self.appStatus = 'showPage';
-            });
-        })
-        .catch(function (error) {
-          console.log(error.message);
-      });
     },
     showJob(job){
       var self = this;
@@ -155,13 +113,7 @@ export default {
       });
     },
     openPrevPage(){
-      if(this.showPortfolio){
-        this.appStatus = 'showMenu';
-        this.showPortfolio = false;
-      }else if(this.isJobShowed){
-        this.isJobShowed = false;
-        this.showPortfolio = true;
-      }
+      this.$router.go(-1);
     },
   }
 }

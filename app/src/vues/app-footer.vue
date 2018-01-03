@@ -3,11 +3,11 @@
     <div class="wrapper">
       <div class="links">
         <img src="img/icon-foot-1.png" alt="icon">
-        <a href="#" v-on:click="showCatalog(0)">Portfolio</a>
+        <router-link to="/portfolio">Portfolio</router-link>
         /
-        <a href="#" v-on:click="showCatalog(3)">Design</a>
+        <router-link to="/portfolio/3">Design</router-link>
         /
-        <a href="#" v-on:click="showCatalog(2)">Smm</a>
+        <router-link to="/portfolio/2">Smm</router-link>
       </div>
       <div class="socials">
         <a href="#"><img src="img/icon-foot-2.png" alt="icon"></a>
@@ -29,9 +29,6 @@ export default {
     }
   },
   methods: {
-    showCatalog: function (cat){
-      this.$emit('show-catalog', cat);
-    },
   }
 }
 </script>
