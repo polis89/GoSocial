@@ -18,7 +18,26 @@
             </div>
           </div>
         </div>
-        <div class="content-line">
+        <div class="content-line" v-for="line in job.contentLines">
+          <template v-if="line.big">
+            <div class="block big-block">
+              <div class="img-cont">
+                <img v-bind:src="line.block.imgUrl" alt="img">
+              </div>
+            </div>
+          </template>
+          <template v-else>
+            <div class="block" v-for="block in line.blocks">
+              <div class="img-cont" v-if="block.isImg">
+                <img v-bind:src="block.imgUrl" alt="img">
+              </div>
+              <div class="text-cont" v-else v-html="block.text">
+                              
+              </div>
+            </div>
+          </template>
+        </div>
+<!--         <div class="content-line">
           <div class="block">
             <div class="img-cont">
               <img src="img/jobs-2.jpg" alt="img">
@@ -68,7 +87,7 @@
               <img src="img/jobs-6.jpg" alt="img">
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="icon-mouse">
           <img src="img/scroll.png" alt="icon">
         </div>

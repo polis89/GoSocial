@@ -116,12 +116,37 @@ export default {
           self.currentJob.mainImg = responseData.acf["главное_изображение"];
           self.currentJob.mainDesc = responseData.acf["текст_под_описанием"];
           self.currentJob.authors = [];
-          for (var i = 0; i < responseData.acf["авторы"].length; i++){
-            self.currentJob.authors.push({
-              position: responseData.acf["авторы"][i]["должность"], 
-              name: responseData.acf["авторы"][i]["имя"]});
+          if(responseData.acf["авторы"]){
+            for (var i = 0; i < responseData.acf["авторы"].length; i++){
+              self.currentJob.authors.push({
+                position: responseData.acf["авторы"][i]["должность"], 
+                name: responseData.acf["авторы"][i]["имя"]});
+            }
           }
-          // console.log(self.currentJob);
+          self.currentJob.contentLines = [];
+          if(responseData.acf["блоки"]){
+            for (var i = 0; i < responseData.acf["блоки"].length; i++){
+              var newLine = {};
+              var block = responseData.acf["блоки"][i];
+              if(block["тип"] == "Большое изображение"){
+                newLine.big = true;
+                newLine.block = {imgUrl: block["изображение"]}
+              }else{
+                newLine.big = false;
+                newLine.blocks = [];
+                newLine.blocks.push({isImg: block["тип"] == "Маленькое изображение", imgUrl: block["изображение"], text: block["текст"]});
+                if(!newLine.big){
+                  i++;
+                  block = responseData.acf["блоки"][i];
+                  if(block){
+                    newLine.blocks.push({isImg: block["тип"] == "Маленькое изображение", imgUrl: block["изображение"], text: block["текст"]});
+                  }
+                }
+              }
+              self.currentJob.contentLines.push(newLine);
+            }
+          }
+          console.log(self.currentJob);
           self.showPortfolio = false;
           self.isJobShowed = true;
         })
