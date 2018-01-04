@@ -17,15 +17,18 @@
 .inleft2-leave-to 
 	transform: translateX(100vw)
 
-.menuPunktsTrans-enter-active, .menuPunktsTrans-leave-active 
-	transition: transform .5s, opacity .5s
+.menuPunktsTrans-enter-active
+	transition: transform .5s, opacity 1s
+
+.menuPunktsTrans-leave-active 
+	transition: transform .5s, opacity 0.3s
 
 .menuPunktsTrans-enter
-	transform: translateX(-100px)
+	transform: translateX(-50px)
 	opacity: 0
 
 .menuPunktsTrans-leave-to 
-	transform: translateX(-100px)
+	transform: translateX(-50px)
 	opacity: 0
 
 

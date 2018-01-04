@@ -199,6 +199,10 @@ a
 				font-size: 25px
 				margin-right: 0
 
+.clearfix
+	display: block
+	clear: both
+
 .portfolio
 	background-color: #fff
 	width: 100vw
@@ -380,13 +384,114 @@ a
 .vacancy-page
 	background-color: #fff
 	width: 100vw
-	padding-top: 120px
+	padding-top: 150px
 	position: absolute
 	top: 0
-	padding-bottom: 180px
+	padding-bottom: 120px
 	z-index: 500
+	text-align: left
 	@include lg{padding-bottom: 150px}
-	
+	.wrapper-vacancy
+		width: 80.2vw
+		margin: 0 auto
+		font-weight: 600
+		font-size: 1.04vw
+		line-height: 1.7
+		.left
+			width: 43.49vw
+			float: left
+			h2
+				line-height: 0.95
+				font-weight: 900
+				color: #000
+				font-size: 6.14vw
+				margin-top: 0
+				margin-bottom: 2vw
+			p
+				width: 36.2vw
+		.right
+			width: 35.94vw
+			float: right
+			padding-top: 1.45vw
+			&:after
+				content: ''
+				display: block
+				clear: both
+			img
+				width: 100%
+				height: auto
+		.steps
+			padding-top: 5vw
+			.step
+				float: left
+				width: 13.9vw
+				position: relative
+				margin-right: 6.1vw
+				padding-top: 5.21vw
+				.num
+					position: absolute
+					top: 0
+					right: -1vw
+					font-size: 14.32vw
+					line-height: 1
+					font-weight: 900
+					color: #e6e6e6
+					z-index: -1
+				&:first-child
+					padding-top: 0.5vw
+					top: -11.46vw
+				&:nth-child(2)
+					top: -8vw
+				&:nth-child(4)
+					top: 5.52vw
+	.vacancys
+		padding-top: 2vw
+		.vacancy
+			margin-bottom: 4.8vw
+			.name
+				font-size: 2.77vw
+				line-height: 0.9
+				font-weight: 600
+				margin-bottom: 1vw
+				strong
+					font-weight: 900
+			.text
+				width: 35.41vw
+				.open
+					cursor: pointer
+					color: $c-a-b
+					text-decoration: underline
+					font-weight: 900
+					&:hover
+						text-decoration: none
+			.drop-cont
+				padding-top: 3vw
+			.column
+				float: left
+				width: 26.04vw
+				margin-right: 4.95vw
+				color: #131314
+				margin-bottom: 2.1vw
+				a
+					color: $c-a-b
+					font-weight: 900
+				.col-name
+					font-weight: 900
+					font-size: 1.04vw
+				ul
+					margin: 0
+					padding: 0
+					margin-bottom: 2.1vw
+					li
+						margin: 0
+						position: relative
+						&:before
+							content: "–"
+							position: absolute
+							left: -1.1vw
+
+
+
 
 
 footer
