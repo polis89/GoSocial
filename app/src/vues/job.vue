@@ -32,9 +32,14 @@
               <div class="img-cont" v-if="block.isImg">
                 <img v-bind:src="block.imgUrl" alt="img">
               </div>
-              <div class="text-cont" v-else v-html="block.text">
-                              
-              </div>
+              <template v-else>
+                <div class="text-cont" v-html="block.text">
+                  
+                </div>
+                <div class="img-bottom" v-if="block.imgUrl">
+                  <img v-bind:src="block.imgUrl" alt="img">
+                </div>
+              </template>
             </div>
           </template>
         </div>

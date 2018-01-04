@@ -23,7 +23,8 @@
           <li><a href="#" class="link-page">Предлагаем</a></li>
           <li>
             <a href="#" class="link-page punkt-inline">На пульсе</a>
-            <a href="#" class="link-page punkt-inline">Вакансии</a>
+            <router-link to="/vacancy" class="link-page punkt-inline">Вакансии</router-link>
+            <!-- <a href="#" class="link-page punkt-inline">Вакансии</a> -->
           </li>
         </ul>   
       </div>

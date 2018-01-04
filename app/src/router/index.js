@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../vues/Index'
 import Portfolio from '../vues/portfolio'
+import Vacancy from '../vues/vacancy'
 import Job from '../vues/job'
 
 Vue.use(Router)
@@ -20,7 +21,7 @@ export default new Router({
     },
     {
     	path: '/portfolio/:type',
-    	name: 'portfolio',
+    	name: 'portfolioTYPE',
     	component: Portfolio
     },
     {
@@ -29,9 +30,14 @@ export default new Router({
       component: Job
     },
     {
-    	path: '/job/:id',
-    	name: 'job',
-    	component: Job
+      path: '/job/:id',
+      name: 'jobID',
+      component: Job
+    },
+    {
+    	path: '/vacancy',
+    	name: 'vacancy',
+    	component: Vacancy
     },
   ]
 })

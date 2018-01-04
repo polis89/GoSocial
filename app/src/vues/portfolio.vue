@@ -3,6 +3,12 @@
     name="inleft">
     <div class="portfolio">
       <div class="wrapper wrapper-port">
+       <!--  <div class="portfolio-vars">
+          <router-link to="/portfolio">Все</router-link>
+          <router-link to="/portfolio">Корпоративный брендинг</router-link>
+          <router-link to="/portfolio">Все</router-link>
+          <router-link to="/portfolio">Все</router-link>
+        </div> -->
         <template v-for="workitem in works">
           <!-- <router-link class="work" :to="{ name: 'job', params: { id: workitem.id }}"> -->
           <router-link class="work" :to="'job/' + workitem.id">
@@ -14,6 +20,16 @@
           </router-link>
           <!-- <a href="#"  v-on:click.prevent="showJob(workitem.id)"></a> -->
         </template>
+        <a href="#" class="download">
+          <div class="img-cont">
+            <img src="img/pdf.png" alt="pdf">
+          </div>
+          <div class="text-cont">
+            <strong>Скачать</strong><br>
+            коммерческое<br>
+            приложение
+          </div>
+        </a>
       </div>
       <app-footer></app-footer>
     </div>

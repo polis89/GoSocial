@@ -27,7 +27,10 @@ export default {
   mounted () {
     switch(this.$route.name){
       case "portfolio":
+      case "portfolioID":
       case "job":
+      case "jobID":
+      case "vacancy":
         this.appStatus = "showPage";
         return;
       default:
@@ -38,14 +41,21 @@ export default {
   watch: {
     '$route' (to, from) {
       // При изменении страницы изменять состояние приложения
+      console.log('WATCH route');
+      console.log(from);
+      console.log(to);
       switch(to.name){
         case "portfolio":
+        case "portfolioID":
         case "job":
+        case "jobID":
+        case "vacancy":
           this.appStatus = "showPage";
           return;
         default:
           this.appStatus = "showMenu";
       }
+      console.log('newAppStatus = ' + this.appStatus);
     }
   },
   methods: {
