@@ -41,12 +41,12 @@ export default {
   watch: {
     '$route' (to, from) {
       // При изменении страницы изменять состояние приложения
-      console.log('WATCH route');
-      console.log(from);
-      console.log(to);
+      // console.log('WATCH route');
+      // console.log(from);
+      // console.log(to);
       switch(to.name){
         case "portfolio":
-        case "portfolioID":
+        case "portfolioTYPE":
         case "job":
         case "jobID":
         case "vacancy":

@@ -16,7 +16,7 @@ body
 	font-family: "Gilroy"
 	overflow-x: hidden
 	opacity: 1
-	overflow-y: visible
+	overflow-y: scroll
 	color: #fff
 
 textarea:focus, 
@@ -203,28 +203,44 @@ a
 	display: block
 	clear: both
 
-.portfolio
+.port-wrap
 	background-color: #fff
 	width: 100vw
-	padding-top: 120px
 	position: absolute
 	top: 0
-	padding-bottom: 180px
 	z-index: 500
+	min-height: 100vh
+
+.portfolio
+	padding-top: 120px
+	padding-bottom: 180px
+	.portfolio-vars
+		text-align: left
+		font-size: 0.9vw
+		font-weight: bold
+		margin-bottom: 0.45vw
+		a
+			color: #000
+			&.router-link-active,
+			&:hover
+				color: $c-a-b
+
 	.wrapper.wrapper-port
-		display: -webkit-flex
-		display: -moz-flex
-		display: -ms-flex
-		display: -o-flex
-		display: flex
-		flex-wrap: wrap
-		justify-content: center
 		width: 80vw
 		position: relative
+		padding-top: 1.2vw
+		span
+			display: -webkit-flex
+			display: -moz-flex
+			display: -ms-flex
+			display: -o-flex
+			display: flex
+			flex-wrap: wrap
+			justify-content: center
 		.download
 			position: absolute
 			left: 100%
-			top: 0
+			top: 3.1vw
 			text-align: left
 			padding-left: 1.51vw
 			color: #131314
@@ -243,6 +259,7 @@ a
 			cursor: pointer
 			display: block
 			overflow: hidden
+			// transition: all 1s
 			&:hover,
 			&:active
 				.desc-cont	

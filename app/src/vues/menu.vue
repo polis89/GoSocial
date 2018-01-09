@@ -6,24 +6,24 @@
     <div class="app-menu" v-if="menuShowed">
       <div class="app-menu__container">
         <ul>
-          <li><a href="#" class="link-page" >Агентство</a></li>
+          <li><a href="#" class="link-page" >{{ punkts[0] }}</a></li>
           <li @mouseleave="childsPunktsShowed = false">
             <span @mouseover="childsPunktsShowed = true">
-              <router-link to="/portfolio" class="link-page punkt-has-child">Работы</router-link>
+              <router-link to="/portfolio" class="link-page punkt-has-child">{{ punkts[1] }}</router-link>
             </span>
             <transition 
               name="menuPunktsTrans" >
               <div v-if="childsPunktsShowed" class="childs" >
-                <router-link to="/portfolio/2" class="link-page">Смм</router-link>
+                <router-link to="/portfolio/2" class="link-page">{{ punkts[6] }}</router-link>
                 /
-                <router-link to="/portfolio/3" class="link-page">Дизайн</router-link>
+                <router-link to="/portfolio/3" class="link-page">{{ punkts[7] }}</router-link>
               </div>
             </transition>
           </li>
-          <li><a href="#" class="link-page">Предлагаем</a></li>
+          <li><a href="#" class="link-page">{{ punkts[2] }}</a></li>
           <li>
-            <a href="#" class="link-page punkt-inline">На пульсе</a>
-            <router-link to="/vacancy" class="link-page punkt-inline">Вакансии</router-link>
+            <a href="#" class="link-page punkt-inline">{{ punkts[3] }}</a>
+            <router-link to="/vacancy" class="link-page punkt-inline">{{ punkts[4] }}</router-link>
             <!-- <a href="#" class="link-page punkt-inline">Вакансии</a> -->
           </li>
         </ul>   
@@ -34,7 +34,7 @@
           <a href="#">069 707 015</a>
           <a href="mailto:ready@gosocial.md">ready@gosocial.md</a>
           <div class="right">
-            <a href="#">Люди</a>
+            <a href="#">{{ punkts[5] }}</a>
           </div>
         </div>
       </div> 
@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import i18n from '../i18n';
 export default {
   // name: 'app',
   props: ['appStatus'],
@@ -51,6 +52,16 @@ export default {
       menuShowed: false,
       pageShowed: false,
       childsPunktsShowed: false,
+      punkts: [
+        i18n.translates.menu_punkt_1[i18n.LANG_INDEX],
+        i18n.translates.menu_punkt_2[i18n.LANG_INDEX],
+        i18n.translates.menu_punkt_3[i18n.LANG_INDEX],
+        i18n.translates.menu_punkt_4[i18n.LANG_INDEX],
+        i18n.translates.menu_punkt_5[i18n.LANG_INDEX],
+        i18n.translates.menu_punkt_6[i18n.LANG_INDEX],
+        i18n.translates.menu_punkt_2_1[i18n.LANG_INDEX],
+        i18n.translates.menu_punkt_2_2[i18n.LANG_INDEX],
+      ]
     }
   },
   watch:{
