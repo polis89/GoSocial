@@ -6,7 +6,7 @@
     <div class="app-menu" v-if="menuShowed">
       <div class="app-menu__container">
         <ul>
-          <li><a href="#" class="link-page" >{{ punkts[0] }}</a></li>
+          <li><router-link to="/agency" class="link-page">{{ punkts[0] }}</router-link></li>
           <li @mouseleave="childsPunktsShowed = false">
             <span @mouseover="childsPunktsShowed = true">
               <router-link to="/portfolio" class="link-page punkt-has-child">{{ punkts[1] }}</router-link>

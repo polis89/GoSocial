@@ -4,6 +4,7 @@ import Index from '../vues/Index'
 import Portfolio from '../vues/portfolio'
 import Vacancy from '../vues/vacancy'
 import Job from '../vues/job'
+import Agency from '../vues/agency'
 
 Vue.use(Router)
 
@@ -35,9 +36,14 @@ export default new Router({
       component: Job
     },
     {
-    	path: '/vacancy',
-    	name: 'vacancy',
-    	component: Vacancy
+      path: '/vacancy',
+      name: 'vacancy',
+      component: Vacancy
+    },
+    {
+    	path: '/agency',
+    	name: 'agency',
+    	component: Agency
     },
   ]
 })

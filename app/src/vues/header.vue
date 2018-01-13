@@ -10,9 +10,9 @@
         </div>
       </div>
       <div class="langs">
-        <a href="#" class="lang">en</a>
-        <a href="#" class="lang">ru</a>
-        <a href="#" class="lang">ro</a>
+        <a href="http://polies.ru/gs/en" class="lang">en</a>
+        <a href="http://polies.ru/gs" class="lang">ru</a>
+        <a href="http://polies.ru/gs/mo" class="lang">mo</a>
       </div>
     </div>
   </div>

@@ -368,20 +368,6 @@ a
 				img
 					width: 100%
 					height: 100%
-			h2
-				font-weight: 900
-				font-size: 4.2vw
-				line-height: 0.95
-				padding-top: 0.05vw
-				margin-bottom: 2vw
-				margin-top: 2vw
-			h3
-				margin-top: 0
-				font-weight: 900
-				font-size: 2.7vw
-				line-height: 0.9
-				padding-top: 0.05vw
-				margin-bottom: 0
 			.img-cont
 				overflow: hidden
 				height: 100%
@@ -397,6 +383,30 @@ a
 				img
 					width: 100%
 					height: 100%
+
+.text-cont
+	p
+		text-align: left
+		font-weight: 600
+		font-size: 1.03vw
+		line-height: 1.7
+		margin: 1vw 0 1.3vw
+		&.gray
+			color: #313131	
+	h2
+		font-weight: 900
+		font-size: 4.2vw
+		line-height: 0.95
+		padding-top: 0.05vw
+		margin-bottom: 2vw
+		margin-top: 2vw
+	h3
+		margin-top: 0
+		font-weight: 900
+		font-size: 2.7vw
+		line-height: 0.9
+		padding-top: 0.05vw
+		margin-bottom: 0
 
 .vacancy-page
 	background-color: #fff
@@ -507,7 +517,159 @@ a
 							position: absolute
 							left: -1.1vw
 
+.page
+	background-color: #fff
+	width: 100vw
+	padding-top: 150px
+	position: absolute
+	top: 0
+	padding-bottom: 120px
+	z-index: 500
+	text-align: left
+	@include lg{padding-bottom: 150px}
+	.wrapper-page
+		width: 80.2vw
+		margin: 0 auto
+		font-weight: 600
+		font-size: 1.04vw
+		line-height: 1.7
+		.left-in
+			float: left
+		.right-in
+			float: right
+			&:after
+				content: ''
+				display: block
+				clear: both	
+		.text-cont p
+			font-size: 1vw
+			line-height: 1.6
+		.img-cont
+			width: 100%
+			height: auto
+			img
+				display: block
+				width: 100%
+				height: auto
+		.row
+			&:after
+				content: ''
+				display: block
+				clear: both
+		.h2-big
+			font-size: 5.85vw
+			font-weight: 900
+			color: #000
+			line-height: 0.9
+			margin-top: 0
+			margin-bottom: 0
+		.left
+			float: left
+			background: red
+			width: 49.6%
+			.shift-right
+				position: relative
+				top: -1.15vw
+				left: 10.4vw
+		.right
+			float: right
+			background: green
+			width: 49.6%
+			.shift-right
+				padding-left: 4.5vw
+			.shift-left
+				float: right
+				width: 31.8vw
+				position: relative
+				left: -8vw
 
+.page-agency
+	.row
+		&:first-child
+			.left
+				.h2-big
+					margin-bottom: 3.2vw
+				.out-desc
+					position: absolute
+					font-weight: 900
+					font-style: italic
+					font-size: 0.72vw
+					line-height: 1.7
+					top: 23.2vw
+					left: -11.5vw
+				.img-cont
+					margin-top: 2.5vw
+			.right
+				.h2-big
+					margin-top: 2.8vw
+					width: 110%
+					position: relative
+					left: -0.3vw
+				.left-in
+					width: 8.75vw
+					margin-top: 2.9vw
+					position: relative
+					font-size: 0.88vw
+					font-weight: 400
+					line-height: 1.6
+					.quote
+						position: absolute
+						width: 1.6vw
+						height: 1.2vw
+						left: -2.2vw
+						top: -0.4vw
+						&.rotate
+							transform: rotate(180deg)
+							top: auto
+							left: auto
+							right: 1.2vw
+							bottom: -0.2vw
+				.right-in
+					width: 23vw
+					margin-right: 1vw
+					margin-top: 1.7vw
+					.desc
+						font-weight: 900
+						font-style: italic
+						font-size: 0.7vw
+						margin-top: 2.3vw
+		&:nth-child(2)
+			.left
+				position: relative
+				z-index: 1
+				.desc
+					font-weight: 700
+					font-style: italic
+					font-size: 0.7vw
+					line-height: 1.5
+					margin-top: 0.72vw
+				.h2-big
+					width: 42.7vw
+					margin-left: -0.3vw
+					margin-top: 9.5vw
+			.right
+				z-index: 0
+				.left-in
+					width: 14.58vw
+					height: 14.5vw
+					.img-cont
+						height: 100%
+						img
+							height: 100%
+				.right-in
+					width: 16.66vw
+					height: 14.5vw
+					.img-cont
+						height: 100%
+						img
+							height: 100%
+				.desc
+					margin-left: 4.58vw	
+					font-weight: 600
+					font-size: 0.98vw
+					line-height: 1.5
+					margin-top: 18.7vw
+					margin-bottom: 3vw
 
 
 

@@ -31,6 +31,7 @@ export default {
       case "job":
       case "jobID":
       case "vacancy":
+      case "agency":
         this.appStatus = "showPage";
         return;
       default:
@@ -50,6 +51,7 @@ export default {
         case "job":
         case "jobID":
         case "vacancy":
+        case "agency":
           this.appStatus = "showPage";
           return;
         default:

@@ -6,33 +6,33 @@
         <div class="wrapper wrapper-port">
           <transition name="fadein" mode="out-in">
             <div class="portfolio-vars" v-if="isDesign">
-              <router-link :to="'/portfolio/' + categoriesID.design[0]">Все</router-link>
+              <router-link :to="'/portfolio/' + categoriesID.design[0]">{{ translates.all }}</router-link>
               /
-              <router-link :to="'/portfolio/' + categoriesID.design[1]">Потребительский брендинг</router-link>
+              <router-link :to="'/portfolio/' + categoriesID.design[1]">{{ translates.cat_potreb }}</router-link>
               /
-              <router-link :to="'/portfolio/' + categoriesID.design[2]">Корпоративный брендинг</router-link>
+              <router-link :to="'/portfolio/' + categoriesID.design[2]">{{ translates.cat_corp }}</router-link>
               /
-              <router-link :to="'/portfolio/' + categoriesID.design[3]">Экспо дизайн</router-link>
+              <router-link :to="'/portfolio/' + categoriesID.design[3]">{{ translates.cat_expo }}</router-link>
               /
-              <router-link :to="'/portfolio/' + categoriesID.design[4]">Event брендинг</router-link>
+              <router-link :to="'/portfolio/' + categoriesID.design[4]">{{ translates.cat_event }}</router-link>
               /
-              <router-link :to="'/portfolio/' + categoriesID.design[5]">Ритейл брендинг</router-link>
+              <router-link :to="'/portfolio/' + categoriesID.design[5]">{{ translates.cat_riteil }}</router-link>
               /
-              <router-link :to="'/portfolio/' + categoriesID.design[6]">Web дизайн</router-link>
+              <router-link :to="'/portfolio/' + categoriesID.design[6]">{{ translates.cat_web }}</router-link>
               /
-              <router-link :to="'/portfolio/' + categoriesID.design[7]">Моушн дизайн</router-link>
+              <router-link :to="'/portfolio/' + categoriesID.design[7]">{{ translates.cat_motion }}</router-link>
             </div>
             <div class="portfolio-vars" v-else-if="isSmm">
-              <router-link :to="'/portfolio/' + categoriesID.smm[0]">Все</router-link>
+              <router-link :to="'/portfolio/' + categoriesID.smm[0]">{{ translates.all }}</router-link>
               /
               <router-link :to="'/portfolio/' + categoriesID.design[7]">Никуда</router-link>
             </div>
             <div class="portfolio-vars" v-else>
               <router-link to="/portfolio">Все</router-link>
               /
-              <router-link :to="'/portfolio/' + categoriesID.design[0]">Дизайн</router-link>
+              <router-link :to="'/portfolio/' + categoriesID.design[0]">{{ translates.cat_design }}</router-link>
               /
-              <router-link :to="'/portfolio/' + categoriesID.smm[0]">Смм</router-link>
+              <router-link :to="'/portfolio/' + categoriesID.smm[0]">{{ translates.cat_smm }}</router-link>
             </div>
           </transition>
           <transition-group   
@@ -87,8 +87,18 @@ export default {
       },
       readyToUpdate: true,
       translates: {
-        download: i18n.translates.download[i18n.LANG_INDEX],
-        ourOffer: i18n.translates.ourOffer[i18n.LANG_INDEX],
+        download: i18n.translates.download[i18n.LANG_INDEX] ,
+        ourOffer: i18n.translates.ourOffer[i18n.LANG_INDEX] ,
+        all: i18n.translates.all[i18n.LANG_INDEX] ,
+        cat_potreb: i18n.translates.cat_potreb[i18n.LANG_INDEX] ,
+        cat_corp: i18n.translates.cat_corp[i18n.LANG_INDEX] ,
+        cat_expo: i18n.translates.cat_expo[i18n.LANG_INDEX] ,
+        cat_event: i18n.translates.cat_event[i18n.LANG_INDEX] ,
+        cat_riteil: i18n.translates.cat_riteil[i18n.LANG_INDEX] ,
+        cat_web: i18n.translates.cat_web[i18n.LANG_INDEX] ,
+        cat_motion: i18n.translates.cat_motion[i18n.LANG_INDEX],
+        cat_design: i18n.translates.cat_design[i18n.LANG_INDEX],
+        cat_smm: i18n.translates.cat_smm[i18n.LANG_INDEX] ,
       }
     }
   },
@@ -186,13 +196,6 @@ export default {
             works.push({name: rest.removeHTMLTags(name), thumbnail: thumbnail, desc: desc, id: id});
           }
         });
-        // if(!self.readyToUpdate){
-        //   setTimeout(function(){
-        //     self.works = works;
-        //     self.categoryType = categoryType;
-        //     next();
-        //   }, 500);
-        // }else{
           self.works = works;
           self.categoryType = categoryType;
           next();
@@ -207,10 +210,11 @@ export default {
     // called when the route that renders this component is about to
     // be navigated away from.
     // has access to `this` component instance.
-    this.works = {};
-    // setTimeout(function(){
-      next();
-    // }, 500);
+    console.log(to);
+    if(to.name == "portfolio" || to.name == "portfolioTYPE"){
+      this.works = {};
+    }
+    next();
   }
 }
 </script>
