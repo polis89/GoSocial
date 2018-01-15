@@ -61,6 +61,10 @@
         </div>
         <div class="row">
           <div class="left">
+            <div class="close">
+              <span></span>
+              <span></span>
+            </div>
             <div class="desc">
               Lorem ipsum dolor sit amet, <br>
               consectetur adipisicing elit,
@@ -70,8 +74,32 @@
               больше, <br>
               чем просит
             </div>
+            <div class="left-in">
+              Держим руку на пульсе и даже создали <br>
+              сообщество маркетологов, в котором<br>
+               собираются лучшие специалисты<br>
+                рынка, чтобы обсудить новости сферы и<br>
+                 лучшие работы.
+            </div>
+            <div class="right-in">
+              Занимаемся созданием<br>
+              сайтов, брендингом,<br>
+              придумываем рекламу,<br>
+              развиваемпроекты в digital, <br>
+              внедряем стратегии.
+            </div>
           </div>
           <div class="right">
+            <div class="text-rotate">
+              Все, что мы делаем - часть вашего маркетинга.
+            </div>
+            <div class="desc-abs">
+              Потребитель<br>
+              всегда <br>
+              слушает и<br>
+              оценивает.
+
+            </div>
             <div class="shift-left">
               <div class="left-in">
                 <div class="img-cont">
@@ -95,6 +123,226 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="left">
+            <div class="img-cont">
+              <img src="img/agency-6.jpg" alt="img">
+            </div>
+          </div>
+          <div class="right">
+            <div class="shift-left">
+              <div class="img-cont">
+                <img src="img/agency-7.jpg" alt="img">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="left">
+            <div class="left-in half">
+              <div class="img-cont">
+                <img src="img/agency-8.jpg" alt="img">
+              </div>
+            </div>
+            <div class="right-in half">
+              <div class="img-cont">
+                <img src="img/agency-9.jpg" alt="img">
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="shift-left">
+              <div class="img-cont">
+                <img src="img/agency-10.jpg" alt="img">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="left">
+            <div class="h2-big">
+              Мы<br>
+              постоянно<br>
+              в гуще<br>
+              событий.
+            </div>
+          </div>
+          <div class="right">
+            <div class="desc-abs">
+              <p>
+                Moldova <br>
+                Design <br>
+                Weekend <br>
+                2017
+              </p>
+              <p>
+                Moldova <br>
+                Design <br>
+                Weekend <br>
+                2017
+              </p>
+              <p>
+                Moldova <br>
+                Design <br>
+                Weekend <br>
+                2017
+              </p>
+            </div>
+            <div class="shift-left">
+              <div class="img-cont">
+                <img src="img/agency-11.jpg" alt="img">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="left">
+            <div class="left-in half">
+              <div class="img-cont">
+                <img src="img/agency-12.jpg" alt="img">
+              </div>
+            </div>
+            <div class="right-in half">
+              <div class="img-cont">
+                <img src="img/agency-13.jpg" alt="img">
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="shift-left">
+              <div class="left-in half">
+                <div class="img-cont">
+                  <img src="img/agency-14.jpg" alt="img">
+                </div>
+              </div>
+              <div class="right-in half">
+                <div class="img-cont">
+                  <img src="img/agency-15.jpg" alt="img">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="left">
+            <div class="left-in">
+              Мы не просто много читаем, мы <br>
+              многое делаем. Мы постоянные <br>
+              посетители главных семинаров, <br>
+              конференций в сфере. Мы можем <br>
+              часами вам разговаривать про  <br>
+              нашу работу и столько же можем <br>
+              выслушать. В шкафах наших домов <br>
+              и квартир можно найти не одну <br>
+              стопку полезной литературы, мы <br>
+              рады ее обменяться или  <br>
+              посоветовать что почитать. <br>
+              Считаем саморазвитие одно из <br>
+              важнейших пунктов, в работе. 
+            </div>
+            <div class="right-in">
+              <div class="text-cont">
+                Если мы и не присутствуем на  <br>
+                конференции как зритель мы  <br>
+                обязательно на ней выступаем. Сами <br>
+                проводим и помогаем проводить <br>
+                большое количество мероприятий.
+              </div>
+              <div class="img-cont">
+                <img src="img/agency-16.jpg" alt="img">
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="shift-left">
+              <div class="img-cont">
+                <img src="img/agency-17.jpg" alt="img">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="h2-big alt">
+          Отвечаем за свою работу!
+        </div>
+        <div class="row row-alt">
+          <div class="left">
+            <p>
+              Наше агентство отличает от других компаний <br>
+              коллективное движение к профессиональному развитию, <br>
+              свежий, современный взгляд на коммуникации, высокий <br>
+              уровень креативности. Реализуем решения, <br>
+              повышающие ценность брендов, позволяющие  <br>
+              компаниям выглядеть достойно, проникать в умы своих  <br>
+              потребителей и оставаться в сердцах. Мы помним, что <br>
+              digital маркетинг &ndash; это набор инструментов, которые <br>
+              должны решать бизнес-задачи клиента.
+            </p>
+            <p>
+              Ваша культура &ndash; ваш бренд <br>
+              Понимаем, как выстроить визуальныю идентификацию, <br>
+              когда задачи фирменного стиля гораздо масштабнее, чем <br>
+              просто разработка логотипа. Поэтому наши системные <br>
+              решения хорошо работают как в офлайн, так и <br>
+              онлайн-среде. <br>
+              Помогаем компаниям, которые переносят свои  <br>
+              офлайн-продукты в онлайн среду
+            </p>
+          </div>
+          <div class="right">
+            <div class="img-cont-alt">
+              <img src="img/agency-18.jpg" alt="img">
+            </div>
+          </div>
+        </div>
+        <div class="row row-alt">
+          <div class="left">
+            <div class="img-cont ">
+              <img src="img/agency-19.jpg" alt="img">
+            </div>
+          </div>
+          <div class="right">
+            <div class="left-in">
+              <div class="img-cont">
+                <img src="img/agency-20.jpg" alt="img">
+              </div>
+            </div>
+            <div class="right-in">
+              <div class="img-cont">
+                <img src="img/agency-21.jpg" alt="img">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="h2-big alt mb">
+          Праздник нужно<br>
+          всегда носить с собой.
+          <div class="desc">
+            Ожидание радости тоже  <br>
+            есть радость.
+          </div>
+        </div>
+        <div class="row">
+          <div class="left">
+            <div class="left-in">
+              Мы проводим на работе треть <br>
+              суток, и это в лучшем случае. <br>
+              Поэтому не удивительно, когда  <br>
+              даже самая любимая  <br>
+              работа приводит к <br>
+              профессиональному "выгоранию".
+            </div>
+            <div class="right-in">
+              По этому мы часто тусим. <br>
+              Успешный, динамично развивающийся <br>
+              бизнес - это всегда  <br>
+              заслуга целой команды.
+            </div>
+          </div>
+          <a href="#" class="insta">
+            instagram
+          </a>
+        </div>
+        <div id="instafeed"></div>
       </div>
       <app-footer></app-footer>
     </div>
@@ -105,6 +353,7 @@
 import appfooter from './app-footer.vue';
 import rest from '../rest';
 import i18n from '../i18n';
+var Instafeed = require("instafeed.js");
 var axios = require('axios');
 
 export default {
@@ -128,6 +377,18 @@ export default {
       this.$emit('menuClick');
     },
   },
+  beforeMount () {
+      var feed = new Instafeed({
+          get: 'user',
+          userId: '4720892420',
+          clientId: '27a89286ccb54ef08954d594904dd334',
+          accessToken: "4720892420.27a8928.80a235ba64df443d984b11bbbdccaed3",
+          resolution: "low_resolution",
+          // after: activateSlickCarousel,
+          limit: 3,
+      });
+      feed.run();
+  }
 }
 </script>
 
