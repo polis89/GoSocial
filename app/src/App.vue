@@ -32,6 +32,8 @@ export default {
       case "jobID":
       case "vacancy":
       case "agency":
+      case "people":
+      case "design":
         this.appStatus = "showPage";
         return;
       default:
@@ -52,6 +54,8 @@ export default {
         case "jobID":
         case "vacancy":
         case "agency":
+        case "people":
+        case "design":
           this.appStatus = "showPage";
           return;
         default:

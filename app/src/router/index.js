@@ -5,6 +5,8 @@ import Portfolio from '../vues/portfolio'
 import Vacancy from '../vues/vacancy'
 import Job from '../vues/job'
 import Agency from '../vues/agency'
+import People from '../vues/people'
+import Design from '../vues/design'
 
 Vue.use(Router)
 
@@ -41,9 +43,19 @@ export default new Router({
       component: Vacancy
     },
     {
-    	path: '/agency',
-    	name: 'agency',
-    	component: Agency
+      path: '/agency',
+      name: 'agency',
+      component: Agency
+    },
+    {
+      path: '/people',
+      name: 'people',
+      component: People
+    },
+    {
+    	path: '/design',
+    	name: 'design',
+    	component: Design
     },
   ]
 })

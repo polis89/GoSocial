@@ -380,9 +380,9 @@ export default {
   beforeMount () {
       var feed = new Instafeed({
           get: 'user',
-          userId: '4720892420',
-          clientId: '27a89286ccb54ef08954d594904dd334',
-          accessToken: "4720892420.27a8928.80a235ba64df443d984b11bbbdccaed3",
+          userId: '5883772097',
+          clientId: '0ecbd7d90ddb49b5859624837a23c17c',
+          accessToken: "5883772097.0ecbd7d.467846ec0d1b4c5588f3b18376c0784c",
           resolution: "low_resolution",
           // after: activateSlickCarousel,
           limit: 3,

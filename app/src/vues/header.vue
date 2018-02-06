@@ -12,7 +12,7 @@
       <div class="langs">
         <a href="http://polies.ru/gs/en" class="lang">en</a>
         <a href="http://polies.ru/gs" class="lang">ru</a>
-        <a href="http://polies.ru/gs/mo" class="lang">mo</a>
+        <a href="http://polies.ru/gs/ro" class="lang">ro</a>
       </div>
     </div>
   </div>

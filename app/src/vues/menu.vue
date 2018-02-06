@@ -20,7 +20,7 @@
               </div>
             </transition>
           </li>
-          <li><a href="#" class="link-page">{{ punkts[2] }}</a></li>
+          <li><router-link to="/design" class="link-page">{{ punkts[2] }}</router-link></a></li>
           <li>
             <a href="#" class="link-page punkt-inline">{{ punkts[3] }}</a>
             <router-link to="/vacancy" class="link-page punkt-inline">{{ punkts[4] }}</router-link>
@@ -34,7 +34,8 @@
           <a href="#">069 707 015</a>
           <a href="mailto:ready@gosocial.md">ready@gosocial.md</a>
           <div class="right">
-            <a href="#">{{ punkts[5] }}</a>
+            <router-link to="/people">{{ punkts[5] }}</router-link>
+            <!-- <a href="#">{{ punkts[5] }}</a> -->
           </div>
         </div>
       </div> 

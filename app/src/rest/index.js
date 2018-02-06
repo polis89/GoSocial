@@ -1,7 +1,7 @@
 var axios = require('axios');
 
 export default {
-  AJAX_URL: 'http://polies.ru/GoSocial/wp-json',
+  AJAX_URL: 'http://polies.ru/GoSocial_wp/wp-json',
   removeHTMLTags(str){
   	if(!str) return "";
     str = str.replace(/&(lt|gt);/g, function (strMatch, p1){
