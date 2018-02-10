@@ -33,7 +33,7 @@
             </p>
           </div>
           <div class="img-cont">
-            <img src="/img/pred-1.jpg" alt="img">
+            <img src="img/pred-1.jpg" alt="img">
           </div>
         </div>
         <div class="row inverse">
@@ -54,7 +54,7 @@
             </p>
           </div>
           <div class="img-cont">
-            <img src="/img/pred-2.jpg" alt="img">
+            <img src="img/pred-2.jpg" alt="img">
           </div>
         </div>
         <div class="row">
@@ -79,7 +79,7 @@
             </p>
           </div>
           <div class="img-cont">
-            <img src="/img/pred-3.jpg" alt="img">
+            <img src="img/pred-3.jpg" alt="img">
           </div>
         </div>
 

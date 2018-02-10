@@ -22,9 +22,8 @@
           </li>
           <li><router-link to="/design" class="link-page">{{ punkts[2] }}</router-link></a></li>
           <li>
-            <a href="#" class="link-page punkt-inline">{{ punkts[3] }}</a>
+            <router-link to="/news" class="link-page punkt-inline">{{ punkts[3] }}</router-link>
             <router-link to="/vacancy" class="link-page punkt-inline">{{ punkts[4] }}</router-link>
-            <!-- <a href="#" class="link-page punkt-inline">Вакансии</a> -->
           </li>
         </ul>   
       </div>

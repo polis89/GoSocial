@@ -7,6 +7,8 @@ import Job from '../vues/job'
 import Agency from '../vues/agency'
 import People from '../vues/people'
 import Design from '../vues/design'
+import News from '../vues/news'
+import News_item from '../vues/news_item'
 
 Vue.use(Router)
 
@@ -53,9 +55,19 @@ export default new Router({
       component: People
     },
     {
-    	path: '/design',
-    	name: 'design',
-    	component: Design
+      path: '/design',
+      name: 'design',
+      component: Design
+    },
+    {
+      path: '/news',
+      name: 'news',
+      component: News
+    },
+    {
+    	path: '/news/:id',
+    	name: 'newsID',
+    	component: News_item
     },
   ]
 })

@@ -34,6 +34,8 @@ export default {
       case "agency":
       case "people":
       case "design":
+      case "news":
+      case "newsID":
         this.appStatus = "showPage";
         return;
       default:
@@ -56,6 +58,8 @@ export default {
         case "agency":
         case "people":
         case "design":
+        case "news":
+        case "newsID":
           this.appStatus = "showPage";
           return;
         default:
