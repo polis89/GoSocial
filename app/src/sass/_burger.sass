@@ -12,12 +12,17 @@ $duration: 400ms;
 		width: 50px;
 		height: 50px;
 		cursor: pointer;
+		@include sm{width: 31px;position: relative; top: auto;
+		left: auto;
+		height: 50px;margin-top: 0;margin-left: 0}
 		div
 			position: absolute;
 			width: 50px;
 			height: 5px;
 			background-color: #000;
 			top: 20px
+			@include sm{width: 30px
+			height: 3px}
 			&:nth-child(1) 
 				// top: 50%;
 				// margin-top: -3px;
@@ -35,8 +40,10 @@ $duration: 400ms;
 				&:nth-child(1) 
 				&:nth-child(2)
 					top: 8px 
+					@include sm{top: 11px}
 				&:nth-child(3)
-					top: 32px 		
+					top: 32px 	
+					@include sm{top: 29px}	
 		&.close
 			div
 				&:nth-child(1) 
@@ -49,14 +56,17 @@ $duration: 400ms;
 			div
 				&:nth-child(1) 
 					// transform: rotate(45deg)
+
 				&:nth-child(2)
 					transform-origin: 0px 5px
 					transform: rotate(37deg) 
 					width: 25px
+					@include sm{top: 11px; transform: none; width: 30px}
 				&:nth-child(3)
 					width: 25px
 					transform-origin: 0px 0px
 					transform: rotate(-37deg) 
+					@include sm{top: 29px; transform: none; width: 30px}	
 		&.arrow-to-line
 			div
 				&:nth-child(1) 

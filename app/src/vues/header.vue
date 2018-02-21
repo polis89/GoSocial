@@ -1,7 +1,8 @@
 <template>
   <div class="header__line">
     <div class="wrapper">
-      <h1 class="h1">GOSOCIAL</h1>
+      <router-link :to="'/'" ><h1 class="h1">GOSOCIAL</h1></router-link>
+      
       <div class="burger-cont" v-on:click="btnClick">
         <div id="hamburger" class="open">
           <div></div>

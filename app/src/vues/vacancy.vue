@@ -64,6 +64,7 @@ import rest from '../rest';
 var axios = require('axios');
 
 export default {
+  props: ['isMobile'],
   // name: 'app',
   components:{  
     "app-footer": appfooter,

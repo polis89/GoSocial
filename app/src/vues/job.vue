@@ -3,8 +3,8 @@
     name="inleft">
     <div class="job-page">
       <!-- JOB -->
-      <img v-bind:src="job.mainImg" alt="job" class="top-img">
-      <div class="wrapper-job">
+      <img v-if="!isMobile" v-bind:src="job.mainImg" alt="job" class="top-img">
+      <div v-if="!isMobile" class="wrapper-job">
         <div class="top-block">
           <div class="h1" v-html="job.title"></div>
           <div v-html="job.mainDesc">
@@ -47,6 +47,47 @@
           <img src="img/scroll.png" alt="icon">
         </div>
       </div>
+      <div class="header_sm" v-if="isMobile">
+        <img src="img/info-icon.png" alt="info" class="info-job" v-on:click="clickInfo">
+      </div>
+      <div class="job_imgs-sm" v-if="isMobile">
+        <div class="pad"></div>
+        <template v-for="image in job.imgs">
+          <div class="img-cont">
+            <img :src="image" alt="img" class="img-full">
+          </div>
+        </template>
+      </div>
+      <div class="header_sm header_sm_close" v-if="isJobInfoShowed" v-on:click="clickInfo">
+        <div class="close-icon">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <transition 
+        name="inleftall">
+        <div class="job_info-sm " v-if="isJobInfoShowed">
+          <div class="wrap-job-sm">
+            <div class="h1" v-html="job.title"></div>
+            <div class="h1-desc">
+              Lorem ipsum dol <br>
+              or sit amet, adi
+            </div>
+            <div v-html="job.mainDesc">
+            </div>
+            <div class="content-line-sm" v-for="line in job.contentLines">
+              <div class="block-sm" v-for="block in line.blocks">
+                <template v-if="!block.isImg">
+                  <div class="text-cont" v-html="block.text">
+                    
+                  </div>
+                </template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </transition>
     </div>
   </transition>
 </template>
@@ -57,19 +98,21 @@ import rest from '../rest';
 var axios = require('axios');
 
 export default {
-  // name: 'app',
+  props: [],
   components:{  
     "app-footer": appfooter,
   },
   props: ['isOpen'],
   data () {
     return {
-      // pageShowed: false,
+      isMobile: window.innerWidth < 991,
+      isJobInfoShowed: false,
       job: {},
     }
   },
   beforeRouteEnter (to, from, next) {
     var job = {};
+    job.imgs = []; //Mobile imgs
     var jobID = to.params.id;
     console.log("showjob, job = " + jobID);
     axios.get(rest.AJAX_URL + '/wp/v2/works/' + jobID + '?_embed')
@@ -78,6 +121,7 @@ export default {
         console.log(responseData);
         job.title = responseData.title.rendered;
         job.mainImg = responseData.acf["главное_изображение"];
+        job.imgs.push(job.mainImg);
         job.mainDesc = responseData.acf["текст_под_описанием"];
         job.authors = [];
         if(responseData.acf["авторы"]){
@@ -94,16 +138,23 @@ export default {
             var block = responseData.acf["блоки"][i];
             if(block["тип"] == "Большое изображение"){
               newLine.big = true;
-              newLine.block = {imgUrl: block["изображение"]}
+              newLine.block = {imgUrl: block["изображение"]};
+              job.imgs.push(block["изображение"]);
             }else{
               newLine.big = false;
               newLine.blocks = [];
               newLine.blocks.push({isImg: block["тип"] == "Маленькое изображение", imgUrl: block["изображение"], text: block["текст"]});
+              if(block["изображение"]){
+                job.imgs.push(block["изображение"]);
+              }
               if(!newLine.big){
                 i++;
                 block = responseData.acf["блоки"][i];
                 if(block){
                   newLine.blocks.push({isImg: block["тип"] == "Маленькое изображение", imgUrl: block["изображение"], text: block["текст"]});
+                  if(block["изображение"]){
+                    job.imgs.push(block["изображение"]);
+                  }
                 }
               }
             }
@@ -118,7 +169,6 @@ export default {
       .catch(function (error) {
         console.log(error.message);
     });
-
   },
   computed: {
   },
@@ -126,6 +176,10 @@ export default {
     btnClick: function (event) {
       this.$emit('menuClick');
     },
+    clickInfo: function(event){
+      this.isJobInfoShowed = !this.isJobInfoShowed;
+      document.body.classList.toggle("noscroll");
+    }
   }
 }
 </script>

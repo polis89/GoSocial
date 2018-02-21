@@ -72,19 +72,72 @@ a
 	width: 90.36%
 	margin: 0 auto
 	position: relative
+	@include sm{width: 100%}
 
 .wrapper-job
 	width: 80.8%
 	margin: 0 auto
 	position: relative
 
+.header_sm
+	position: fixed
+	top: 0
+	width: 100%
+	left: 0
+	background: #fff
+	height: 68px
+	z-index: 450
+	.close-icon
+		width: 31px
+		height: 26px
+		padding-top: 14px
+		margin-left: 20px
+		margin-top: 18px
+		cursor: pointer
+		span
+			height: 3px
+			display: block
+			background: #000
+			&:first-child
+				transform: rotate(45deg)
+			&:last-child
+				position: relative
+				top: -3px
+				transform: rotate(-45deg)
+	.info-job
+		float: left
+		width: 33px
+		height: 33px
+		margin-left: 20px
+		margin-top: 17px
+		cursor: pointer
+	&.header_sm_close
+		z-index: 452
+
+.h1_sm
+	font-size: 37px
+	line-height: 1
+	font-weight: 900
+	cursor: pointer
+	display: none
+	z-index: 450
+	@include sm{display: block;
+	color: #000
+	font-size: 31px;margin: 0;
+	position: fixed;
+	left: 50%
+	transform: translateX(-50%)
+	top: 22px
+	text-align: center}
+
 .header__line
 	position: fixed
 	width: 100%
-	top: 0
+	top: 60px
 	left: 0
 	background-color: transparent
 	z-index: 1000
+	@include sm{padding-top: 21px;top: 0; left: auto;right: 0;width: 66px}
 	.wrapper	
 		display: -webkit-flex
 		display: -moz-flex
@@ -92,23 +145,30 @@ a
 		display: -o-flex
 		display: flex
 		justify-content: space-between
-		height: 120px
+		height: 0px
 		align-items: center
+		@include sm{height: 45px
+		display: block;	
+		width: 100%}
 	.h1
-		flex-basis: 40%
 		font-size: 37px
 		line-height: 1
 		font-weight: 900
 		cursor: pointer
 		text-align: left
-		mix-blend-mode: exclusion
+		color: #000
+		@include sm{display: none}
 	.burger-cont
 		cursor: pointer
-		flex-basis: 20%
-		position: relative
+		position: absolute
+		top: 0px
+		left: 50%
+		transform: translateX(-50%)
+		@include sm{z-index: 1002;position: absolute;
+		top: -8px;right: 20px; transform: none; left: auto}
 	.langs
-		flex-basis: 40%
 		text-align: right
+		@include sm{display: none}
 		.lang
 			font-size: 14px
 			line-height: 1
@@ -126,6 +186,11 @@ a
 	left: 0
 	z-index: 500
 	padding-top: 7.9vh
+	@include sm{width: 100vw; height: 100vh; position: fixed; top: 0
+	left: 0
+	padding-top: 0
+	overflow-y: scroll
+	width: 100vw}
 	&:after
 		content: ''
 		display: block
@@ -139,6 +204,15 @@ a
 		padding-top: 135px
 		color: #000
 		@include lg{padding-top: 92px}
+		@include sm{padding-top: 110px}
+		.langs
+			position: absolute
+			top: 25px
+			padding-left: 8.8%
+			a
+				font-size: 26px
+				color: #000
+				margin-right: 8px
 		ul
 			font-size: 11.2vh
 			margin: 0
@@ -146,6 +220,8 @@ a
 			list-style-type: none
 			padding-left: 8.8%
 			padding-top: 0.8%
+			@include sm{font-size: 40px
+			line-height: 62px}
 			li
 				padding: 0
 				margin: 0
@@ -159,6 +235,11 @@ a
 					text-decoration: none
 					transition: color 0.1s
 					backface-visibility: hidden
+					&.link-small
+						@include sm{font-size: 25px; line-height: 1
+						margin-top: 11px
+						padding-top: 0
+						display: block}
 					&:hover,
 					&:active
 						color: $c-a-b
@@ -168,6 +249,11 @@ a
 						margin-right: 2%
 						line-height: 1.5
 						display: inline-block
+						@include sm{display: block
+						font-size: 40px
+						margin-left: 0
+						margin-right: 0
+						line-height: 62px}
 				.childs
 					display: inline-block
 					font-size: 0.1636em
@@ -185,6 +271,13 @@ a
 		font-size: 20.47px
 		line-height: 1.5
 		padding-bottom: 24px
+		@include sm{position: relative
+		font-size: 14px;line-height: 1.3
+		padding-top: 120px
+		padding-bottom: 30px}
+		br
+			display: none
+			@include sm{display: block}
 		.bottom-line
 			position: relative
 			width: 100%
@@ -202,6 +295,12 @@ a
 				margin-right: 0
 				&:hover
 					color: $c-a-b
+			.socials
+				position: relative
+				top: -11px
+				margin-right: 4px
+				a
+					margin-left: 18px
 
 .clearfix
 	display: block
@@ -214,6 +313,7 @@ a
 	top: 0
 	z-index: 500
 	min-height: 100vh
+	@include sm{z-index: 400}
 
 .portfolio-vars
 	text-align: left
@@ -229,10 +329,14 @@ a
 .portfolio
 	padding-top: 120px
 	padding-bottom: 180px
+	@include sm{padding-top: 66px;
+	padding-left: 20px
+	padding-right: 20px}
 	.wrapper.wrapper-port
 		width: 80vw
 		position: relative
 		padding-top: 1.2vw
+		@include sm{width: 100%}
 		span
 			display: -webkit-flex
 			display: -moz-flex
@@ -250,9 +354,12 @@ a
 			color: #131314
 			font-size: 0.8vw
 			line-height: 1.4
+			@include sm{padding-left: 36px; font-size: 10px;left: 0;top: 100%;padding-top: 31px}
 			.img-cont
 				width: 2.18vw
 				margin-bottom: 0.6vw
+				@include sm{width: 28px;position: absolute
+				left: 0; top: 24px}
 				img
 					width: 100%
 					height: auto
@@ -264,6 +371,8 @@ a
 			display: block
 			overflow: hidden
 			// transition: all 1s
+			@include sm{width: 50%;
+			height: 42vw}
 			&:hover,
 			&:active
 				.desc-cont	
@@ -294,12 +403,15 @@ a
 .job-page
 	background-color: #fff
 	width: 100vw
-	// padding-top: 120px
 	position: absolute
 	top: 0
 	padding-bottom: 180px
 	z-index: 500
 	@include lg{padding-bottom: 150px}
+	@include sm{z-index: 400;padding-bottom: 0}
+	&.news_item
+		.h1
+			margin-bottom: 3vw
 	p
 		text-align: left
 		font-weight: 600
@@ -387,7 +499,73 @@ a
 				img
 					width: 100%
 					height: 100%
+	.job_imgs-sm
+		// padding-top: 64px
+		min-height: 100vh
 
+		.pad
+			height: 66px
+		.img-cont
+			width: 100vw
+			height: 102vw
+			position: relative
+			overflow: hidden
+			&:first-child
+				margin-top: 64px
+			img
+				min-width: 100vw
+				height: 102vw
+				width: auto
+				position: absolute
+				top: 50%
+				left: 50%
+				transform: translate(-50%, -50%)
+	.job_info-sm
+		min-height: 100vh
+		background: #fff
+		position: fixed
+		top: 0px
+		width: 100%
+		padding-bottom: 40px
+		.wrap-job-sm
+			padding-left: 20px
+			padding-right: 20px
+			overflow-y: scroll
+			max-height: 100vh
+			position: relative
+		.content-line-sm
+			text-align: left
+			h2
+				font-size: 17px
+				line-height: 26px
+				max-width: 50%
+				margin-bottom: 15px
+				padding-top: 24px
+				br
+					display: none
+		.h1
+			font-size: 52px
+			line-height: 42px
+			margin-top: 104px
+			margin-bottom: 20px
+		.h1-desc
+			position: absolute
+			top: 106px
+			right: 20px
+			width: auto
+			text-align: left
+			font-style: italic
+			font-weight: 900
+			font-size: 14px
+			line-height: 16px
+		p
+			font-size: 17px
+			line-height: 26px
+			margin-bottom: 14px
+		ul
+			li
+				font-size: 17px
+				line-height: 26px
 .text-cont
 	p
 		text-align: left
@@ -531,12 +709,26 @@ a
 	z-index: 500
 	text-align: left
 	@include lg{padding-bottom: 150px}
+	@include sm{z-index: 400;padding-top: 80px}
+	&.job-page
+		@include sm{z-index: 400}
+	.img-full
+		@include sm{width: 100vw
+		position: relative
+		left: -25px
+		z-index: -1}
+		img
+			width: 100%
+			height: auto
 	.wrapper-page
 		width: 80.2vw
 		margin: 0 auto
 		font-weight: 600
 		font-size: 1.04vw
 		line-height: 1.7
+		@include sm{width: auto
+		padding-left: 25px
+		padding-right: 25px}
 		.left-in
 			float: left
 			&.half
@@ -586,6 +778,8 @@ a
 			line-height: 0.9
 			margin-top: 0
 			margin-bottom: 0
+			@include sm{font-size: 52px
+			line-height: 44px}
 			&.alt
 				margin-top: 4.2vw
 				position: relative
@@ -602,16 +796,22 @@ a
 			float: left
 			// background: red
 			width: 49.6%
+			@include sm{float: none
+			width: 100%}
 			.shift-right
 				position: relative
 				top: -1.15vw
 				left: 6.4vw
+				@include sm{top: 0;left: 0}
 		.right
 			float: right
 			// background: green
 			width: 49.6%
+			@include sm{float: none
+			width: 100%}
 			.shift-right
 				padding-left: 4.5vw
+				@include sm{padding-left: 0}
 			.shift-left
 				float: right
 				width: 31.8vw
@@ -619,9 +819,33 @@ a
 				left: -8vw
 
 .page-agency
+	@include sm{padding-bottom: 14px}
+	.desc-mob
+		@include sm{font-size: 17px
+		line-height: 26px
+		font-weight: 900
+		padding-top: 20px}
+	.insta-mob
+		@include sm{font-size: 19px
+		line-height: 1;position: absolute;right: 0px; color: #000
+		display: block; margin-top: -22px;text-align: right}
 	.row
 		margin-bottom: 0.6vw
 		position: relative
+		.four-img
+			display: -webkit-flex
+			display: -moz-flex
+			display: -ms-flex
+			display: -o-flex
+			display: flex
+			width: 100vw
+			margin-left: -25px
+			justify-content: space-between
+			flex-wrap: wrap
+			img
+				width: 48vw
+				height: 49vw
+				margin-bottom: 4vw
 		.insta
 			color: #000
 			font-size: 1.5vw
@@ -632,6 +856,7 @@ a
 			right: 1vw
 		.img-cont
 			height: 25.7vw
+			@include sm{height: auto}
 			img
 				width: 100%
 				height: 100%
@@ -643,8 +868,17 @@ a
 		&:first-child
 			margin-bottom: 0
 			.left
+				.img-full
+					@include sm{top: -24px;margin-bottom: -5px}
+				.text-cont
+					p
+						@include sm{font-size: 17px
+						line-height: 30px}
+						br
+							@include sm{display: none}
 				.h2-big
 					margin-bottom: 3.2vw
+					@include sm{margin-bottom: 0}
 				.out-desc
 					position: absolute
 					font-weight: 900
@@ -656,11 +890,15 @@ a
 				.img-cont
 					margin-top: 2.5vw
 			.right
+				@include sm{padding-top: 60px}
+				.img-full
+					@include sm{margin-bottom: 40px}
 				.h2-big
 					margin-top: 2.8vw
 					width: 110%
 					position: relative
 					left: -0.3vw
+					@include sm{left: 0;margin-bottom: 45px}
 				.left-in
 					width: 8.75vw
 					margin-top: 2.9vw
@@ -668,27 +906,37 @@ a
 					font-size: 0.88vw
 					font-weight: 400
 					line-height: 1.6
+					@include sm{float: right; font-size: 13px
+					line-height: 21px; width: 128px; margin-top: 18px}
 					.quote
 						position: absolute
 						width: 1.6vw
 						height: 1.2vw
 						left: -2.2vw
 						top: -0.4vw
+						@include sm{width: 30px;height: 21px
+						left: -34px; top: -7px}
 						&.rotate
 							transform: rotate(180deg)
 							top: auto
 							left: auto
 							right: 1.2vw
 							bottom: -0.2vw
+							@include sm{right: 8px;bottom: -7px}
 				.right-in
 					width: 23vw
 					margin-right: 1vw
 					margin-top: 1.7vw
+					@include sm{float: left; width: 170px}
 					.desc
 						font-weight: 900
 						font-style: italic
 						font-size: 0.7vw
 						margin-top: 2.3vw
+						@include sm{font-size: 14px;line-height: 25px}
+				p
+					@include sm{font-size: 17px
+					line-height: 26px}
 		&:nth-child(2)
 			.left
 				position: relative
@@ -720,16 +968,38 @@ a
 					margin-left: -0.3vw
 					margin-top: 9.5vw
 					font-size: 5.5vw
+					@include sm{font-size: 52px
+					line-height: 42px;width: 100%
+					margin-top: 60px
+					margin-bottom: 30px}
 				.left-in
 					padding-top: 2.3vw
 					font-size: 1vw
 					line-height: 1.55
+					@include sm{float: none;
+					width: 100%
+					font-size: 17px
+					line-height: 26px
+					padding-top: 40px
+					padding-bottom: 40px}
+					br
+						@include sm{display: none}
 				.right-in
 					padding-top: 2.3vw
 					font-weight: 400
 					font-size: 1vw
 					line-height: 1.55
 					padding-right: 3.5vw
+					@include sm{float: none;
+					width: 100%
+					font-size: 17px
+					line-height: 26px
+					padding-top: 24px
+					padding-bottom: 40px
+					font-weight: 600
+					padding-right: 0}
+					br
+						@include sm{display: none}
 			.right
 				z-index: 0
 				position: relative
@@ -770,8 +1040,32 @@ a
 					line-height: 1.5
 					margin-top: 18.7vw
 					margin-bottom: 3vw
+		&:nth-child(3)
+			@include sm{padding-top: 60px}
+			.h2-big
+				@include sm{padding-bottom: 40px}
+			.img-full
+				@include sm{margin-bottom: 2.8vw}
 		&:nth-child(4)
 			margin-bottom: 6.35vw
+			@include sm{margin-bottom: 60px}
+			.left
+				@include sm{float: none; width: 100%}
+				.left-in
+					@include sm{padding-top: 20px;padding-bottom: 40px;float: none;width: 100%
+					font-size: 17px
+					line-height: 26px}
+					br
+						@include sm{display: none}
+			.right-in
+				@include sm{float: none;width: 100%}
+				.text-cont
+					@include sm{font-size: 17px
+					line-height: 26px
+					padding-top: 40px
+					padding-bottom: 40px}
+					br
+						@include sm{display: none}
 		&:nth-child(5)
 			.right
 				position: relative
@@ -783,6 +1077,18 @@ a
 				line-height: 1.95
 				p
 					margin-bottom: 2vw
+		&:nth-child(6)
+			@include sm{margin-bottom: 60px}
+			.left
+				@include sm{float: none 
+				width: 100% }
+				p
+					@include sm{font-size: 17px
+					line-height: 23px
+					padding-top: 40px
+					padding-bottom: 40px}
+					br
+						@include sm{display: none}
 		&:nth-child(7)
 			.left
 				padding-top: 2vw
@@ -793,6 +1099,18 @@ a
 					margin-top: 1.75vw
 				.right-in
 					width: 20.5vw
+		&:nth-child(8)
+			@include sm{padding-top: 22px}
+			.left-in,
+			.right-in
+				@include sm{float: none;width: 100%
+				font-size: 17px
+				line-height: 26px}
+				br
+					@include sm{display: none}
+			.left-in
+				@include sm{padding-top: 30px
+				padding-bottom: 20px}
 		&:nth-child(12)
 			padding-bottom: 2vw
 
@@ -804,11 +1122,24 @@ a
 	display: flex
 	justify-content: space-between
 	margin-top: 2vw
+	@include sm{margin-top: 30px; width: 100vw
+	margin-left: -25px}
 	a
 		width: 33%
+		height: 25.9vw
+		overflow: hidden
+		position: relative
+		@include sm{width: 48%; height: 48vw}
 		img
-			width: 98%
+			min-width: 98%
+			width: auto
+			min-height: 100%
 			height: auto
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+			@include sm{width: 100%}
 
 
 .wrapper-people
@@ -954,6 +1285,7 @@ footer
 	position: absolute
 	width: 100%
 	bottom: 0
+	@include sm{display: none}
 	.wrapper
 		height: 100%
 	.links
@@ -978,3 +1310,5 @@ footer
 			&:nth-child(2)
 				margin-left: 20px
 
+.noscroll
+	overflow-y: hidden

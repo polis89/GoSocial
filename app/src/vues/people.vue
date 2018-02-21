@@ -30,6 +30,7 @@ var Instafeed = require("instafeed.js");
 var axios = require('axios');
 
 export default {
+  props: ['isMobile'],
   components:{  
     "app-footer": appfooter,
   },

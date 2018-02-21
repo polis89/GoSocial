@@ -10,6 +10,9 @@
                 Разве фишка не в том, чтобы делать то,
                 что тебе нравится?  
               </h2>
+              <div class="img-full" v-if="isMobile">
+                <img src="img/agency-1.jpg" alt="img">
+              </div>
               <div class="text-cont gray">
                 <p>
                   Мы пять лет работаем на рынке рекламы и<br>
@@ -18,24 +21,35 @@
                   продуктов и услуг.
                 </p>
               </div>
-              <div class="out-desc">
+              <div class="out-desc" v-if="!isMobile">
                 Наша могучая <br>
                 диджитал-команда
               </div>
             </div>
-            <div class="img-cont">
+            <div class="img-cont" v-if="!isMobile">
               <img src="img/agency-2.jpg" alt="img">
             </div>
           </div>     
           <div class="right">
             <div class="shift-right">
               <div class="img-cont">
-                <img src="img/agency-1.jpg" alt="img">
+                <img src="img/agency-1.jpg" alt="img" v-if="!isMobile">
               </div>
               <div class="h2-big">
                 Работаем <br>
                 откуда хотим
               </div>
+              <div class="img-full" v-if="isMobile">
+                <img src="img/agency-2.jpg" alt="img">
+              </div>
+              <p v-if="isMobile">
+                
+              Нам не нужно увольняться, чтобы пожить пару месяцев
+              в Китае. Не надо отпрашиваться,
+              чтобы сходить к врачу или забрать бабушку с вокзала. <br>
+              Мы не будем заманивать вас в офис бесплатными печеньками.
+              Приходите в МИФ, если свобода важнее.
+              </p>
               <div class="left-in">
                 <img src="img/q-1.png" alt="q" class="quote">
                 <img src="img/q-1.png" alt="q" class="quote rotate">
@@ -44,7 +58,7 @@
                 имеет удаленных сотрудников.
               </div>
               <div class="right-in">
-                <p>
+                <p v-if="!isMobile">
                   
                 Нам не нужно увольняться, чтобы пожить пару месяцев
                 в Китае. Не надо отпрашиваться,
@@ -61,11 +75,11 @@
         </div>
         <div class="row">
           <div class="left">
-            <div class="close">
+            <div class="close" v-if="!isMobile">
               <span></span>
               <span></span>
             </div>
-            <div class="desc">
+            <div class="desc" v-if="!isMobile">
               Lorem ipsum dolor sit amet, <br>
               consectetur adipisicing elit,
             </div>
@@ -74,12 +88,21 @@
               больше, <br>
               чем просит
             </div>
+            <div class="img-full" v-if="isMobile">
+              <img src="img/agency-5.jpg" alt="img">
+            </div>
             <div class="left-in">
               Держим руку на пульсе и даже создали <br>
               сообщество маркетологов, в котором<br>
                собираются лучшие специалисты<br>
                 рынка, чтобы обсудить новости сферы и<br>
                  лучшие работы.
+            </div>
+            <div class="four-img" v-if="isMobile">
+              <img src="img/agency-6-sm.jpg" alt="img">
+              <img src="img/agency-7-sm.jpg" alt="img">
+              <img src="img/agency-8-sm.jpg" alt="img">
+              <img src="img/agency-9-sm.jpg" alt="img">
             </div>
             <div class="right-in">
               Занимаемся созданием<br>
@@ -88,8 +111,11 @@
               развиваемпроекты в digital, <br>
               внедряем стратегии.
             </div>
+            <div class="img-full" v-if="isMobile">
+              <img src="img/agency-10-sm.jpg" alt="img">
+            </div>
           </div>
-          <div class="right">
+          <div class="right" v-if="!isMobile">
             <div class="text-rotate">
               Все, что мы делаем - часть вашего маркетинга.
             </div>
@@ -98,7 +124,6 @@
               всегда <br>
               слушает и<br>
               оценивает.
-
             </div>
             <div class="shift-left">
               <div class="left-in">
@@ -123,7 +148,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row" v-if="!isMobile">
           <div class="left">
             <div class="img-cont">
               <img src="img/agency-6.jpg" alt="img">
@@ -137,7 +162,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row" v-if="!isMobile">
           <div class="left">
             <div class="left-in half">
               <div class="img-cont">
@@ -166,8 +191,17 @@
               в гуще<br>
               событий.
             </div>
+            <div class="img-full" v-if="isMobile">
+              <img src="img/agency-11-sm.jpg" alt="img">
+            </div>
+            <div class="four-img" v-if="isMobile">
+              <img src="img/agency-14-sm.jpg" alt="img">
+              <img src="img/agency-15-sm.jpg" alt="img">
+              <img src="img/agency-13-sm.jpg" alt="img">
+              <img src="img/agency-12-sm.jpg" alt="img">
+            </div>
           </div>
-          <div class="right">
+          <div class="right" v-if="!isMobile">
             <div class="desc-abs">
               <p>
                 Moldova <br>
@@ -195,7 +229,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row" v-if="!isMobile">
           <div class="left">
             <div class="left-in half">
               <div class="img-cont">
@@ -240,6 +274,9 @@
               Считаем саморазвитие одно из <br>
               важнейших пунктов, в работе. 
             </div>
+            <div class="img-full" v-if="isMobile">
+              <img src="img/agency-17-sm.jpg" alt="img">
+            </div>
             <div class="right-in">
               <div class="text-cont">
                 Если мы и не присутствуем на  <br>
@@ -248,14 +285,17 @@
                 проводим и помогаем проводить <br>
                 большое количество мероприятий.
               </div>
-              <div class="img-cont">
+              <div class="img-cont" v-if="!isMobile">
                 <img src="img/agency-16.jpg" alt="img">
               </div>
             </div>
+            <div class="img-full" v-if="isMobile">
+              <img src="img/agency-16-sm.jpg" alt="img">
+            </div>
           </div>
-          <div class="right">
+          <div class="right" v-if="!isMobile">
             <div class="shift-left">
-              <div class="img-cont">
+              <div class="img-cont" >
                 <img src="img/agency-17.jpg" alt="img">
               </div>
             </div>
@@ -277,6 +317,12 @@
               digital маркетинг &ndash; это набор инструментов, которые <br>
               должны решать бизнес-задачи клиента.
             </p>
+            <div class="four-img" v-if="isMobile">
+              <img src="img/agency-18-sm.jpg" alt="img">
+              <img src="img/agency-18-sm.jpg" alt="img">
+              <img src="img/agency-18-sm.jpg" alt="img">
+              <img src="img/agency-18-sm.jpg" alt="img">
+            </div>
             <p>
               Ваша культура &ndash; ваш бренд <br>
               Понимаем, как выстроить визуальныю идентификацию, <br>
@@ -287,14 +333,17 @@
               Помогаем компаниям, которые переносят свои  <br>
               офлайн-продукты в онлайн среду
             </p>
+            <div class="img-full" v-if="isMobile">
+              <img src="img/agency-19-sm.jpg" alt="img">
+            </div>
           </div>
-          <div class="right">
+          <div class="right" v-if="!isMobile">
             <div class="img-cont-alt">
               <img src="img/agency-18.jpg" alt="img">
             </div>
           </div>
         </div>
-        <div class="row row-alt">
+        <div class="row row-alt" v-if="!isMobile">
           <div class="left">
             <div class="img-cont ">
               <img src="img/agency-19.jpg" alt="img">
@@ -316,12 +365,16 @@
         <div class="h2-big alt mb">
           Праздник нужно<br>
           всегда носить с собой.
-          <div class="desc">
+          <div class="desc" v-if="!isMobile">
             Ожидание радости тоже  <br>
             есть радость.
           </div>
+          <a href="#" class="insta-mob" v-if="isMobile">instagram</a>
         </div>
         <div class="row">
+          <div class="img-full" v-if="isMobile">
+            <img src="img/agency-22-sm.jpg" alt="img">
+          </div>
           <div class="left">
             <div class="left-in">
               Мы проводим на работе треть <br>
@@ -338,11 +391,14 @@
               заслуга целой команды.
             </div>
           </div>
-          <a href="#" class="insta">
+          <a href="#" class="insta" v-if="!isMobile">
             instagram
           </a>
         </div>
         <div id="instafeed"></div>
+        <div class="desc-mob" v-if="isMobile">
+          Ожидание радости тоже есть радость.
+        </div>
       </div>
       <app-footer></app-footer>
     </div>
@@ -357,6 +413,7 @@ var Instafeed = require("instafeed.js");
 var axios = require('axios');
 
 export default {
+  props: ['isMobile'],
   components:{  
     "app-footer": appfooter,
   },
@@ -378,16 +435,16 @@ export default {
     },
   },
   beforeMount () {
-      var feed = new Instafeed({
-          get: 'user',
-          userId: '5883772097',
-          clientId: '0ecbd7d90ddb49b5859624837a23c17c',
-          accessToken: "5883772097.0ecbd7d.467846ec0d1b4c5588f3b18376c0784c",
-          resolution: "low_resolution",
-          // after: activateSlickCarousel,
-          limit: 3,
-      });
-      feed.run();
+    var limit = this.isMobile ? 2 : 3;
+    var feed = new Instafeed({
+        get: 'user',
+        userId: '5883772097',
+        clientId: '0ecbd7d90ddb49b5859624837a23c17c',
+        accessToken: "5883772097.0ecbd7d.467846ec0d1b4c5588f3b18376c0784c",
+        resolution: "low_resolution",
+        limit: limit,
+    });
+    feed.run();
   }
 }
 </script>

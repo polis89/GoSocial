@@ -96,6 +96,7 @@ import i18n from '../i18n';
 var axios = require('axios');
 
 export default {
+  props: ['isMobile'],
   components:{  
     "app-footer": appfooter,
   },

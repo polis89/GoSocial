@@ -1,9 +1,10 @@
 <template>
   <div id="app">
+    <router-link :to="'/'" class="h1_sm">GOSOCIAL</router-link>
     <app-header v-bind:appStatus="appStatus" v-on:burger-click="burgerClick"></app-header>
     <app-main-page></app-main-page>
-    <app-menu v-bind:appStatus="appStatus"></app-menu>
-    <router-view/>
+    <app-menu v-bind:isMobile="isMobile" v-bind:appStatus="appStatus"></app-menu>
+    <router-view v-bind:isMobile="isMobile"/>
   </div>
 </template>
 
@@ -21,6 +22,7 @@ export default {
   },
   data () {
     return {
+      isMobile: window.innerWidth < 991,
       appStatus: 'start',  //Start - showMenu - showPage
     }
   },
@@ -48,7 +50,11 @@ export default {
       // При изменении страницы изменять состояние приложения
       // console.log('WATCH route');
       // console.log(from);
+      // console.log("to");
       // console.log(to);
+      if(((" " + document.body.className + " " ).indexOf( " noscroll " ) > -1)){
+        document.body.classList.toggle("noscroll");
+      }
       switch(to.name){
         case "portfolio":
         case "portfolioTYPE":
@@ -62,75 +68,46 @@ export default {
         case "newsID":
           this.appStatus = "showPage";
           return;
+        case "index":
+          this.appStatus = "start";
+          return;
         default:
           this.appStatus = "showMenu";
       }
-      console.log('newAppStatus = ' + this.appStatus);
+      // console.log('newAppStatus = ' + this.appStatus);
     }
   },
   methods: {
     burgerClick(event) {
-      switch(this.appStatus){
-        case 'start':
-          this.appStatus = 'showMenu';
-          break;
-        case 'showMenu':
-          this.appStatus = 'start';
-          break;
-        case 'showPage':
-          this.openPrevPage();
-          break;
+      if(!this.isMobile){
+        switch(this.appStatus){
+          case 'start':
+            this.appStatus = 'showMenu';
+            break;
+          case 'showMenu':
+            this.appStatus = 'start';
+            break;
+          case 'showPage':
+            this.openPrevPage();
+            break;
+        }
+      }else{
+        switch(this.appStatus){
+          case 'start':
+          case 'showPage':
+            this.appStatus = 'showMenu';
+            if(!((" " + document.body.className + " " ).indexOf( " noscroll " ) > -1)){
+              document.body.classList.toggle("noscroll");
+            }
+            break;
+          case 'showMenu':
+            this.appStatus = 'start';
+            if((" " + document.body.className + " " ).indexOf( " noscroll " ) > -1){
+              document.body.classList.toggle("noscroll");
+            }
+            break;
+        }
       }
-    },
-    showJob(job){
-      var self = this;
-      console.log("showjob, job = " + job);
-      axios.get(AJAX_URL + '/wp/v2/works/' + job + '?_embed')
-        .then(function (response) {
-          var responseData = response.data;
-          console.log(responseData);
-          self.currentJob = {};
-          self.currentJob.title = responseData.title.rendered;
-          self.currentJob.mainImg = responseData.acf["главное_изображение"];
-          self.currentJob.mainDesc = responseData.acf["текст_под_описанием"];
-          self.currentJob.authors = [];
-          if(responseData.acf["авторы"]){
-            for (var i = 0; i < responseData.acf["авторы"].length; i++){
-              self.currentJob.authors.push({
-                position: responseData.acf["авторы"][i]["должность"], 
-                name: responseData.acf["авторы"][i]["имя"]});
-            }
-          }
-          self.currentJob.contentLines = [];
-          if(responseData.acf["блоки"]){
-            for (var i = 0; i < responseData.acf["блоки"].length; i++){
-              var newLine = {};
-              var block = responseData.acf["блоки"][i];
-              if(block["тип"] == "Большое изображение"){
-                newLine.big = true;
-                newLine.block = {imgUrl: block["изображение"]}
-              }else{
-                newLine.big = false;
-                newLine.blocks = [];
-                newLine.blocks.push({isImg: block["тип"] == "Маленькое изображение", imgUrl: block["изображение"], text: block["текст"]});
-                if(!newLine.big){
-                  i++;
-                  block = responseData.acf["блоки"][i];
-                  if(block){
-                    newLine.blocks.push({isImg: block["тип"] == "Маленькое изображение", imgUrl: block["изображение"], text: block["текст"]});
-                  }
-                }
-              }
-              self.currentJob.contentLines.push(newLine);
-            }
-          }
-          console.log(self.currentJob);
-          self.showPortfolio = false;
-          self.isJobShowed = true;
-        })
-        .catch(function (error) {
-          console.log(error.message);
-      });
     },
     openPrevPage(){
       this.$router.go(-1);

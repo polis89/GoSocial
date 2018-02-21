@@ -1,10 +1,10 @@
 <template>
   <transition 
     name="inleft">
-    <div class="job-page">
+    <div class="job-page news_item">
       <!-- JOB -->
       <img v-bind:src="job.mainImg" alt="job" class="top-img">
-      <div class="wrapper-job">
+      <div class="wrapper-job ">
         <div class="top-block">
           <div class="h1" v-html="job.title"></div>
           <div v-html="job.mainDesc">
@@ -55,6 +55,7 @@ import rest from '../rest';
 var axios = require('axios');
 
 export default {
+  props: ['isMobile'],
   // name: 'app',
   components:{  
     "app-footer": appfooter,

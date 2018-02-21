@@ -4,23 +4,37 @@
 	.wrapper
 		position: relative
 		height: 100%
+		@include sm{}
 	.VueCarousel,
 	.carousel
 		padding-top: 100px
+		@include sm{padding-top: 0px}
 		.slide
 			position: absolute
 			width: 100%
+			>div
+				@include sm{display: -webkit-flex
+				display: -moz-flex
+				display: -ms-flex
+				display: -o-flex
+				display: flex
+				flex-direction: column
+				justify-content: space-around
+				height: 100vh}
 	.slide_img
 		float: left
 		text-align: right
 		width: 51.5%
 		height: 59vh
 		// margin-top: 10vh
+		@include sm{float: none;width: auto
+		height: 40vh; margin-top: 100px; margin-bottom: 20px}
 		img
 			height: 100%
 			width: auto
 			display: inline-block
 			max-height: 100%
+			@include sm{margin: 0 auto;display: block}
 	.slide_text
 		margin-top: 12.4vh
 		font-weight: 900
@@ -31,15 +45,25 @@
 		position: relative
 		left: 5vw
 		@include lg{margin-top: 9vh}
+		@include sm{margin-top: 0; font-size: 12vw;
+		padding-left: 10%; left: 0;margin-bottom: 60px}
 .carousel-controls
 	position: absolute
 	z-index: 2
 	bottom: 34px
-	width: 100%
 	width: auto
 	left: 50%
 	transform: translateX(-50%)
 	text-align: center	
+	@include sm{width: 82%;display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex;
+	justify-content: space-between;
+	bottom: 0
+	padding-bottom: 18px
+	margin: 0 auto;}
 	button
 		border: none
 		background-color: transparent
@@ -50,5 +74,6 @@
 		margin: 0 75px
 		font-family: 'Gilroy', Helvetica, Arial, sans-serif;
 		@include lg{margin: 0 30px;font-size: 15px;line-height: 1}
+		@include sm{margin: 0 0px; font-size: 12px}
 		&.active
 			color: $c-a-b

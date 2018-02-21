@@ -2,46 +2,50 @@
   <transition 
     name="inleft">
     <div class="port-wrap">
+      <div class="header_sm" v-if="isMobile">
+      </div>
       <div class="portfolio">
         <div class="wrapper wrapper-port">
           <transition name="fadein" mode="out-in">
-            <div class="portfolio-vars" v-if="isDesign">
-              <router-link :to="'/portfolio/' + categoriesID.design[0]">{{ translates.all }}</router-link>
-              /
-              <router-link :to="'/portfolio/' + categoriesID.design[1]">{{ translates.cat_potreb }}</router-link>
-              /
-              <router-link :to="'/portfolio/' + categoriesID.design[2]">{{ translates.cat_corp }}</router-link>
-              /
-              <router-link :to="'/portfolio/' + categoriesID.design[3]">{{ translates.cat_expo }}</router-link>
-              /
-              <router-link :to="'/portfolio/' + categoriesID.design[4]">{{ translates.cat_event }}</router-link>
-              /
-              <router-link :to="'/portfolio/' + categoriesID.design[5]">{{ translates.cat_riteil }}</router-link>
-              /
-              <router-link :to="'/portfolio/' + categoriesID.design[6]">{{ translates.cat_web }}</router-link>
-              /
-              <router-link :to="'/portfolio/' + categoriesID.design[7]">{{ translates.cat_motion }}</router-link>
-            </div>
-            <div class="portfolio-vars" v-else-if="isSmm">
-              <router-link :to="'/portfolio/' + categoriesID.smm[0]">{{ translates.all }}</router-link>
-              /
-              <router-link :to="'/portfolio/' + categoriesID.design[7]">Никуда</router-link>
-            </div>
-            <div class="portfolio-vars" v-else>
-              <router-link to="/portfolio">Все</router-link>
-              /
-              <router-link :to="'/portfolio/' + categoriesID.design[0]">{{ translates.cat_design }}</router-link>
-              /
-              <router-link :to="'/portfolio/' + categoriesID.smm[0]">{{ translates.cat_smm }}</router-link>
-            </div>
+            <template v-if="!isMobile">
+              <div class="portfolio-vars" v-if="isDesign">
+                <router-link :to="'/portfolio/' + categoriesID.design[0]">{{ translates.all }}</router-link>
+                /
+                <router-link :to="'/portfolio/' + categoriesID.design[1]">{{ translates.cat_potreb }}</router-link>
+                /
+                <router-link :to="'/portfolio/' + categoriesID.design[2]">{{ translates.cat_corp }}</router-link>
+                /
+                <router-link :to="'/portfolio/' + categoriesID.design[3]">{{ translates.cat_expo }}</router-link>
+                /
+                <router-link :to="'/portfolio/' + categoriesID.design[4]">{{ translates.cat_event }}</router-link>
+                /
+                <router-link :to="'/portfolio/' + categoriesID.design[5]">{{ translates.cat_riteil }}</router-link>
+                /
+                <router-link :to="'/portfolio/' + categoriesID.design[6]">{{ translates.cat_web }}</router-link>
+                /
+                <router-link :to="'/portfolio/' + categoriesID.design[7]">{{ translates.cat_motion }}</router-link>
+              </div>
+              <div class="portfolio-vars" v-else-if="isSmm">
+                <router-link :to="'/portfolio/' + categoriesID.smm[0]">{{ translates.all }}</router-link>
+                /
+                <router-link :to="'/portfolio/' + categoriesID.design[7]">Никуда</router-link>
+              </div>
+              <div class="portfolio-vars" v-else>
+                <router-link to="/portfolio">Все</router-link>
+                /
+                <router-link :to="'/portfolio/' + categoriesID.design[0]">{{ translates.cat_design }}</router-link>
+                /
+                <router-link :to="'/portfolio/' + categoriesID.smm[0]">{{ translates.cat_smm }}</router-link>
+              </div>
+            </template>
           </transition>
           <transition-group   
             name="fadein">
                   <template v-for="(workitem, index) in works">
                     <!-- <router-link class="work" :to="{ name: 'job', params: { id: workitem.id }}"> -->
-                    <router-link class="work" :to="'job/' + workitem.id" v-bind:key="workitem.id + '_' + categoryType">
+                    <router-link class="work" :to="'/job/' + workitem.id" v-bind:key="workitem.id + '_' + categoryType">
                       <img v-bind:src="workitem.thumbnail" alt="work">
-                      <div class="desc-cont">
+                      <div class="desc-cont" v-if="!isMobile">
                         <div class="name"> {{ workitem.name }} </div>
                         <div class="text"> {{ workitem.desc }} </div>
                       </div>
@@ -72,6 +76,7 @@ import i18n from '../i18n';
 var axios = require('axios');
 
 export default {
+  props: ['isMobile'],
   components:{  
     "app-footer": appfooter,
   },

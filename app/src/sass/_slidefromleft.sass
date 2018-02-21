@@ -1,12 +1,24 @@
 
 .inleft-enter-active, .inleft-leave-active 
 	transition: transform .5s
+	@include sm{transition: transform 0.4s}
 
 .inleft-enter
 	transform: translateX(-100%)
+	@include sm{transform: translateX(100vw)}
 
 .inleft-leave-to 
 	transform: translateX(100vw)
+	@include sm{transform: translateX(-100%)}
+
+.inleftall-enter-active, .inleftall-leave-active 
+	transition: transform .5s
+
+.inleftall-enter
+	transform: translateX(-100%)
+
+.inleftall-leave-to 
+	transform: translateX(-100vw)
 
 .inleft2-enter-active, .inleft2-leave-active 
 	transition: transform 1.5s
@@ -16,6 +28,7 @@
 
 .inleft2-leave-to 
 	transform: translateX(100vw)
+	@include sm{transform: translateX(-100%)}
 
 .menuPunktsTrans-enter-active
 	transition: transform .5s, opacity 1s

@@ -5,9 +5,16 @@
     v-bind:css="false" >
     <div class="app-menu" v-if="menuShowed">
       <div class="app-menu__container">
+        <div v-if="isMobile">
+          <div class="langs">
+            <a href="http://polies.ru/gs/en" class="lang">en</a>
+            <a href="http://polies.ru/gs" class="lang">ru</a>
+            <a href="http://polies.ru/gs/ro" class="lang">ro</a>
+          </div>
+        </div>
         <ul>
           <li><router-link to="/agency" class="link-page">{{ punkts[0] }}</router-link></li>
-          <li @mouseleave="childsPunktsShowed = false">
+          <li v-if="!isMobile" @mouseleave="childsPunktsShowed = false">
             <span @mouseover="childsPunktsShowed = true">
               <router-link to="/portfolio" class="link-page punkt-has-child">{{ punkts[1] }}</router-link>
             </span>
@@ -20,21 +27,30 @@
               </div>
             </transition>
           </li>
+          <li v-if="isMobile"><router-link to="/portfolio/2" class="link-page">{{ punkts[8] }}</router-link></a></li>
+          <li v-if="isMobile"><router-link to="/portfolio/3" class="link-page">{{ punkts[7] }}</router-link></a></li>
           <li><router-link to="/design" class="link-page">{{ punkts[2] }}</router-link></a></li>
           <li>
             <router-link to="/news" class="link-page punkt-inline">{{ punkts[3] }}</router-link>
             <router-link to="/vacancy" class="link-page punkt-inline">{{ punkts[4] }}</router-link>
           </li>
+          <li>
+            <router-link  v-if="isMobile" to="/people" class="link-small">{{ punkts[5] }}</router-link>
+          </li>
         </ul>   
       </div>
       <div class="app-menu__footer">
-        <div class="address">Chisinau, bd. Stefan cel Mare 202 (Kentford-2)</div>
+        <div class="address">Chisinau, bd. Stefan cel Mare <br> 202 (Kentford-2)</div>
         <div class="bottom-line">
-          <a href="#">069 707 015</a>
+          <a href="#">069 707 015</a> <br>
           <a href="mailto:ready@gosocial.md">ready@gosocial.md</a>
           <div class="right">
-            <router-link to="/people">{{ punkts[5] }}</router-link>
-            <!-- <a href="#">{{ punkts[5] }}</a> -->
+            <router-link  v-if="!isMobile" to="/people">{{ punkts[5] }}</router-link>
+            <div v-if="isMobile" class="socials">
+              <a href="#"><img src="img/icon-foot-2.png" alt="icon"></a>
+              <a href="#"><img src="img/icon-foot-3.png" alt="icon"></a>
+              <a href="#"><img src="img/icon-foot-4.png" alt="icon"></a>
+            </div>
           </div>
         </div>
       </div> 
@@ -46,7 +62,7 @@
 import i18n from '../i18n';
 export default {
   // name: 'app',
-  props: ['appStatus'],
+  props: ['appStatus', 'isMobile'],
   data () {
     return {
       menuShowed: false,
@@ -61,6 +77,7 @@ export default {
         i18n.translates.menu_punkt_6[i18n.LANG_INDEX],
         i18n.translates.menu_punkt_2_1[i18n.LANG_INDEX],
         i18n.translates.menu_punkt_2_2[i18n.LANG_INDEX],
+        'Marketing',
       ]
     }
   },
@@ -89,7 +106,7 @@ export default {
       Velocity(el, { translateX: ['0%','-100%'] }, { duration:400, complete: done })
     },
     leave: function (el, done) {
-      if(this.pageShowed){
+      if(this.pageShowed && !this.isMobile){
         Velocity(el, { translateX: ['100vw', '0vw'] }, { ease: 'linear', duration:500, complete: done });
       }else{
         Velocity(el, { translateX: ['-100vw', '0vw'] }, { duration:400, complete: done });
