@@ -1,4 +1,7 @@
-
+// Desktop: slide from left
+//          slide to right
+// Mobile: slide from right
+//         slide to left
 .inleft-enter-active, .inleft-leave-active 
 	transition: transform .5s
 	@include sm{transition: transform 0.4s}
@@ -10,6 +13,55 @@
 .inleft-leave-to 
 	transform: translateX(100vw)
 	@include sm{transform: translateX(-100%)}
+
+// Desktop: slide from left
+//          slide to right
+// Mobile: slide from right
+//         fade-out
+
+.inleft_fadeout-mob-enter-active
+	transition: transform .5s
+	@include sm{transition: transform 0.4s}
+
+.inleft_fadeout-mob-leave-active 
+	transition: transform .5s
+	@include sm{transition: opacity 0.4s}
+
+.inleft_fadeout-mob-enter
+	transform: translateX(-100%)
+	@include sm{transform: translateX(100vw)}
+
+.inleft_fadeout-mob-leave-to 
+	transform: translateX(100vw)
+	transition: opacity 0.4s
+	@include sm{opacity: 0; transform: none}
+
+// Desktop: slide from left
+//          slide to right
+// Mobile: slide from right
+//         fade-out
+
+.inleft_fade-mob-enter-active
+	transition: transform .5s
+	@include sm{transition: opacity 0.4s}
+
+.inleft_fade-mob-leave-active 
+	transition: transform .5s
+	@include sm{transition: opacity 0.4s}
+
+.inleft_fade-mob-enter
+	transform: translateX(-100%)
+	@include sm{opacity: 0; transform: none}
+
+.inleft_fade-mob-leave-to 
+	transform: translateX(100vw)
+	transition: opacity 0.4s
+	@include sm{opacity: 0; transform: none}
+
+// Desktop: slide from left
+//          slide to left
+// Mobile: slide from right
+//         slide to left
 
 .inleftall-enter-active, .inleftall-leave-active 
 	transition: transform .5s

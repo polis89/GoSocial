@@ -1,6 +1,6 @@
 <template>
   <transition 
-    name="inleft">
+    name="inleft_fadeout-mob">
     <div class="port-wrap">
       <div class="header_sm" v-if="isMobile">
       </div>

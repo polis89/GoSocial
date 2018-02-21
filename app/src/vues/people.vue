@@ -1,6 +1,6 @@
 <template>
   <transition 
-    name="inleft">
+    name="inleft_fadeout-mob">
     <div class="page page-people">
       <div class="wrapper-people">
         <h2 class="h2">Доска почета</h2>

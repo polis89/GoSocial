@@ -1,6 +1,6 @@
 <template>
   <transition 
-    name="inleft">
+    name="inleft_fade-mob">
     <div class="job-page">
       <!-- JOB -->
       <img v-if="!isMobile" v-bind:src="job.mainImg" alt="job" class="top-img">
