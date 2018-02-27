@@ -87,6 +87,8 @@ a
 	background: #fff
 	height: 68px
 	z-index: 450
+	display: none
+	@include sm{display: block}
 	.close-icon
 		width: 31px
 		height: 26px
@@ -410,8 +412,65 @@ a
 	@include lg{padding-bottom: 150px}
 	@include sm{z-index: 400;padding-bottom: 0}
 	&.news_item
+		@include sm{padding-top: 100px}
+		p
+			@include sm{font-size: 17px
+			line-height: 26px
+			margin: 20px 0}
+		.top-block
+			p
+				@include sm{max-width: 100%
+				margin-bottom: 0
+				padding-bottom: 0
+				margin-top: 0}
+		.text-cont
+			h3
+				@include sm{font-size: 34px
+				line-height: 27px}
+		.content-line
+			@include sm{height: auto
+			margin-bottom: 20px}
+			.block
+				@include sm{width: 100%
+				float: none !important}
+				&:first-child
+					.text-cont
+						@include sm{padding-left: 0
+						padding-right: 0}
+				&:nth-child(2)
+					.text-cont
+						@include sm{padding-left: 0}
+				.img-cont
+					@include sm{width: 100vw
+					margin-left: -25px
+					max-height: 70vw
+					margin-bottom: 20px
+					overflow-y: hidden}
 		.h1
 			margin-bottom: 3vw
+			@include sm{font-size: 45px
+			line-height: 38px
+			margin-bottom: 30px
+			padding-top: 12px}
+		.wrapper-job
+			@include sm{width: auto
+			padding-left: 20px
+			padding-right: 20px}
+		.authors
+			@include sm{position: relative
+			display: -webkit-flex
+			display: -moz-flex
+			display: -ms-flex
+			display: -o-flex
+			display: flex
+			margin-bottom: 20px
+			justify-content: space-between}
+			.author
+				@include sm{display: inline-block
+				font-size: 13px
+				line-height: 18px}
+			.desc
+				@include sm{display: none}
 	p
 		text-align: left
 		font-weight: 600
@@ -566,6 +625,7 @@ a
 			li
 				font-size: 17px
 				line-height: 26px
+
 .text-cont
 	p
 		text-align: left
@@ -600,15 +660,26 @@ a
 	z-index: 500
 	text-align: left
 	@include lg{padding-bottom: 150px}
+	@include sm{z-index: 400
+	width: 100%
+	padding-top: 90px
+	padding-bottom: 10px}
 	.wrapper-vacancy
 		width: 80.2vw
 		margin: 0 auto
 		font-weight: 600
 		font-size: 1.04vw
 		line-height: 1.7
+		@include sm{width: auto
+		padding-left: 25px
+		padding-right: 25px
+		font-size: 17px
+		line-height: 26px}
 		.left
 			width: 43.49vw
 			float: left
+			@include sm{width: auto
+			float: none}
 			h2
 				line-height: 0.95
 				font-weight: 900
@@ -616,8 +687,21 @@ a
 				font-size: 6.14vw
 				margin-top: 0
 				margin-bottom: 2vw
+				@include sm{font-size: 48px
+				line-height: 40px
+				margin-bottom: 25px}
 			p
 				width: 36.2vw
+				@include sm{width: 100%
+				color: #131314}
+			.img-cont
+				@include sm{width: 100vw
+				margin-left: -25px
+				overflow-y: hidden
+				height: 60vw}
+				img
+					width: 100%
+					height: auto
 		.right
 			width: 35.94vw
 			float: right
@@ -631,12 +715,19 @@ a
 				height: auto
 		.steps
 			padding-top: 5vw
+			@include sm{padding-top: 40px}
 			.step
 				float: left
 				width: 13.9vw
 				position: relative
 				margin-right: 6.1vw
 				padding-top: 5.21vw
+				@include sm{float: none
+				width: 84%
+				padding-top: 0
+				margin-right: 0}
+				br
+					@include sm{display: none}
 				.num
 					position: absolute
 					top: 0
@@ -646,26 +737,40 @@ a
 					font-weight: 900
 					color: #e6e6e6
 					z-index: -1
+					@include sm{top: auto
+					bottom: 0
+					font-size: 220px
+					line-height: 0.6
+					right: -10px}
 				&:first-child
 					padding-top: 0.5vw
 					top: -11.46vw
+					strong
+						@include sm{display: block
+						width: 80%
+						margin-bottom: 20px}
 				&:nth-child(2)
 					top: -8vw
 				&:nth-child(4)
 					top: 5.52vw
 	.vacancys
 		padding-top: 2vw
+		@include sm{padding-top: 70px}
 		.vacancy
 			margin-bottom: 4.8vw
+			@include sm{margin-bottom: 60px}
 			.name
 				font-size: 2.77vw
 				line-height: 0.9
 				font-weight: 600
 				margin-bottom: 1vw
+				@include sm{font-size: 52px
+				margin-bottom: 30px}
 				strong
 					font-weight: 900
 			.text
 				width: 35.41vw
+				@include sm{width: 100%}
 				.open
 					cursor: pointer
 					color: $c-a-b
@@ -681,12 +786,16 @@ a
 				margin-right: 4.95vw
 				color: #131314
 				margin-bottom: 2.1vw
+				@include sm{float: none
+				width: 100%
+				margin-right: 0}
 				a
 					color: $c-a-b
 					font-weight: 900
 				.col-name
 					font-weight: 900
 					font-size: 1.04vw
+					@include sm{font-size: 20px}
 				ul
 					margin: 0
 					padding: 0
@@ -694,10 +803,12 @@ a
 					li
 						margin: 0
 						position: relative
+						@include sm{padding-left: 20px}
 						&:before
 							content: "–"
 							position: absolute
 							left: -1.1vw
+							@include sm{left: 0}
 
 .page
 	background-color: #fff
@@ -1145,6 +1256,7 @@ a
 	@include sm{min-height: 100vh
 	padding-top: 0
 	padding-bottom: 0}
+
 .wrapper-people
 	width: 80.2vw
 	margin: 0 auto
@@ -1261,8 +1373,12 @@ a
 				left: 4.8vw
 
 .page-news
+	padding-top: 165px
+	@include sm{padding-bottom: 100px
+	padding-top: 90px}
 	.news_item
 		margin-bottom: 7.3vw
+		@include sm{margin-bottom: 50px}
 		&:last-child
 			margin-bottom: 0
 		.name
@@ -1272,6 +1388,12 @@ a
 			padding-right: 7vw
 			margin-left: -0.15vw
 			margin-bottom: 1.5vw
+			@include sm{font-size: 30px
+			padding-right: 0
+			line-height: 27px
+			color: #000
+			display: block
+			margin-bottom: 20px}
 		.row
 			display: -webkit-flex
 			display: -moz-flex
@@ -1279,9 +1401,12 @@ a
 			display: -o-flex
 			display: flex
 			justify-content: space-between
+			@include sm{flex-direction: column}
 			.img-cont
 				flex-shrink: 0
 				flex-basis: 45%
+				@include sm{width: 100vw
+				margin-left: -25px}
 				img
 					width: 100%
 					height: auto

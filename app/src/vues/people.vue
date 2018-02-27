@@ -3,6 +3,8 @@
     name="inleft_fadeout-mob">
     <div class="page page-people">
       <div class="wrapper-people">
+        <div class="header_sm" v-if="isMobile">
+        </div>
         <h2 class="h2">Доска почета</h2>
         <div class="peoples">
           <div class="people" v-for="(worker, index) in pageData.workers">

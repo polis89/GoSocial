@@ -3,6 +3,8 @@
     name="inleft">
     <div class="page page-design">
       <div class="wrapper-page">
+        <div class="header_sm" v-if="isMobile">
+        </div>
         <div class="portfolio-vars">
           <router-link to="/design">Дизайн</router-link>
           /

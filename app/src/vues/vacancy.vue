@@ -1,11 +1,18 @@
 <template>
   <transition 
-    name="inleft">
+    name="inleft_fadeout-mob">
     <div class="vacancy-page">
       <div class="wrapper-vacancy">
-        <div class="left" v-html="pageData.mainHtml">
+        <div class="header_sm" v-if="isMobile">
         </div>
-        <div class="right">
+        <div class="left" >
+          <h2 class="h2">Собака лает, караван идет</h2>
+          <div class="img-cont" v-if="isMobile">
+            <img :src="pageData.mainImg" alt="img">
+          </div>
+          <div v-html="pageData.mainHtml"></div>
+        </div>
+        <div class="right" v-if="!isMobile">
           <div class="img-cont">
             <img :src="pageData.mainImg" alt="img">
           </div>

@@ -31,6 +31,7 @@ export default {
   },
   watch: {
     appStatus: function(newV,old){
+      console.log('new: ' + newV + ', old: ' + old);
       var burg = document.getElementById('hamburger');
       if(newV == "showMenu" && old == "start"){
         //From burger to close
@@ -41,6 +42,11 @@ export default {
       } else if(newV == "start") {
         //From close to burger
         if(!this.isMobile){
+          burg.className = " ";
+          setTimeout(function(){
+            burg.className = "open";
+          }, 200);
+        }else if(old == "showMenu"){
           burg.className = " ";
           setTimeout(function(){
             burg.className = "open";

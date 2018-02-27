@@ -1,8 +1,10 @@
 <template>
   <transition 
-    name="inleft">
+    name="inleft_fadeout-mob">
     <div class="page page-agency">
       <div class="wrapper-page">
+        <div class="header_sm" v-if="isMobile">
+        </div>
         <div class="row">
           <div class="left">
             <div class="shift-right">

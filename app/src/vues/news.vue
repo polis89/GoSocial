@@ -3,13 +3,16 @@
     name="inleft">
     <div class="page page-news">
       <div class="wrapper-page">
+        <div class="header_sm" v-if="isMobile">
+        </div>
         <div class="news_item" v-for="news_item in pageData.news">
-          <div class="name">{{news_item.name}}</div>
+          <div class="name" v-if="!isMobile">{{news_item.name}}</div>
+          <router-link :to="'news/' + news_item.id" class="name" v-if="isMobile" v-html="news_item.name"></router-link>
           <div class="row">
             <div class="img-cont">
               <img :src="news_item.img" alt="img">
             </div>
-            <div class="text-cont">
+            <div class="text-cont" v-if="!isMobile">
               <div class="text-big" v-html="news_item.short_desc"></div>
               <div class="text">
                 {{news_item.long_desc}}

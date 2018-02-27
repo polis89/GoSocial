@@ -1,14 +1,14 @@
 <template>
   <transition 
-    name="inleft">
+    name="inleft_fadeout-mob">
     <div class="job-page news_item">
       <!-- JOB -->
       <img v-bind:src="job.mainImg" alt="job" class="top-img">
       <div class="wrapper-job ">
+        <div class="header_sm">
+        </div>
         <div class="top-block">
           <div class="h1" v-html="job.title"></div>
-          <div v-html="job.mainDesc">
-          </div>
           <div class="authors">
             <div class="desc">
               People may forget
@@ -17,6 +17,8 @@
               <div class="pos">{{ author.position }}</div>
               <div class="name">{{ author.name }}</div>
             </div>
+          </div>
+          <div v-html="job.mainDesc">
           </div>
         </div>
         <div class="content-line" v-for="line in job.contentLines">
