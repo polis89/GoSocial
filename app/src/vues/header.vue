@@ -22,7 +22,7 @@
 <script>
 export default {
   // name: 'app',
-  props: ['appStatus'],
+  props: ['appStatus', 'isMobile'],
   data () {
     return {
     }
@@ -31,7 +31,6 @@ export default {
   },
   watch: {
     appStatus: function(newV,old){
-      // console.log('New: ' + newV + "; old: " + old)
       var burg = document.getElementById('hamburger');
       if(newV == "showMenu" && old == "start"){
         //From burger to close
@@ -41,16 +40,27 @@ export default {
         }, 200);
       } else if(newV == "start") {
         //From close to burger
-        burg.className = " ";
-        setTimeout(function(){
+        if(!this.isMobile){
+          burg.className = " ";
+          setTimeout(function(){
+            burg.className = "open";
+          }, 200);
+        }else{
           burg.className = "open";
-        }, 200);
+        }
       } else if(newV == "showPage") {
         //From close to arrow
-        burg.className = " ";
-        setTimeout(function(){
-          burg.className = "arrow";
-        }, 200);
+        if(!this.isMobile){
+          burg.className = " ";
+          setTimeout(function(){
+            burg.className = "arrow";
+          }, 200);
+        }else{
+          burg.className = " ";
+          setTimeout(function(){
+            burg.className = "open";
+          }, 200);
+        }
       } else if(newV == "showMenu" && old == "showPage"){
         //From arrow to burger
         burg.className = "arrow-to-line ";

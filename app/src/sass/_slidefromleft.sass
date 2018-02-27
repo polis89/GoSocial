@@ -19,13 +19,9 @@
 // Mobile: slide from right
 //         fade-out
 
-.inleft_fadeout-mob-enter-active
+.inleft_fadeout-mob-enter-active, .inleft_fadeout-mob-leave-active 
 	transition: transform .5s
-	@include sm{transition: transform 0.4s}
-
-.inleft_fadeout-mob-leave-active 
-	transition: transform .5s
-	@include sm{transition: opacity 0.4s}
+	@include sm{transition: transform 0.4s, opacity 0.4s}
 
 .inleft_fadeout-mob-enter
 	transform: translateX(-100%)
@@ -33,7 +29,7 @@
 
 .inleft_fadeout-mob-leave-to 
 	transform: translateX(100vw)
-	transition: opacity 0.4s
+	transition: transform 0.4s, opacity 0.4s
 	@include sm{opacity: 0; transform: none}
 
 // Desktop: slide from left

@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <router-link :to="'/'" class="h1_sm">GOSOCIAL</router-link>
-    <app-header v-bind:appStatus="appStatus" v-on:burger-click="burgerClick"></app-header>
+    <app-header v-bind:isMobile="isMobile" v-bind:appStatus="appStatus" v-on:burger-click="burgerClick"></app-header>
     <app-main-page></app-main-page>
     <app-menu v-bind:isMobile="isMobile" v-bind:appStatus="appStatus"></app-menu>
-    <router-view v-bind:isMobile="isMobile"/>
+    <router-view v-bind:isMobile="isMobile" v-on:toMain="toMain"/>
   </div>
 </template>
 
@@ -48,9 +48,7 @@ export default {
   watch: {
     '$route' (to, from) {
       // При изменении страницы изменять состояние приложения
-      // console.log('WATCH route');
       // console.log(from);
-      // console.log("to");
       // console.log(to);
       if(((" " + document.body.className + " " ).indexOf( " noscroll " ) > -1)){
         document.body.classList.toggle("noscroll");
@@ -69,7 +67,11 @@ export default {
           this.appStatus = "showPage";
           return;
         case "index":
-          this.appStatus = "start";
+          if(this.isMobile){
+            this.appStatus = "start"
+          }else{
+            this.appStatus = "showMenu";
+          }
           return;
         default:
           this.appStatus = "showMenu";
