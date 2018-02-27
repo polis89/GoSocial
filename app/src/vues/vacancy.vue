@@ -4,6 +4,7 @@
     <div class="vacancy-page">
       <div class="wrapper-vacancy">
         <div class="header_sm" v-if="isMobile">
+          <a href="mailto:www@www.ru" class="link-mail">@</a>
         </div>
         <div class="left" >
           <h2 class="h2">Собака лает, караван идет</h2>

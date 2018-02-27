@@ -68,6 +68,7 @@
 .inleftall-leave-to 
 	transform: translateX(-100vw)
 
+//Anims for carousel 
 .inleft2-enter-active, .inleft2-leave-active 
 	transition: transform 1.5s
 
@@ -76,7 +77,16 @@
 
 .inleft2-leave-to 
 	transform: translateX(100vw)
-	@include sm{transform: translateX(-100%)}
+
+.inright2-enter-active, .inright2-leave-active 
+	transition: transform 1.5s
+
+.inright2-enter
+	transform: translateX(100vw)
+
+.inright2-leave-to 
+	transform: translateX(-100vw)
+	// @include sm{transform: translateX(-100%)}
 
 .menuPunktsTrans-enter-active
 	transition: transform .5s, opacity 1s
