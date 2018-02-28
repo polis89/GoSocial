@@ -31,7 +31,7 @@ export default {
   },
   watch: {
     appStatus: function(newV,old){
-      console.log('new: ' + newV + ', old: ' + old);
+      // console.log('new: ' + newV + ', old: ' + old);
       var burg = document.getElementById('hamburger');
       if(newV == "showMenu" && old == "start"){
         //From burger to close

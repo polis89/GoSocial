@@ -54,11 +54,11 @@ export default {
   beforeRouteEnter (to, from, next) {
     var pageData = {};
     var pageID = 65;
-    console.log("show News");
+    // console.log("show News");
     axios.get(rest.AJAX_URL + '/wp/v2/posts?_embed')
       .then(function (response) {
         var responseData = response.data;
-        console.log(responseData);
+        // console.log(responseData);
         pageData.news = [];
         if(responseData){
           for (var i = 0; i < responseData.length; i++){

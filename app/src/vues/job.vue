@@ -114,11 +114,11 @@ export default {
     var job = {};
     job.imgs = []; //Mobile imgs
     var jobID = to.params.id;
-    console.log("showjob, job = " + jobID);
+    // console.log("showjob, job = " + jobID);
     axios.get(rest.AJAX_URL + '/wp/v2/works/' + jobID + '?_embed')
       .then(function (response) {
         var responseData = response.data;
-        console.log(responseData);
+        // console.log(responseData);
         job.title = responseData.title.rendered;
         job.mainImg = responseData.acf["главное_изображение"];
         job.imgs.push(job.mainImg);
@@ -161,7 +161,7 @@ export default {
             job.contentLines.push(newLine);
           }
         }
-        console.log(job);
+        // console.log(job);
         next(vm => vm.job = job);
         // self.showPortfolio = false;
         // self.isJobShowed = true;

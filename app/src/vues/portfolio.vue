@@ -131,7 +131,7 @@ export default {
         var responseData = response.data;
         var categoryType = parseInt(to.params.type) || 0;
         var works = [];
-        console.log('Open portfolio, categoryID = ' + categoryType);
+        // console.log('Open portfolio, categoryID = ' + categoryType);
         if(categoryType){
           responseData = responseData.filter(function(item){
             // console.log('filter for: ');
@@ -139,8 +139,8 @@ export default {
             return item.work_category.indexOf(categoryType) != -1;
           });
         }
-        console.log('Filtered Data:');
-        console.log(responseData);
+        // console.log('Filtered Data:');
+        // console.log(responseData);
         responseData.forEach(function(item){
           var langSuff = i18n.LANG_SUFF;
           if(!langSuff){
@@ -175,7 +175,7 @@ export default {
         var responseData = response.data;
         var categoryType = parseInt(to.params.type) || 0;
         var works = [];
-        console.log('Open portfolio, categoryID = ' + categoryType);
+        // console.log('Open portfolio, categoryID = ' + categoryType);
         if(categoryType){
           responseData = responseData.filter(function(item){
             // console.log('filter for: ');
@@ -183,8 +183,8 @@ export default {
             return item.work_category.indexOf(categoryType) != -1;
           });
         }
-        console.log('Filtered Data:');
-        console.log(responseData);
+        // console.log('Filtered Data:');
+        // console.log(responseData);
         responseData.forEach(function(item){
           var langSuff = i18n.LANG_SUFF;
           if(!langSuff){
@@ -215,7 +215,7 @@ export default {
     // called when the route that renders this component is about to
     // be navigated away from.
     // has access to `this` component instance.
-    console.log(to);
+    // console.log(to);
     if(to.name == "portfolio" || to.name == "portfolioTYPE"){
       this.works = {};
     }

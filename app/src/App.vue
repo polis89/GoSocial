@@ -2,7 +2,7 @@
   <div id="app">
     <router-link :to="'/'" class="h1_sm">GOSOCIAL</router-link>
     <app-header v-bind:isMobile="isMobile" v-bind:appStatus="appStatus" v-on:burger-click="burgerClick"></app-header>
-    <app-main-page></app-main-page>
+    <app-main-page v-bind:isMobile="isMobile"></app-main-page>
     <app-menu v-bind:isMobile="isMobile" v-bind:appStatus="appStatus"></app-menu>
     <router-view v-bind:isMobile="isMobile"/>
   </div>
@@ -43,7 +43,7 @@ export default {
       default:
         this.appStatus = "start";
     }
-    console.log(this.$route);
+    // console.log(this.$route);
   },
   watch: {
     '$route' (to, from) {

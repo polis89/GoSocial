@@ -1,7 +1,7 @@
 <template>
   <div id="main-page">
     <div class="wrapper">
-      <v-touch v-on:swiperight="onSwipeRight" v-on:swipeleft="onSwipeLeft">
+      <v-touch v-on:swipedown="onSwipeDown" v-on:swipeup="onSwipeUp" v-on:swiperight="onSwipeRight" v-on:swipeleft="onSwipeLeft">
         <div class="carousel">
             <div class="slide" v-for="slide in slides" >
               <transition
@@ -25,6 +25,18 @@
           <button v-on:click="showSlide(3)" v-bind:class="{active: 3 == currentSlide}">03</button>
           <button v-on:click="showSlide(4)" v-bind:class="{active: 4 == currentSlide}">04</button>
         </div>
+        <div class="mobile-menu" v-bind:class="{ active: showMobileMenu && isMobile}">
+          <div class="mobmenu-cont">
+            <div class="title">Здравый<br> смысл - <br> худший враг<br> творчества.</div>
+            <div class="img-cont">
+              <img src="img/portfel.jpg" alt="img">
+            </div>
+            <div class="btns">
+              <div class="btn"><router-link to="/portfolio/2" class="link-page">Дизайн</router-link></div>
+              <div class="btn"><router-link to="/portfolio/3" class="link-page">Смм</router-link></div>
+            </div>
+          </div>
+        </div>
       </v-touch>
     </div>
     <app-footer></app-footer>
@@ -36,6 +48,7 @@ import appfooter from './app-footer.vue'
 
 export default {
   // name: 'app',
+  props: ['isMobile'],
   components:{  
     "app-footer": appfooter,
   },
@@ -64,7 +77,8 @@ export default {
         },
       ],
       currentSlide: 1,
-      anim: 'right'
+      anim: 'right',
+      showMobileMenu: false
     }
   },
   methods: {
@@ -79,6 +93,12 @@ export default {
     onSwipeRight(){
       this.anim = 'right';
       this.currentSlide = (this.currentSlide == 1) ? 4 : this.currentSlide - 1;
+    },
+    onSwipeUp(){
+      this.showMobileMenu = true;
+    },
+    onSwipeDown(){
+      this.showMobileMenu = false;
     },
     enter: function (el, done) {
       // Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })

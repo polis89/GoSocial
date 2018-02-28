@@ -94,7 +94,7 @@ export default {
   beforeRouteEnter (to, from, next) {
     var pageData = {};
     var pageID = 65;
-    console.log("show Vacancyes");
+    // console.log("show Vacancyes");
     axios.get(rest.AJAX_URL + '/wp/v2/pages/' + pageID + '?_embed')
       .then(function (response) {
         var responseData = response.data;
@@ -110,7 +110,7 @@ export default {
         axios.get(rest.AJAX_URL + '/wp/v2/vacancies?_embed')
           .then(function (response){
             var responseData = response.data;
-            console.log(responseData);
+            // console.log(responseData);
             pageData.vacancys = [];
             if(responseData){
               for (var i = 0; i < responseData.length; i++){

@@ -55,11 +55,11 @@ export default {
   },
   beforeRouteEnter (to, from, next) {
     var pageData = {};
-    console.log("show Peoples");
+    // console.log("show Peoples");
     axios.get(rest.AJAX_URL + '/wp/v2/workers?_embed')
       .then(function (response){
         var responseData = response.data;
-        console.log(responseData);
+        // console.log(responseData);
         pageData.workers = [];
         if(responseData){
           for (var i = responseData.length - 1; i >= 0; i--){
@@ -72,7 +72,7 @@ export default {
             pageData.workers.push(vac);
           }
         }
-        console.log(pageData.workers);
+        // console.log(pageData.workers);
         next(vm => vm.pageData = pageData);
       })
       .catch(function (error) {

@@ -1,6 +1,6 @@
 <template>
   <transition 
-    name="inleft">
+    name="inleft_fadeout-mob">
     <div class="page page-design">
       <div class="wrapper-page">
         <div class="header_sm" v-if="isMobile">
