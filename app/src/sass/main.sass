@@ -1332,11 +1332,16 @@ a
 
 .page-design
 	padding-top: 135px
+	@include sm{padding-top: 84px}
 	.wrapper-page
 		margin-bottom: -4vw 
+		@include sm{font-size: 14px}
+		p
+			@include sm{margin-bottom: 10px}
 	.portfolio-vars
 		margin-bottom: 2.5vw
 		margin-top: -0.5vw
+		@include sm{display: none}
 	.row
 		display: -webkit-flex
 		display: -moz-flex
@@ -1345,14 +1350,27 @@ a
 		display: flex
 		justify-content: space-between
 		margin-bottom: 7.4vw
+		@include sm{flex-direction: column-reverse}
 		.img-cont
 			flex-basis: 54.2%
 			flex-shrink: 0
+			@include sm{width: 100vw
+			margin-left: -25px
+			height: 60vw
+			flex-basis: auto
+			position: relative
+			overflow-y: hidden}
 			img
 				width: 100%
 				height: auto
+				@include sm{position: absolute
+				top: 50%
+				transform: translateY(-50%)
+				left: 0}
+
 		.text-block
 			padding-right: 6.7vw
+			@include sm{padding-right: 0}
 			.accent
 				color: $c-a-b
 			.h2
@@ -1361,11 +1379,15 @@ a
 				line-height: 0.9
 				margin: 0
 				margin-left: -0.3vw
+				@include sm{font-size: 35px
+				padding-top: 30px
+				margin-left: 0}
 			.h3
 				font-size: 1.65vw
 				line-height: 1.05
 				font-weight: 900
 				margin: 2vw 0 
+				@include sm{font-size: 18px}
 			a
 				color: $c-a-b
 				text-decoration: underline
@@ -1373,10 +1395,13 @@ a
 					text-decoration: none
 		&.inverse
 			flex-direction: row-reverse
+			@include sm{flex-direction: column-reverse}
 			.text-block
 				padding-right: 7vw
 				position: relative
 				left: 4.8vw
+				@include sm{padding-right: 0
+				left: auto}
 
 .page-news
 	padding-top: 165px
