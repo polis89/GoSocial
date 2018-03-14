@@ -1,10 +1,13 @@
 #main-page
 	width: 100vw
 	height: 100vh
+	@include sm{height: auto
+	min-height: 100%}
 	.wrapper
 		position: relative
 		height: 100%
-		@include sm{}
+		@include sm{background: $c-a
+		height: 175vw}
 	.mobile-menu
 		position: fixed
 		transform: translateY(100vh)
@@ -12,15 +15,13 @@
 		width: 100vw
 		height: 100vh
 		background: #fff
-		z-index: 200
+		z-index: 400
 		transition: transform 1s
+		overflow-y: scroll
 		&.active
 			transform: translateY(0vh)
 		.mobmenu-cont
-			position: absolute
-			top: 50%
-			left: 50%
-			transform: translate(-50%, -50%)
+			position: relative
 			display: -webkit-flex
 			display: -moz-flex
 			display: -ms-flex
@@ -29,7 +30,7 @@
 			flex-direction: column
 			justify-content: space-between
 			justify-content: space-around
-			height: 100%
+			overflow-y: scroll
 			.title
 				width: 100vw
 				margin: 0 auto
@@ -38,10 +39,11 @@
 				line-height: 47px
 				text-align: left
 				font-weight: 900
-				padding-top: 70px
+				padding-top: 90px
+				margin-bottom: 40px
 			.img-cont
 				max-width: 260px
-				margin: 0 auto
+				margin: 0 auto 40px
 				img
 					width: 100%
 					height: auto
@@ -55,7 +57,7 @@
 				margin: 0 auto
 				max-width: 300px
 				justify-content: space-between
-				padding-bottom: 10px
+				padding-bottom: 50px
 				.btn
 					flex-basis: 48%
 					a
@@ -80,29 +82,31 @@
 		.slide
 			position: absolute
 			width: 100%
+			@include sm{
+			// position: relative
+			z-index: 100}
 			>div
-				@include sm{display: -webkit-flex
-				display: -moz-flex
-				display: -ms-flex
-				display: -o-flex
-				display: flex
-				flex-direction: column
-				justify-content: space-around
-				height: 100vh}
+				@include sm{}
 	.slide_img
 		float: left
 		text-align: right
 		width: 51.5%
 		height: 59vh
 		// margin-top: 10vh
-		@include sm{float: none;width: auto
-		height: 40vh; margin-top: 100px; margin-bottom: 20px}
+		@include sm{float: none; width: 100%
+		padding-left: 10%
+		padding-right: 10%
+		box-sizing: border-box
+		height: auto
+		margin-top: 24vw; margin-bottom: 10vw}
 		img
 			height: 100%
 			width: auto
 			display: inline-block
 			max-height: 100%
-			@include sm{margin: 0 auto;display: block}
+			@include sm{margin: 0 auto;display: block
+			width: 100%
+			height: auto}
 	.slide_text
 		margin-top: 12.4vh
 		font-weight: 900
@@ -114,7 +118,7 @@
 		left: 5vw
 		@include lg{margin-top: 9vh}
 		@include sm{margin-top: 0; font-size: 12vw;
-		padding-left: 10%; left: 0;margin-bottom: 60px}
+		padding-left: 10%; left: 0;padding-bottom: 60px}
 .carousel-controls
 	position: absolute
 	z-index: 2
@@ -129,7 +133,11 @@
 	display: -o-flex
 	display: flex;
 	justify-content: space-between;
+	z-index: 300
 	bottom: 0
+	// left: auto
+	// transform: none
+	// position: relative
 	padding-bottom: 18px
 	margin: 0 auto;}
 	button

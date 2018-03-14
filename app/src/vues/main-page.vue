@@ -1,7 +1,13 @@
 <template>
   <div id="main-page">
-    <div class="wrapper">
-      <v-touch v-on:swipedown="onSwipeDown" v-on:swipeup="onSwipeUp" v-on:swiperight="onSwipeRight" v-on:swipeleft="onSwipeLeft">
+    <div class="wrapper" id="wrapper-main">
+      <v-touch ref="swiper"  
+        v-on:pandown="onPanDown" 
+        v-on:panup="onPanUp" 
+        v-on:swipedown="onSwipeDown" 
+        v-on:swipeup="onSwipeUp" 
+        v-on:swiperight="onSwipeRight"
+        v-on:swipeleft="onSwipeLeft">
         <div class="carousel">
             <div class="slide" v-for="slide in slides" >
               <transition
@@ -25,8 +31,8 @@
           <button v-on:click="showSlide(3)" v-bind:class="{active: 3 == currentSlide}">03</button>
           <button v-on:click="showSlide(4)" v-bind:class="{active: 4 == currentSlide}">04</button>
         </div>
-        <div class="mobile-menu" v-bind:class="{ active: showMobileMenu && isMobile}">
-          <div class="mobmenu-cont">
+        <div id="mobile-menu-out" class="mobile-menu" v-bind:class="{ active: showMobileMenu && isMobile}">
+          <div id="mobile-menu" class="mobmenu-cont">
             <div class="title">Здравый<br> смысл - <br> худший враг<br> творчества.</div>
             <div class="img-cont">
               <img src="img/portfel.jpg" alt="img">
@@ -48,9 +54,13 @@ import appfooter from './app-footer.vue'
 
 export default {
   // name: 'app',
-  props: ['isMobile'],
+  props: ['isMobile', 'showMobileMenu'],
   components:{  
     "app-footer": appfooter,
+  },
+  mounted() {
+    // this.$refs.swiper.disable('swipe');
+    // this.$refs.swiper.disable('swipeup');
   },
   data () {
     return {
@@ -78,7 +88,9 @@ export default {
       ],
       currentSlide: 1,
       anim: 'right',
-      showMobileMenu: false
+      // showMobileMenu: false,
+      enableMobileMenu: false,
+      panPrev: 0
     }
   },
   methods: {
@@ -95,10 +107,77 @@ export default {
       this.currentSlide = (this.currentSlide == 1) ? 4 : this.currentSlide - 1;
     },
     onSwipeUp(){
-      this.showMobileMenu = true;
+      var el = document.getElementById('wrapper-main');
+      var viewportOffset = el.getBoundingClientRect();
+      if(viewportOffset.bottom - 1 < document.documentElement.clientHeight){
+        // this.showMobileMenu = true;
+        this.panPrev = 0;
+        this.$emit('openMobMenu');
+      }
+      // console.log(viewportOffset.bottom);
     },
-    onSwipeDown(){
-      this.showMobileMenu = false;
+    // onSwipeDown(){
+    //   // console.log('Menu offset');
+    //   var el = document.getElementById('mobile-menu');
+    //   var viewportOffset = el.getBoundingClientRect();
+    //   // console.log(viewportOffset.bottom);
+    //   // console.log(el.offsetHeight);
+    //   if(viewportOffset.bottom > el.offsetHeight){
+    //     this.showMobileMenu = false;
+    //     this.panPrev = 0;
+    //   }
+    // },
+    onPanDown(e){
+      // console.log('Delta:');
+      // console.log(e.deltaY);
+      // console.log('PanPrev:');
+      // console.log(this.panPrev);
+      if(this.panPrev <= 0 || this.panPrev > e.deltaY){
+        // console.log('start');
+        this.panPrev = 0;
+        if(!this.showMobileMenu){
+          window.scrollBy(0, -(e.deltaY - this.panPrev));
+        }else{
+          var el = document.getElementById('mobile-menu-out');
+          el.scrollBy(0, -(e.deltaY - this.panPrev));
+        }
+      }else{
+        // console.log('Diff: ');
+        // console.log(-(e.deltaY - this.panPrev));
+        if(!this.showMobileMenu){
+          window.scrollBy(0, -(e.deltaY - this.panPrev));
+        }else{
+          var el = document.getElementById('mobile-menu-out');
+          el.scrollBy(0, -(e.deltaY - this.panPrev));
+        }
+      }
+      this.panPrev = e.deltaY;
+    },
+    onPanUp(e){
+      // console.log('Delta:');
+      // console.log(e.deltaY);
+      // console.log('PanPrev:');
+      // console.log(this.panPrev);
+      if(this.panPrev >= 0 || this.panPrev < e.deltaY){
+        // console.log('start');
+        this.panPrev = 0;
+        if(!this.showMobileMenu){
+          window.scrollBy(0, -(e.deltaY - this.panPrev));
+        }else{
+          var el = document.getElementById('mobile-menu-out');
+          el.scrollBy(0, -(e.deltaY - this.panPrev));
+        }
+      }else{
+        // console.log('Diff: ');
+        // console.log(-(e.deltaY - this.panPrev));
+        if(!this.showMobileMenu){
+          window.scrollBy(0, -(e.deltaY - this.panPrev));
+        }else{
+          var el = document.getElementById('mobile-menu-out');
+          el.scrollBy(0, -(e.deltaY - this.panPrev));
+        }
+      }
+      this.panPrev = e.deltaY;
     },
     enter: function (el, done) {
       // Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })

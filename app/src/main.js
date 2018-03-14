@@ -5,6 +5,13 @@ import Velocity from './libs/velocity.js';
 import './sass/main.sass';
 var VueTouch = require('vue-touch');
 
+VueTouch.config.pan = {
+  threshold: 10
+}
+VueTouch.config.swipe = {
+  threshold: 180
+}
+
 // Vue.config.productionTip = false
 Vue.use(VueTouch, {name: 'v-touch'});
 

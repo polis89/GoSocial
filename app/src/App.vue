@@ -2,7 +2,7 @@
   <div id="app">
     <router-link :to="'/'" class="h1_sm">GOSOCIAL</router-link>
     <app-header v-bind:isMobile="isMobile" v-bind:appStatus="appStatus" v-on:burger-click="burgerClick"></app-header>
-    <app-main-page v-bind:isMobile="isMobile"></app-main-page>
+    <app-main-page v-bind:isMobile="isMobile" v-bind:showMobileMenu="showMobileMenu" v-on:openMobMenu="openMobMenu"></app-main-page>
     <app-menu v-bind:isMobile="isMobile" v-bind:appStatus="appStatus"></app-menu>
     <router-view v-bind:isMobile="isMobile"/>
   </div>
@@ -23,7 +23,8 @@ export default {
   data () {
     return {
       isMobile: window.innerWidth < 991,
-      appStatus: 'start',  //Start - showMenu - showPage
+      appStatus: 'start',  //Start - showMenu - showPage - showMobileMenu
+      showMobileMenu: false
     }
   },
   mounted () {
@@ -108,8 +109,16 @@ export default {
               document.body.classList.toggle("noscroll");
             }
             break;
+          case 'showMobileMenu':
+            this.appStatus = "start";
+            this.showMobileMenu = false;
+            break;
         }
       }
+    },
+    openMobMenu(){
+      this.appStatus = "showMobileMenu";
+      this.showMobileMenu = true;
     },
     openPrevPage(){
       this.$router.go(-1);

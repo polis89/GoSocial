@@ -33,7 +33,8 @@ export default {
     appStatus: function(newV,old){
       // console.log('new: ' + newV + ', old: ' + old);
       var burg = document.getElementById('hamburger');
-      if(newV == "showMenu" && old == "start"){
+      if(newV == "showMenu" && old == "start" ||
+        newV == "showMobileMenu" && old == "start"){
         //From burger to close
         burg.className = " ";
         setTimeout(function(){
