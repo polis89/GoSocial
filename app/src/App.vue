@@ -24,8 +24,12 @@ export default {
     return {
       isMobile: window.innerWidth < 991,
       appStatus: 'start',  //Start - showMenu - showPage - showMobileMenu
-      showMobileMenu: false
+      showMobileMenu: false,
+      texts: {}
     }
+  },
+  created: function() {
+      this.texts = this.$root.$data;
   },
   mounted () {
     switch(this.$route.name){

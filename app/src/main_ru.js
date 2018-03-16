@@ -6,7 +6,6 @@ import './sass/main.sass';
 var VueTouch = require('vue-touch');
 var data = require('./langs/ru.json')
 
-
 VueTouch.config.pan = {
   threshold: 10
 }
@@ -14,12 +13,9 @@ VueTouch.config.swipe = {
   threshold: 140
 }
 
-console.log(data);
 
 // Vue.config.productionTip = false
 Vue.use(VueTouch, {name: 'v-touch'});
-
-data = {};
 
 /* eslint-disable no-new */
 new Vue({

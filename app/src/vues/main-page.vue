@@ -33,7 +33,7 @@
       </v-touch>
       <div id="mobile-menu-out" class="mobile-menu" v-bind:class="{ active: showMobileMenu && isMobile}">
         <div id="mobile-menu" class="mobmenu-cont">
-          <div class="title">Здравый<br> смысл - <br> худший враг<br> творчества.</div>
+          <div class="title" v-html="this.texts.slides[0]"></div>
           <div class="img-cont">
             <img src="img/portfel.jpg" alt="img">
           </div>
@@ -65,22 +65,22 @@ export default {
     return {
       slides: [
         {
-          text: "Здравый<br> смысл - <br> худший враг<br> творчества.",
+          text: "",
           img: "img/bg-1.png",
           id: 1,
         },
         {
-          text: "Второй<br> смысл - <br> худший враг<br> творчества.",
+          text: "",
           img: "img/bg-1.png",
           id: 2,
         },
         {
-          text: "Третий<br> смысл - <br> худший враг<br> творчества.",
+          text: "",
           img: "img/bg-1.png",
           id: 3,
         },
         {
-          text: "Четвертый<br> смысл - <br> худший враг<br> творчества.",
+          text: "",
           img: "img/bg-1.png",
           id: 4,
         },
@@ -89,8 +89,16 @@ export default {
       anim: 'right',
       // showMobileMenu: false,
       enableMobileMenu: false,
-      panPrev: 0
+      panPrev: 0,
+      texts: {}
     }
+  },
+  created: function() {
+      this.texts = this.$root.$data.page_main;
+      this.slides[0].text = this.texts.slides[0];
+      this.slides[1].text = this.texts.slides[1];
+      this.slides[2].text = this.texts.slides[2];
+      this.slides[3].text = this.texts.slides[3];
   },
   methods: {
     showSlide(slideIndex){
@@ -113,19 +121,7 @@ export default {
         this.panPrev = 0;
         this.$emit('openMobMenu');
       }
-      // console.log(viewportOffset.bottom);
     },
-    // onSwipeDown(){
-    //   // console.log('Menu offset');
-    //   var el = document.getElementById('mobile-menu');
-    //   var viewportOffset = el.getBoundingClientRect();
-    //   // console.log(viewportOffset.bottom);
-    //   // console.log(el.offsetHeight);
-    //   if(viewportOffset.bottom > el.offsetHeight){
-    //     this.showMobileMenu = false;
-    //     this.panPrev = 0;
-    //   }
-    // },
     onPanDown(e){
       // console.log('Delta:');
       // console.log(e.deltaY);

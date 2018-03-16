@@ -14,12 +14,8 @@ VueTouch.config.swipe = {
   threshold: 140
 }
 
-console.log(data);
-
 // Vue.config.productionTip = false
 Vue.use(VueTouch, {name: 'v-touch'});
-
-data = {};
 
 /* eslint-disable no-new */
 new Vue({
@@ -27,5 +23,9 @@ new Vue({
   router,
   template: '<App/>',
   components: { App },
-  data: data
+  data() {
+    return {
+    	data
+    };
+  }
 })
