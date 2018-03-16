@@ -4,7 +4,6 @@
       <v-touch ref="swiper"  
         v-on:pandown="onPanDown" 
         v-on:panup="onPanUp" 
-        v-on:swipedown="onSwipeDown" 
         v-on:swipeup="onSwipeUp" 
         v-on:swiperight="onSwipeRight"
         v-on:swipeleft="onSwipeLeft">
@@ -31,19 +30,19 @@
           <button v-on:click="showSlide(3)" v-bind:class="{active: 3 == currentSlide}">03</button>
           <button v-on:click="showSlide(4)" v-bind:class="{active: 4 == currentSlide}">04</button>
         </div>
-        <div id="mobile-menu-out" class="mobile-menu" v-bind:class="{ active: showMobileMenu && isMobile}">
-          <div id="mobile-menu" class="mobmenu-cont">
-            <div class="title">Здравый<br> смысл - <br> худший враг<br> творчества.</div>
-            <div class="img-cont">
-              <img src="img/portfel.jpg" alt="img">
-            </div>
-            <div class="btns">
-              <div class="btn"><router-link to="/portfolio/2" class="link-page">Дизайн</router-link></div>
-              <div class="btn"><router-link to="/portfolio/3" class="link-page">Смм</router-link></div>
-            </div>
+      </v-touch>
+      <div id="mobile-menu-out" class="mobile-menu" v-bind:class="{ active: showMobileMenu && isMobile}">
+        <div id="mobile-menu" class="mobmenu-cont">
+          <div class="title">Здравый<br> смысл - <br> худший враг<br> творчества.</div>
+          <div class="img-cont">
+            <img src="img/portfel.jpg" alt="img">
+          </div>
+          <div class="btns">
+            <div class="btn"><router-link to="/portfolio/2" class="link-page">Дизайн</router-link></div>
+            <div class="btn"><router-link to="/portfolio/3" class="link-page">Смм</router-link></div>
           </div>
         </div>
-      </v-touch>
+      </div>
     </div>
     <app-footer></app-footer>
   </div>

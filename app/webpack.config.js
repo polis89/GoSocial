@@ -1,30 +1,16 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
+const LANG = process.env.BUILD_LANG;
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/main_'+ LANG +'.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: 'dist',
-    filename: 'build.js'
+    filename: 'build_'+LANG+'.js'
   },
   module: {
     rules: [
-      // {
-      //   test: /\.css$/,
-      //   use: [
-      //     'vue-style-loader',
-      //     'css-loader'
-      //   ],
-      // },
-      // {
-      //   test: /\.scss$/,
-      //   use: [
-      //     'vue-style-loader',
-      //     'css-loader',
-      //     'sass-loader'
-      //   ],
-      // },
       {
         test: /\.sass$/,
         use: [

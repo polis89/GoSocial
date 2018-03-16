@@ -6,8 +6,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "dev": "cross-env NODE_ENV=development BUILD_LANG=en webpack-dev-server --open --hot",
+    "build": "npm run build_ru && npm run build_en && npm run build_ro",
+    "build_ru": "cross-env NODE_ENV=production BUILD_LANG=ru webpack --progress --hide-modules",
+    "build_en": "cross-env NODE_ENV=production BUILD_LANG=en webpack --progress --hide-modules",
+    "build_ro": "cross-env NODE_ENV=production BUILD_LANG=ro webpack --progress --hide-modules"
   },
   "dependencies": {
     "instafeed.js": "^1.4.1",

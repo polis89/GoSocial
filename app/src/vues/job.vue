@@ -1,93 +1,95 @@
 <template>
   <transition 
     name="inleft_fade-mob">
-    <div class="job-page">
-      <!-- JOB -->
-      <img v-if="!isMobile" v-bind:src="job.mainImg" alt="job" class="top-img">
-      <div v-if="!isMobile" class="wrapper-job">
-        <div class="top-block">
-          <div class="h1" v-html="job.title"></div>
-          <div v-html="job.mainDesc">
-          </div>
-          <div class="authors">
-            <div class="desc">
-              People may forget
-            </div>
-            <div class="author" v-for="author in job.authors">
-              <div class="pos">{{ author.position }}</div>
-              <div class="name">{{ author.name }}</div>
-            </div>
-          </div>
-        </div>
-        <div class="content-line" v-for="line in job.contentLines">
-          <template v-if="line.big">
-            <div class="block big-block">
-              <div class="img-cont">
-                <img v-bind:src="line.block.imgUrl" alt="img">
-              </div>
-            </div>
-          </template>
-          <template v-else>
-            <div class="block" v-for="block in line.blocks">
-              <div class="img-cont" v-if="block.isImg">
-                <img v-bind:src="block.imgUrl" alt="img">
-              </div>
-              <template v-else>
-                <div class="text-cont" v-html="block.text">
-                  
-                </div>
-                <div class="img-bottom" v-if="block.imgUrl">
-                  <img v-bind:src="block.imgUrl" alt="img">
-                </div>
-              </template>
-            </div>
-          </template>
-        </div>
-        <div class="icon-mouse">
-          <img src="img/scroll.png" alt="icon">
-        </div>
-      </div>
-      <div class="header_sm" v-if="isMobile">
-        <img src="img/info-icon.png" alt="info" class="info-job" v-on:click="clickInfo">
-      </div>
-      <div class="job_imgs-sm" v-if="isMobile">
-        <div class="pad"></div>
-        <template v-for="image in job.imgs">
-          <div class="img-cont">
-            <img :src="image" alt="img" class="img-full">
-          </div>
-        </template>
-      </div>
-      <div class="header_sm header_sm_close" v-if="isJobInfoShowed" v-on:click="clickInfo">
-        <div class="close-icon">
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-
-      <transition 
-        name="inleftall">
-        <div class="job_info-sm " v-if="isJobInfoShowed">
-          <div class="wrap-job-sm">
+    <div class="job-overflow" v-on:scroll="scrollFunction">
+      <div class="job-page" id ="job-page">
+        <!-- JOB -->
+        <img v-if="!isMobile" v-bind:src="job.mainImg" alt="job" class="top-img">
+        <div v-if="!isMobile" class="wrapper-job">
+          <div class="top-block">
             <div class="h1" v-html="job.title"></div>
-            <div class="h1-desc">
-              Lorem ipsum dol <br>
-              or sit amet, adi
-            </div>
             <div v-html="job.mainDesc">
             </div>
-            <div class="content-line-sm" v-for="line in job.contentLines">
-              <div class="block-sm" v-for="block in line.blocks">
-                <template v-if="!block.isImg">
+            <div class="authors">
+              <div class="desc">
+                People may forget
+              </div>
+              <div class="author" v-for="author in job.authors">
+                <div class="pos">{{ author.position }}</div>
+                <div class="name">{{ author.name }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="content-line" v-for="line in job.contentLines">
+            <template v-if="line.big">
+              <div class="block big-block">
+                <div class="img-cont">
+                  <img v-bind:src="line.block.imgUrl" alt="img">
+                </div>
+              </div>
+            </template>
+            <template v-else>
+              <div class="block" v-for="block in line.blocks">
+                <div class="img-cont" v-if="block.isImg">
+                  <img v-bind:src="block.imgUrl" alt="img">
+                </div>
+                <template v-else>
                   <div class="text-cont" v-html="block.text">
                     
                   </div>
+                  <div class="img-bottom" v-if="block.imgUrl">
+                    <img v-bind:src="block.imgUrl" alt="img">
+                  </div>
                 </template>
+              </div>
+            </template>
+          </div>
+          <div class="icon-mouse">
+            <img src="img/scroll.png" alt="icon">
+          </div>
+        </div>
+        <div class="header_sm" v-if="isMobile">
+          <img src="img/info-icon.png" alt="info" class="info-job" v-on:click="clickInfo">
+        </div>
+        <div class="job_imgs-sm" v-if="isMobile">
+          <div class="pad"></div>
+          <template v-for="image in job.imgs">
+            <div class="img-cont">
+              <img :src="image" alt="img" class="img-full">
+            </div>
+          </template>
+        </div>
+        <div class="header_sm header_sm_close" v-if="isJobInfoShowed" v-on:click="clickInfo">
+          <div class="close-icon">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <transition 
+          name="inleftall">
+          <div class="job_info-sm " v-if="isJobInfoShowed">
+            <div class="wrap-job-sm">
+              <div class="h1" v-html="job.title"></div>
+              <div class="h1-desc">
+                Lorem ipsum dol <br>
+                or sit amet, adi
+              </div>
+              <div v-html="job.mainDesc">
+              </div>
+              <div class="content-line-sm" v-for="line in job.contentLines">
+                <div class="block-sm" v-for="block in line.blocks">
+                  <template v-if="!block.isImg">
+                    <div class="text-cont" v-html="block.text">
+                      
+                    </div>
+                  </template>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </transition>
+        </transition>
+      </div>
     </div>
   </transition>
 </template>
@@ -108,6 +110,7 @@ export default {
       isMobile: window.innerWidth < 991,
       isJobInfoShowed: false,
       job: {},
+      openPrevEmitted: false
     }
   },
   beforeRouteEnter (to, from, next) {
@@ -179,6 +182,16 @@ export default {
     clickInfo: function(event){
       this.isJobInfoShowed = !this.isJobInfoShowed;
       document.body.classList.toggle("noscroll");
+    },
+    scrollFunction: function (event){
+      var el = document.getElementById('job-page');
+      var viewportOffset = el.getBoundingClientRect();
+      if(viewportOffset.bottom - 1 < document.documentElement.clientHeight){
+        if(!this.openPrevEmitted){
+          this.$emit('openprevpage');
+          this.openPrevEmitted = true;
+        }
+      }
     }
   }
 }

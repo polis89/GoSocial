@@ -4,7 +4,7 @@
     <app-header v-bind:isMobile="isMobile" v-bind:appStatus="appStatus" v-on:burger-click="burgerClick"></app-header>
     <app-main-page v-bind:isMobile="isMobile" v-bind:showMobileMenu="showMobileMenu" v-on:openMobMenu="openMobMenu"></app-main-page>
     <app-menu v-bind:isMobile="isMobile" v-bind:appStatus="appStatus"></app-menu>
-    <router-view v-bind:isMobile="isMobile"/>
+    <router-view v-bind:isMobile="isMobile" v-on:openprevpage="openPrevPage"/>
   </div>
 </template>
 

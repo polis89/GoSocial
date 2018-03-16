@@ -46,7 +46,7 @@ a
 	width: 100%
 	z-index: 1000
 	min-height: 100%
-
+	@include sm{width: 100vw}
 
 h1, h2 
 	font-weight: normal;
@@ -84,7 +84,7 @@ a
 .header_sm
 	position: fixed
 	top: 0
-	width: 100%
+	width: 100vw
 	left: 0
 	background: #fff
 	height: 68px
@@ -135,9 +135,9 @@ a
 	color: #000
 	font-size: 31px;margin: 0;
 	position: fixed;
-	left: 50%
+	left: 50vw
 	transform: translateX(-50%)
-	top: 22px
+	top: 21px
 	text-align: center}
 
 .header__line
@@ -147,7 +147,11 @@ a
 	left: 0
 	background-color: transparent
 	z-index: 1000
-	@include sm{padding-top: 21px;top: 0; left: auto;right: 0;width: 66px}
+	@include sm{padding-top: 21px;
+	top: 0; 
+	left: auto;
+	right: 7px;
+	width: 66px}
 	.wrapper	
 		display: -webkit-flex
 		display: -moz-flex
@@ -410,13 +414,37 @@ a
 					font-size: 0.7291vw
 					line-height: 1.4
 
-.job-page
-	background-color: #fff
-	width: 100vw
+
+
+@keyframes updownanim
+  0%
+    transform: translateY(0)
+  25%
+    transform: translateY(8px)
+  50%
+    transform: translateY(0)
+  75%
+    transform: translateY(-8px)
+  100%
+    transform: rotate(0)
+
+.job-overflow
 	position: absolute
 	top: 0
-	padding-bottom: 180px
+	width: 100vw
+	height: 100vh
 	z-index: 500
+	overflow-y: scroll
+	overflow-x: hidden
+	background-color: #fff
+
+.job-page
+	// background-color: #fff
+	width: 100vw
+	// position: absolute
+	// top: 0
+	padding-bottom: 180px
+	// z-index: 500
 	@include lg{padding-bottom: 150px}
 	@include sm{z-index: 400;padding-bottom: 0}
 	&.news_item
@@ -521,8 +549,16 @@ a
 			.name
 				font-weight: 500
 	.icon-mouse
-		margin-top: 5vw
-		margin-bottom: -6vw
+		margin-top: 2.6vw
+		margin-bottom: 0vw
+		img
+			width: 2.3vw
+			display: inline-block
+			position: relative
+			animation-name: updownanim
+			animation-iteration-count: infinite
+			animation-duration: 1s
+			animation-timing-function: linear;
 	.content-line
 		margin-bottom: 0.55vw
 		height: 39vw
