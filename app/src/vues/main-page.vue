@@ -14,7 +14,6 @@
                 v-on:leave="leave"
                 v-bind:css="false">
                 <div v-if="slide.id == currentSlide">
-                  
                   <div class="slide_img">
                     <img :src=slide.img alt="img">
                   </div>
@@ -38,8 +37,8 @@
             <img src="img/portfel.jpg" alt="img">
           </div>
           <div class="btns">
-            <div class="btn"><router-link to="/portfolio/2" class="link-page">Дизайн</router-link></div>
-            <div class="btn"><router-link to="/portfolio/3" class="link-page">Смм</router-link></div>
+            <div class="btn"><router-link to="/portfolio/2" class="link-page">{{ texts.menu.design }}</router-link></div>
+            <div class="btn"><router-link to="/portfolio/3" class="link-page">{{ texts.menu.smm }}</router-link></div>
           </div>
         </div>
       </div>
@@ -99,6 +98,7 @@ export default {
       this.slides[1].text = this.texts.slides[1];
       this.slides[2].text = this.texts.slides[2];
       this.slides[3].text = this.texts.slides[3];
+      this.texts.menu = this.$root.$data.menu;
   },
   methods: {
     showSlide(slideIndex){

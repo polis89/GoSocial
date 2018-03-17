@@ -6,7 +6,7 @@
         <div class="header_sm" v-if="isMobile">
         </div>
         <div class="news_item" v-for="news_item in pageData.news">
-          <div class="name" v-if="!isMobile">{{news_item.name}}</div>
+          <div class="name" v-if="!isMobile" >{{news_item.name}}</div>
           <router-link :to="'news/' + news_item.id" class="name" v-if="isMobile" v-html="news_item.name"></router-link>
           <div class="row">
             <div class="img-cont">
@@ -16,7 +16,7 @@
               <div class="text-big" v-html="news_item.short_desc"></div>
               <div class="text">
                 {{news_item.long_desc}}
-                <router-link :to="'news/' + news_item.id"><nobr>Читать далее</nobr></router-link>
+                <router-link :to="'news/' + news_item.id"><nobr>{{texts.more}}</nobr></router-link>
               </div>
             </div>
           </div>
@@ -31,7 +31,6 @@
 <script>
 import appfooter from './app-footer.vue';
 import rest from '../rest';
-import i18n from '../i18n';
 var axios = require('axios');
 
 export default {
@@ -41,10 +40,14 @@ export default {
   },
   data () {
     return {
+      texts: {},
       pageData: {},
       translates: {
       }
     }
+  },
+  created: function() {
+      this.texts = this.$root.$data.page_news;
   },
   methods: {
     btnClick: function (event) {

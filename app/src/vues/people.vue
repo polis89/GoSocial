@@ -5,7 +5,7 @@
       <div class="wrapper-people">
         <div class="header_sm" v-if="isMobile">
         </div>
-        <h2 class="h2">Доска почета</h2>
+        <h2 class="h2">{{texts.board}}</h2>
         <div class="peoples">
           <div class="people" v-for="(worker, index) in pageData.workers">
             <div class="img-cont">
@@ -27,8 +27,6 @@
 <script>
 import appfooter from './app-footer.vue';
 import rest from '../rest';
-import i18n from '../i18n';
-var Instafeed = require("instafeed.js");
 var axios = require('axios');
 
 export default {
@@ -39,14 +37,11 @@ export default {
   data () {
     return {
       pageData: {},
-      translates: {
-        download: i18n.translates.download[i18n.LANG_INDEX] ,
-        ourOffer: i18n.translates.ourOffer[i18n.LANG_INDEX] ,
-        all: i18n.translates.all[i18n.LANG_INDEX] ,
-      }
+      texts: {}
     }
   },
-  computed: {
+  created: function() {
+      this.texts = this.$root.$data.page_people;
   },
   methods: {
     btnClick: function (event) {

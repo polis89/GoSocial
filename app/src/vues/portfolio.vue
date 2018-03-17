@@ -9,33 +9,33 @@
           <transition name="fadein" mode="out-in">
             <template v-if="!isMobile">
               <div class="portfolio-vars" v-if="isDesign">
-                <router-link :to="'/portfolio/' + categoriesID.design[0]">{{ translates.all }}</router-link>
+                <router-link :to="'/portfolio/' + categoriesID.design[0]">{{ texts.all }}</router-link>
                 /
-                <router-link :to="'/portfolio/' + categoriesID.design[1]">{{ translates.cat_potreb }}</router-link>
+                <router-link :to="'/portfolio/' + categoriesID.design[1]">{{ texts.cat_potreb }}</router-link>
                 /
-                <router-link :to="'/portfolio/' + categoriesID.design[2]">{{ translates.cat_corp }}</router-link>
+                <router-link :to="'/portfolio/' + categoriesID.design[2]">{{ texts.cat_corp }}</router-link>
                 /
-                <router-link :to="'/portfolio/' + categoriesID.design[3]">{{ translates.cat_expo }}</router-link>
+                <router-link :to="'/portfolio/' + categoriesID.design[3]">{{ texts.cat_expo }}</router-link>
                 /
-                <router-link :to="'/portfolio/' + categoriesID.design[4]">{{ translates.cat_event }}</router-link>
+                <router-link :to="'/portfolio/' + categoriesID.design[4]">{{ texts.cat_event }}</router-link>
                 /
-                <router-link :to="'/portfolio/' + categoriesID.design[5]">{{ translates.cat_riteil }}</router-link>
+                <router-link :to="'/portfolio/' + categoriesID.design[5]">{{ texts.cat_riteil }}</router-link>
                 /
-                <router-link :to="'/portfolio/' + categoriesID.design[6]">{{ translates.cat_web }}</router-link>
+                <router-link :to="'/portfolio/' + categoriesID.design[6]">{{ texts.cat_web }}</router-link>
                 /
-                <router-link :to="'/portfolio/' + categoriesID.design[7]">{{ translates.cat_motion }}</router-link>
+                <router-link :to="'/portfolio/' + categoriesID.design[7]">{{ texts.cat_motion }}</router-link>
               </div>
               <div class="portfolio-vars" v-else-if="isSmm">
-                <router-link :to="'/portfolio/' + categoriesID.smm[0]">{{ translates.all }}</router-link>
+                <router-link :to="'/portfolio/' + categoriesID.smm[0]">{{ texts.all }}</router-link>
                 /
                 <router-link :to="'/portfolio/' + categoriesID.design[7]">Никуда</router-link>
               </div>
               <div class="portfolio-vars" v-else>
                 <router-link to="/portfolio">Все</router-link>
                 /
-                <router-link :to="'/portfolio/' + categoriesID.design[0]">{{ translates.cat_design }}</router-link>
+                <router-link :to="'/portfolio/' + categoriesID.design[0]">{{ texts.cat_design }}</router-link>
                 /
-                <router-link :to="'/portfolio/' + categoriesID.smm[0]">{{ translates.cat_smm }}</router-link>
+                <router-link :to="'/portfolio/' + categoriesID.smm[0]">{{ texts.cat_smm }}</router-link>
               </div>
             </template>
           </transition>
@@ -58,8 +58,8 @@
               <img src="img/pdf.png" alt="pdf">
             </div>
             <div class="text-cont">
-              <strong>{{ translates.download }}</strong><br>
-              {{ translates.ourOffer }}
+              <strong>{{ texts.download }}</strong><br>
+              {{ texts.ourOffer }}
             </div>
           </a>
         </div>
@@ -72,7 +72,6 @@
 <script>
 import appfooter from './app-footer.vue';
 import rest from '../rest';
-import i18n from '../i18n';
 var axios = require('axios');
 
 export default {
@@ -91,21 +90,11 @@ export default {
         smm: [2, 2],
       },
       readyToUpdate: true,
-      translates: {
-        download: i18n.translates.download[i18n.LANG_INDEX] ,
-        ourOffer: i18n.translates.ourOffer[i18n.LANG_INDEX] ,
-        all: i18n.translates.all[i18n.LANG_INDEX] ,
-        cat_potreb: i18n.translates.cat_potreb[i18n.LANG_INDEX] ,
-        cat_corp: i18n.translates.cat_corp[i18n.LANG_INDEX] ,
-        cat_expo: i18n.translates.cat_expo[i18n.LANG_INDEX] ,
-        cat_event: i18n.translates.cat_event[i18n.LANG_INDEX] ,
-        cat_riteil: i18n.translates.cat_riteil[i18n.LANG_INDEX] ,
-        cat_web: i18n.translates.cat_web[i18n.LANG_INDEX] ,
-        cat_motion: i18n.translates.cat_motion[i18n.LANG_INDEX],
-        cat_design: i18n.translates.cat_design[i18n.LANG_INDEX],
-        cat_smm: i18n.translates.cat_smm[i18n.LANG_INDEX] ,
-      }
+      texts: {}
     }
+  },
+  created: function() {
+      this.texts = this.$root.$data.page_catalog;
   },
   computed: {
     isDesign: function(){
@@ -142,7 +131,7 @@ export default {
         // console.log('Filtered Data:');
         // console.log(responseData);
         responseData.forEach(function(item){
-          var langSuff = i18n.LANG_SUFF;
+          var langSuff = "";
           if(!langSuff){
             var name = item.title.rendered;
           }else{

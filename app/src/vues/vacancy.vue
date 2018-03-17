@@ -7,11 +7,13 @@
           <a href="mailto:www@www.ru" class="link-mail">@</a>
         </div>
         <div class="left" >
-          <h2 class="h2">Собака лает, караван идет</h2>
+          <h2 class="h2">{{texts.title}}</h2>
           <div class="img-cont" v-if="isMobile">
             <img :src="pageData.mainImg" alt="img">
           </div>
-          <div v-html="pageData.mainHtml"></div>
+          <div>
+            <p v-html="texts.text"></p>
+          </div>
         </div>
         <div class="right" v-if="!isMobile">
           <div class="img-cont">
@@ -20,7 +22,7 @@
         </div>
         <div class="clearfix"></div>
         <div class="steps">
-          <div class="step" v-for="(step, index) in pageData.steps">
+          <div class="step" v-for="(step, index) in texts.steps">
             <div class="num">{{ index+1 }}</div>
             <p v-html="step">
             </p>
@@ -29,31 +31,31 @@
         <div class="clearfix"></div>
         <div class="vacancys">
           <div class="vacancy" v-for="(vacancy, index) in pageData.vacancys">
-            <div class="name">Вакансия <strong>{{ vacancy.name }}</strong></div>
+            <div class="name">{{texts.vacancie}} <strong>{{ vacancy.name }}</strong></div>
             <div class="text"><span v-html="vacancy.desc"></span>
-            <span class="open" v-on:click="vacancy.isOpen=false" v-if="vacancy.isOpen">Закрыть</span><span v-on:click="vacancy.isOpen=true" class="open" v-else>Читать далее</span></div>
+            <span class="open" v-on:click="vacancy.isOpen=false" v-if="vacancy.isOpen">{{texts.close}}</span><span v-on:click="vacancy.isOpen=true" class="open" v-else>{{texts.more}}</span></div>
             <div class="drop-cont" v-if="vacancy.isOpen">
               <div class="column">
-                <div class="col-name">Чек-лист наших "хотений":</div>
+                <div class="col-name">{{texts.wanted}}</div>
                 <ul>
                   <li v-for="wish in vacancy.wishes" v-html="wish">
                   </li>
                 </ul>
               </div>
               <div class="column">
-                <div class="col-name">Чек-лист твоих задач:</div>
+                <div class="col-name">{{texts.tasks}}</div>
                 <ul>
                   <li v-for="task in vacancy.tasks">
                     {{ task }}
                   </li>
                 </ul>
-                <div class="col-name">Что ты получишь?</div>
+                <div class="col-name">{{texts.gets}}</div>
                 <ul>
                   <li v-for="get in vacancy.gets">
                     {{ get }}
                   </li>
                 </ul>
-                <div class="col-name">Нам не хватает тебя. Отправить заявочку.</div>
+                <div class="col-name">{{texts.send}}</div>
                 <a href="mailto:job@gosocial.md">job@gosocial.md</a>
               </div>
               <div class="clearfix"></div>
@@ -81,10 +83,12 @@ export default {
   data () {
     return {
       // pageShowed: false,
-      pageData: { }
+      pageData: {},
+      texts: {}
     }
   },
-  computed: {
+  created: function() {
+      this.texts = this.$root.$data.page_vacancies;
   },
   methods: {
     btnClick: function (event) {

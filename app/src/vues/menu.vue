@@ -7,45 +7,45 @@
       <div class="app-menu__container">
         <div v-if="isMobile">
           <div class="langs">
-            <a href="http://polies.ru/gs/en" class="lang">en</a>
-            <a href="http://polies.ru/gs" class="lang">ru</a>
-            <a href="http://polies.ru/gs/ro" class="lang">ro</a>
+            <a :href=texts.common.link_en class="lang">en</a>
+            <a :href=texts.common.link_ru class="lang">ru</a>
+            <a :href=texts.common.link_ro class="lang">ro</a>
           </div>
         </div>
         <ul>
-          <li><router-link to="/agency" class="link-page">{{ punkts[0] }}</router-link></li>
+          <li><router-link to="/agency" class="link-page">{{ texts.menu.agency }}</router-link></li>
           <li v-if="!isMobile" @mouseleave="childsPunktsShowed = false">
             <span @mouseover="childsPunktsShowed = true">
-              <router-link to="/portfolio" class="link-page punkt-has-child">{{ punkts[1] }}</router-link>
+              <router-link to="/portfolio" class="link-page punkt-has-child">{{ texts.menu.works }}</router-link>
             </span>
             <transition 
               name="menuPunktsTrans" >
               <div v-if="childsPunktsShowed" class="childs" >
-                <router-link to="/portfolio/2" class="link-page">{{ punkts[6] }}</router-link>
+                <router-link to="/portfolio/2" class="link-page">{{ texts.menu.digital_marketing }}</router-link>
                 /
-                <router-link to="/portfolio/3" class="link-page">{{ punkts[7] }}</router-link>
+                <router-link to="/portfolio/3" class="link-page">{{ texts.menu.design }}</router-link>
               </div>
             </transition>
           </li>
-          <li v-if="isMobile"><router-link to="/portfolio/2" class="link-page">{{ punkts[8] }}</router-link></a></li>
-          <li v-if="isMobile"><router-link to="/portfolio/3" class="link-page">{{ punkts[7] }}</router-link></a></li>
-          <li><router-link to="/design" class="link-page">{{ punkts[2] }}</router-link></a></li>
+          <li v-if="isMobile"><router-link to="/portfolio/2" class="link-page">{{ texts.menu.digital_marketing }}</router-link></a></li>
+          <li v-if="isMobile"><router-link to="/portfolio/3" class="link-page">{{ texts.menu.design }}</router-link></a></li>
+          <li><router-link to="/design" class="link-page">{{ texts.menu.offer }}</router-link></a></li>
           <li>
-            <router-link to="/news" class="link-page punkt-inline">{{ punkts[3] }}</router-link>
-            <router-link to="/vacancy" class="link-page punkt-inline">{{ punkts[4] }}</router-link>
+            <router-link to="/news" class="link-page punkt-inline">{{ texts.menu.pulse }}</router-link>
+            <router-link to="/vacancy" class="link-page punkt-inline">{{ texts.menu.vacancies }}</router-link>
           </li>
           <li>
-            <router-link  v-if="isMobile" to="/people" class="link-small">{{ punkts[5] }}</router-link>
+            <router-link  v-if="isMobile" to="/people" class="link-small">{{ texts.menu.people }}</router-link>
           </li>
         </ul>   
       </div>
       <div class="app-menu__footer">
-        <div class="address">Chisinau, bd. Stefan cel Mare <br> 202 (Kentford-2)</div>
+        <div class="address" v-html="this.texts.common.address"></div>
         <div class="bottom-line">
           <a href="#">069 707 015</a> <br>
           <a href="mailto:ready@gosocial.md">ready@gosocial.md</a>
           <div class="right">
-            <router-link  v-if="!isMobile" to="/people">{{ punkts[5] }}</router-link>
+            <router-link  v-if="!isMobile" to="/people">{{ texts.menu.people }}</router-link>
             <div v-if="isMobile" class="socials">
               <a href="#"><img src="img/icon-foot-2.png" alt="icon"></a>
               <a href="#"><img src="img/icon-foot-3.png" alt="icon"></a>
@@ -59,7 +59,6 @@
 </template>
 
 <script>
-import i18n from '../i18n';
 export default {
   // name: 'app',
   props: ['appStatus', 'isMobile'],
@@ -68,18 +67,12 @@ export default {
       menuShowed: false,
       pageShowed: false,
       childsPunktsShowed: false,
-      punkts: [
-        i18n.translates.menu_punkt_1[i18n.LANG_INDEX],
-        i18n.translates.menu_punkt_2[i18n.LANG_INDEX],
-        i18n.translates.menu_punkt_3[i18n.LANG_INDEX],
-        i18n.translates.menu_punkt_4[i18n.LANG_INDEX],
-        i18n.translates.menu_punkt_5[i18n.LANG_INDEX],
-        i18n.translates.menu_punkt_6[i18n.LANG_INDEX],
-        i18n.translates.menu_punkt_2_1[i18n.LANG_INDEX],
-        i18n.translates.menu_punkt_2_2[i18n.LANG_INDEX],
-        'Marketing',
-      ]
+      texts: {}
     }
+  },
+  created: function() {
+      this.texts.menu = this.$root.$data.menu;
+      this.texts.common = this.$root.$data.common;
   },
   watch:{
     appStatus: function(newStatus, oldStatus){
