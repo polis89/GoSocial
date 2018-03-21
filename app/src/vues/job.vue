@@ -184,12 +184,14 @@ export default {
       document.body.classList.toggle("noscroll");
     },
     scrollFunction: function (event){
-      var el = document.getElementById('job-page');
-      var viewportOffset = el.getBoundingClientRect();
-      if(viewportOffset.bottom - 1 < document.documentElement.clientHeight){
-        if(!this.openPrevEmitted){
-          this.$emit('openprevpage');
-          this.openPrevEmitted = true;
+      if(!isMobile){
+        var el = document.getElementById('job-page');
+        var viewportOffset = el.getBoundingClientRect();
+        if(viewportOffset.bottom - 1 < document.documentElement.clientHeight){
+          if(!this.openPrevEmitted){
+            this.$emit('openprevpage');
+            this.openPrevEmitted = true;
+          }
         }
       }
     }

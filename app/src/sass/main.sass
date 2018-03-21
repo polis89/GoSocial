@@ -7,6 +7,7 @@
 
 html, body
 	height: 100%
+	overflow: auto
 
 body
 	font-size: 14px
@@ -87,7 +88,7 @@ a
 	width: 100vw
 	left: 0
 	background: #fff
-	height: 68px
+	height: 64px
 	z-index: 450
 	display: none
 	@include sm{display: block}
@@ -147,10 +148,11 @@ a
 	left: 0
 	background-color: transparent
 	z-index: 1000
-	@include sm{padding-top: 21px;
+	@include sm{padding-top: 20px;
 	top: 0; 
 	left: auto;
-	right: 7px;
+	-webkit-transform: translateZ(0);
+	right: 0px;
 	width: 66px}
 	.wrapper	
 		display: -webkit-flex
@@ -242,6 +244,11 @@ a
 				display: block
 				text-align: left
 				backface-visibility: hidden
+				position: relative
+				z-index: 4
+				&:nth-child(4)
+					z-index: 3
+					color: red !important
 				a
 					color: #000
 					line-height: 1.2
@@ -288,7 +295,7 @@ a
 		@include sm{position: relative
 		font-size: 14px;line-height: 1.3
 		padding-top: 120px
-		padding-bottom: 30px}
+		padding-bottom: 80px}
 		br
 			display: none
 			@include sm{display: block}
@@ -437,18 +444,21 @@ a
 	overflow-y: scroll
 	overflow-x: hidden
 	background-color: #fff
+	@include sm{z-index: 400
+	height: 100%}
 
 .job-page
 	// background-color: #fff
 	width: 100vw
-	// position: absolute
-	// top: 0
 	padding-bottom: 180px
 	// z-index: 500
 	@include lg{padding-bottom: 150px}
 	@include sm{z-index: 400;padding-bottom: 0}
 	&.news_item
-		@include sm{padding-top: 100px}
+		position: absolute
+		background: #fff
+		top: 0
+		@include sm{padding-top: 66px}
 		p
 			@include sm{font-size: 17px
 			line-height: 26px
@@ -607,7 +617,7 @@ a
 		min-height: 100vh
 
 		.pad
-			height: 66px
+			height: 63px
 		.img-cont
 			width: 100vw
 			height: 102vw
@@ -638,6 +648,8 @@ a
 			position: relative
 		.content-line-sm
 			text-align: left
+			&:last-child
+				margin-bottom: 80px
 			h2
 				font-size: 17px
 				line-height: 26px
@@ -1024,7 +1036,7 @@ a
 			margin-bottom: 0
 			.left
 				.img-full
-					@include sm{top: -24px;margin-bottom: -5px}
+					@include sm{margin-top: 18px;margin-bottom: 15px}
 				.text-cont
 					p
 						@include sm{font-size: 17px
@@ -1489,8 +1501,6 @@ a
 					margin-bottom: 1.1vw
 				a
 					color: $c-a-b
-
-
 
 footer
 	height: 106px

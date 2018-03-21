@@ -149,7 +149,7 @@ export default {
       this.panPrev = e.deltaY;
     },
     onPanUp(e){
-      // console.log('Delta:');
+      console.log('Delta:');
       // console.log(e.deltaY);
       // console.log('PanPrev:');
       // console.log(this.panPrev);

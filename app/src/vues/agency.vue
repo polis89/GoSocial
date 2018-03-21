@@ -289,8 +289,7 @@
           </a>
         </div>
         <div id="instafeed"></div>
-        <div class="desc-mob" v-if="isMobile">
-          {{texts.b6_title_desc}}
+        <div class="desc-mob" v-if="isMobile" v-html="texts.b6_title_desc">
         </div>
       </div>
       <app-footer></app-footer>
