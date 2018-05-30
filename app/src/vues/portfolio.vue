@@ -90,7 +90,8 @@ export default {
         smm: [2, 2],
       },
       readyToUpdate: true,
-      texts: {}
+      texts: {},
+      langSuff: ""
     }
   },
   created: function() {
@@ -130,23 +131,24 @@ export default {
         }
         // console.log('Filtered Data:');
         // console.log(responseData);
-        responseData.forEach(function(item){
-          var langSuff = "";
-          if(!langSuff){
-            var name = item.title.rendered;
-          }else{
-            // console.log('title = ' + "title" + i18n.LANG_SUFF);
+        next(vm => {
+          var langSuff = vm.$root.$data.lang_suff;
+          console.dir(responseData);
+          responseData.forEach(function(item){
             // console.log('LANG_SUFF = ' + langSuff);
             var name = item.acf["title" + langSuff];
-          }
-          var thumbnail = item._embedded['wp:featuredmedia'][0].source_url;
-          var id = item.id;
-          var desc = item.acf["краткое_описание" + langSuff];
-          if(name){
-            works.push({name: rest.removeHTMLTags(name), thumbnail: thumbnail, desc: desc, id: id});
-          }
+            var thumbnail = item._embedded['wp:featuredmedia'][0].source_url;
+            var id = item.id;
+            var desc = item.acf["краткое_описание" + langSuff];
+            if(name){
+              works.push({name: rest.removeHTMLTags(name), thumbnail: thumbnail, desc: desc, id: id});
+            }
+          });
+          // console.log('works size: ' + works.length);
+          vm.works = works; 
+          vm.categoryType = categoryType;
+          vm.langSuff = langSuff;
         });
-        next(vm => {vm.works = works; vm.categoryType = categoryType});
       })
       .catch(function (error) {
         console.log(error.message);
@@ -175,14 +177,9 @@ export default {
         // console.log('Filtered Data:');
         // console.log(responseData);
         responseData.forEach(function(item){
-          var langSuff = i18n.LANG_SUFF;
-          if(!langSuff){
-            var name = item.title.rendered;
-          }else{
-            // console.log('title = ' + "title" + i18n.LANG_SUFF);
-            // console.log('LANG_SUFF = ' + langSuff);
-            var name = item.acf["title" + langSuff];
-          }
+          // var langSuff = i18n.LANG_SUFF;
+          var langSuff = self.langSuff;
+          var name = item.acf["title" + langSuff];
           var thumbnail = item._embedded['wp:featuredmedia'][0].source_url;
           var id = item.id;
           var desc = item.acf["краткое_описание" + langSuff];

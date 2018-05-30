@@ -110,7 +110,8 @@ export default {
       isMobile: window.innerWidth < 991,
       isJobInfoShowed: false,
       job: {},
-      openPrevEmitted: false
+      openPrevEmitted: false,
+      langSuff: ""
     }
   },
   beforeRouteEnter (to, from, next) {
@@ -122,50 +123,54 @@ export default {
       .then(function (response) {
         var responseData = response.data;
         // console.log(responseData);
-        job.title = responseData.title.rendered;
-        job.mainImg = responseData.acf["главное_изображение"];
-        job.imgs.push(job.mainImg);
-        job.mainDesc = responseData.acf["текст_под_описанием"];
-        job.authors = [];
-        if(responseData.acf["авторы"]){
-          for (var i = 0; i < responseData.acf["авторы"].length; i++){
-            job.authors.push({
-              position: responseData.acf["авторы"][i]["должность"], 
-              name: responseData.acf["авторы"][i]["имя"]});
+        next(vm => {
+          var langSuff = vm.$root.$data.lang_suff;
+          job.title = responseData.acf["title" + langSuff];
+          job.mainImg = responseData.acf["главное_изображение"];
+          job.imgs.push(job.mainImg);
+          job.mainDesc = responseData.acf["текст_под_описанием" + langSuff];
+          job.authors = [];
+          if(responseData.acf["авторы" + langSuff]){
+            for (var i = 0; i < responseData.acf["авторы" + langSuff].length; i++){
+              job.authors.push({
+                position: responseData.acf["авторы" + langSuff][i]["должность"], 
+                name: responseData.acf["авторы" + langSuff][i]["имя"]});
+            }
           }
-        }
-        job.contentLines = [];
-        if(responseData.acf["блоки"]){
-          for (var i = 0; i < responseData.acf["блоки"].length; i++){
-            var newLine = {};
-            var block = responseData.acf["блоки"][i];
-            if(block["тип"] == "Большое изображение"){
-              newLine.big = true;
-              newLine.block = {imgUrl: block["изображение"]};
-              job.imgs.push(block["изображение"]);
-            }else{
-              newLine.big = false;
-              newLine.blocks = [];
-              newLine.blocks.push({isImg: block["тип"] == "Маленькое изображение", imgUrl: block["изображение"], text: block["текст"]});
-              if(block["изображение"]){
+          job.contentLines = [];
+          if(responseData.acf["блоки"]){
+            for (var i = 0; i < responseData.acf["блоки"].length; i++){
+              var newLine = {};
+              var block = responseData.acf["блоки"][i];
+              if(block["тип"] == "Большое изображение"){
+                newLine.big = true;
+                newLine.block = {imgUrl: block["изображение"]};
                 job.imgs.push(block["изображение"]);
-              }
-              if(!newLine.big){
-                i++;
-                block = responseData.acf["блоки"][i];
-                if(block){
-                  newLine.blocks.push({isImg: block["тип"] == "Маленькое изображение", imgUrl: block["изображение"], text: block["текст"]});
-                  if(block["изображение"]){
-                    job.imgs.push(block["изображение"]);
+              }else{
+                newLine.big = false;
+                newLine.blocks = [];
+                newLine.blocks.push({isImg: block["тип"] == "Маленькое изображение", imgUrl: block["изображение"], text: block["текст" + langSuff]});
+                if(block["изображение"]){
+                  job.imgs.push(block["изображение"]);
+                }
+                if(!newLine.big){
+                  i++;
+                  block = responseData.acf["блоки"][i];
+                  if(block){
+                    newLine.blocks.push({isImg: block["тип"] == "Маленькое изображение", imgUrl: block["изображение"], text: block["текст" + langSuff]});
+                    if(block["изображение"]){
+                      job.imgs.push(block["изображение"]);
+                    }
                   }
                 }
               }
+              job.contentLines.push(newLine);
             }
-            job.contentLines.push(newLine);
           }
-        }
-        // console.log(job);
-        next(vm => vm.job = job);
+          // console.log(job);
+          vm.job = job;
+          vm.langSuff = langSuff;
+        });
         // self.showPortfolio = false;
         // self.isJobShowed = true;
       })

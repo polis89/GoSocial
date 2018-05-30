@@ -6,7 +6,6 @@ import './sass/main.sass';
 var VueTouch = require('vue-touch');
 var data = require('./langs/en.json')
 
-
 VueTouch.config.pan = {
   threshold: 10
 }
@@ -23,9 +22,5 @@ new Vue({
   router,
   template: '<App/>',
   components: { App },
-  data() {
-    return {
-    	data
-    };
-  }
+  data: data
 })

@@ -13,7 +13,6 @@ VueTouch.config.swipe = {
   threshold: 140
 }
 
-
 // Vue.config.productionTip = false
 Vue.use(VueTouch, {name: 'v-touch'});
 

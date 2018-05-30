@@ -22,9 +22,5 @@ new Vue({
   router,
   template: '<App/>',
   components: { App },
-  data() {
-    return {
-    	data
-    };
-  }
+  data: data
 })

@@ -103,48 +103,44 @@ export default {
       .then(function (response) {
         var responseData = response.data;
         // console.log(responseData);
-        pageData.mainHtml = responseData.acf["котент"];
         pageData.mainImg = responseData.acf["изображение"];
-        pageData.steps = [];
-        if(responseData.acf["шаги"]){
-          for (var i = 0; i < responseData.acf["шаги"].length; i++){
-            pageData.steps.push(responseData.acf["шаги"][i]["шаг"]);
-          }
-        }
         axios.get(rest.AJAX_URL + '/wp/v2/vacancies?_embed')
           .then(function (response){
             var responseData = response.data;
             // console.log(responseData);
             pageData.vacancys = [];
-            if(responseData){
-              for (var i = 0; i < responseData.length; i++){
-                var vac = {
-                  isOpen: false,
-                  name: responseData[i].title.rendered,
-                  desc: responseData[i].acf.desc,
-                  wishes: [],
-                  tasks: [],
-                  gets: [],
-                };
-                if(responseData[i].acf["wishes"]){
-                  for (var j = 0; j < responseData[i].acf["wishes"].length; j++){
-                    vac.wishes.push(responseData[i].acf["wishes"][j]["wish"]);
+            next(vm => {
+              var langSuff = vm.$root.$data.lang_suff;
+              if(responseData){
+                for (var i = 0; i < responseData.length; i++){
+                  var vac = {
+                    isOpen: false,
+                    name: responseData[i].acf["title" + langSuff],
+                    desc: responseData[i].acf["desc" + langSuff], 
+                    wishes: [],
+                    tasks: [],
+                    gets: [],
+                  };
+                  if(responseData[i].acf["wishes"]){
+                    for (var j = 0; j < responseData[i].acf["wishes"].length; j++){
+                      vac.wishes.push(responseData[i].acf["wishes"][j]["wish" + langSuff]);
+                    }
                   }
-                }
-                if(responseData[i].acf["tasks"]){
-                  for (var j = 0; j < responseData[i].acf["tasks"].length; j++){
-                    vac.tasks.push(responseData[i].acf["tasks"][j]["task"]);
+                  if(responseData[i].acf["tasks"]){
+                    for (var j = 0; j < responseData[i].acf["tasks"].length; j++){
+                      vac.tasks.push(responseData[i].acf["tasks"][j]["task" + langSuff]);
+                    }
                   }
-                }
-                if(responseData[i].acf["gets"]){
-                  for (var j = 0; j < responseData[i].acf["gets"].length; j++){
-                    vac.gets.push(responseData[i].acf["gets"][j]["get"]);
+                  if(responseData[i].acf["gets"]){
+                    for (var j = 0; j < responseData[i].acf["gets"].length; j++){
+                      vac.gets.push(responseData[i].acf["gets"][j]["get" + langSuff]);
+                    }
                   }
+                  pageData.vacancys.push(vac);
                 }
-                pageData.vacancys.push(vac);
               }
-            }
-            next(vm => vm.pageData = pageData);
+              vm.pageData = pageData;
+            });
 
           })
           .catch(function (error) {
